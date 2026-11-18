@@ -2,9 +2,11 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useState } from "react";
 import { Panel, StatusTag } from "@/components/gtm/AppShell";
-import { ErrorLine, btn, btnPrimary, field } from "@/components/gtm/DemoParts";
+import { ErrorLine, btnPrimary, field } from "@/components/gtm/DemoParts";
 import { PRIOR_RESEARCH } from "@/evaluation/history";
 import { fourCaseRunFn } from "@/lib/gtm.functions";
+import { SimulationPanel } from "@/components/gtm/SimulationPanel";
+import { EvidenceBundle } from "@/components/gtm/EvidenceBundle";
 
 export const Route = createFileRoute("/experiments")({
   head: () => ({
@@ -115,15 +117,8 @@ function Experiments() {
         <div className="space-y-2">{PRIOR_RESEARCH.arms.map((a) => <Bar key={a.arm} label={`${a.arm} · ${a.label} (historical)`} value={a.valid} total={a.total} tone="hist" />)}</div>
       </Panel>
 
-      <Panel title="Policy simulation" status="PENDING">
-        <div className="grid grid-cols-2 gap-2 md:grid-cols-5">
-          {["Seed", "Worlds", "Budget", "Horizon", "Selective-generation prevalence"].map((l) => (
-            <label key={l} className="text-xs text-muted-foreground">{l}<input disabled className={field} placeholder="—" /></label>
-          ))}
-        </div>
-        <p className="mt-2 text-xs">Engine arrives in phase 07. Run status: pending. No fresh simulation metrics are shown until then.</p>
-        <button className={btn} disabled>Run simulation</button>
-      </Panel>
+      <SimulationPanel />
+      <EvidenceBundle />
     </div>
   );
 }

@@ -37,3 +37,4 @@ use the editor.
 - Every phase updates `docs/rebuild-status.md` with real executed checks. Why: status must reflect evidence, not intent.
 - Durable state lives in Lovable Cloud; every registry mutation and effect commit goes through `gtm_append_event` / `gtm_commit_dispatch`, which lock the same aggregate row. Why: a revoke and a dispatch must serialize.
 - Each sandbox session + case is its own aggregate scope. Why: positive controls start from a clean fixture state.
+- Simulator lives in `src/domain/sim/`: `env.ts` owns latent truth; policies import only `observation`, `belief`, `planner`, `grammar`, `prng`. Why: R01 truth isolation is checked by a test that scans policy imports.

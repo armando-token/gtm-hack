@@ -188,3 +188,15 @@ Browser /tmp/browser/p89/check_present.py at 1280x720 (+375x800 check, scrollWid
 | V06 | VERIFIED | step 4 shows current run id (24/24, 14/24, 13/24) with origin; historical run id labeled separately |
 
 Remaining: phase 07 not received; server functions are unauthenticated.
+
+## Phases 07 + 10 (2026-11-18)
+Files: src/domain/sim/{prng,grammar,observation,belief,env,planner,policy-types,policies,stats,runner,inference,transfer}.ts, src/domain/research.ts, src/components/gtm/{SimulationPanel,EvidenceBundle}.tsx, src/evaluation/handoff.ts, src/routes/{experiments,benchmark,research}.tsx, src/test/phase07-sim.test.ts, docs/{parity-report,event-build-log,operator-guide}.md.
+Checks run:
+- `bunx vitest run src/test/phase07-sim.test.ts` → R01–R10 10/10 pass.
+- `bunx vitest run` → 12 files, 119/119 pass (backend X01–X07, C01–C06 against Lovable Cloud).
+- Browser: Experiments simulation 30 worlds, cancelled at 10/30, resumed, content hash 206598fa5e8b7f21 identical across two sessions; prediction/regret/leave-group-out panels rendered.
+- Browser: benchmark run-24-6d27244a30 D 24/24 · C 14/24 · B 13/24, metamorphic all pass.
+- Browser: CF-01A ALLOW 2000; CF-01B BLOCK terms_digest → pilot 500; CF-02B prepare t100, revoke t105, dispatch t110 → revoked, 0 effects; dispatch disabled afterwards; reload keeps timeline and 0 effects; field 0 / 20 HOLD; evidence JSON downloaded with all sections.
+Simulation snapshot (seed event-sim-1, 12×20, eval): greedy 23.3/100, exact_dp 23.3, beam 23.3, contingent 24.2, spiced 24.6, fixed 21.7, random 18.8, catalogue 3.8, oracle (diagnostic) 40.8. New protocol; not comparable to history.
+Fidelity: functional_core_parity true; research_protocol_parity false; historical_numeric_parity false; real_field_validated false.
+Gaps: MCTS, G2 families, G4 factory arms in sim, durable sim worker, persisted payment receipts, cross-tenant probe, unauthenticated server functions, headline after reload (D16 note). Next: none in package — repairs via 18_RESCATE.md.

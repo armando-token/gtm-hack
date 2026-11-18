@@ -134,7 +134,7 @@ function Benchmark() {
               </Panel>
             </>
           )}
-          <p className="text-xs text-muted-foreground">The four interactive demo cases cover two pairs only; they cannot establish this 24-case score. <StatusTag status="PENDING" /> Policy simulation arrives in phase 07.</p>
+          <p className="text-xs text-muted-foreground">The four interactive demo cases cover two pairs only; they cannot establish this 24-case score. Synthetic policy simulation runs on the Experiments page and is reported separately from this score.</p>
         </>
       )}
     </div>

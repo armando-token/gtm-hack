@@ -19,7 +19,7 @@ function Research() {
   return (
     <div className="space-y-4">
       <h1 className="text-xl font-semibold">Research</h1>
-      <Panel title="Experiment controls" status="PENDING">Worlds, predictors and planners arrive in phase 07.</Panel>
+      <Panel title="Experiment controls" status="PARTIAL">Worlds, predictors, planners, transfer and E0–E7 attribution run live on the Experiments page. Historical numeric parity stays UNVERIFIED (new generator and random-number source).</Panel>
     </div>
   );
 }
