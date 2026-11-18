@@ -340,3 +340,32 @@ export async function metamorphicRun() {
   const r = await runMetamorphic([...CASES.values()]);
   return { total: r.checks.length, passed: r.checks.length - r.failed.length, failed: r.failed, by_check: Object.entries(r.checks.reduce<Record<string, [number, number]>>((m, x) => { const v = m[x.check] ?? [0, 0]; v[1]++; if (x.ok) v[0]++; m[x.check] = v; return m; }, {})).map(([check, [ok, n]]) => ({ check, ok, n })) };
 }
+
+/* ---------------- phase 08: field readiness ---------------- */
+import fieldSim from "./fixtures/field-sim-20.json";
+import { FIELD_GATE_CONFIG, FIELD_TEMPLATES, classifyIntake, computeMetrics, emptyRealStudy, gateDecision, type FieldRecord, type IntakeSubmission } from "@/domain/field";
+
+export async function fieldReport() {
+  const simMetrics = computeMetrics(fieldSim as unknown as FieldRecord[]);
+  const realMetrics = computeMetrics([]);
+  return {
+    config: FIELD_GATE_CONFIG, templates: FIELD_TEMPLATES,
+    real: { study: emptyRealStudy(), metrics: { ...realMetrics, records: [] }, gate: gateDecision(realMetrics, { origin: "real", provenance_confirmed: false, cohort_mature: false }) },
+    simulated_example: { origin: "simulated" as const, batch_id: "mve-sim-20-recalculated-v2", metrics: simMetrics, gate: gateDecision(simMetrics, { origin: "simulated", provenance_confirmed: false, cohort_mature: false }) },
+    computed_at: new Date().toISOString(),
+  };
+}
+
+/** Custodian check: HMAC attestation over the canonical submission (minus attestation). Format alone never confirms. */
+async function verifyCustodian(s: IntakeSubmission): Promise<boolean> {
+  if (!s.custodian_attestation) return false;
+  const { custodian_attestation: _a, ...rest } = s;
+  const key = await crypto.subtle.importKey("raw", new TextEncoder().encode(secret()), { name: "HMAC", hash: "SHA-256" }, false, ["sign"]);
+  const mac = new Uint8Array(await crypto.subtle.sign("HMAC", key, new TextEncoder().encode(`custodian:${await digestOf(rest)}`)));
+  const hex = [...mac].map((b) => b.toString(16).padStart(2, "0")).join("");
+  return hex === s.custodian_attestation;
+}
+export async function classifyFieldIntake(s: IntakeSubmission) {
+  // Not persisted: real counters remain 0 until a permitted study stores confirmed records.
+  return { ...(await classifyIntake(s, new Set(), verifyCustodian)), persisted: false, real_observed_after: 0 };
+}

@@ -86,3 +86,24 @@ export const metamorphicRunFn = createServerFn({ method: "POST" }).handler(async
   const { metamorphicRun } = await import("@/server/gtm-service.server");
   return metamorphicRun();
 });
+
+export const fieldReportFn = createServerFn({ method: "GET" }).handler(async () => {
+  const { fieldReport } = await import("@/server/gtm-service.server");
+  return fieldReport();
+});
+
+const Num = z.number().int().nonnegative();
+export const classifyIntakeFn = createServerFn({ method: "POST" })
+  .inputValidator((d: unknown) => z.object({
+    opportunity_id: z.string().max(80), anonymized_account_id: z.string().max(80), legal_entity_id: z.string().max(80), approval_entity_id: z.string().max(80),
+    parent_entity_id: z.string().max(80).nullable().optional(), cohort: z.enum(["retrospective", "prospective"]),
+    enrolled_at: Num, outcome_known_at_enrollment: z.boolean(), event_time: Num, known_time: Num,
+    sent_at: Num.nullable().optional(), responded_at: Num.nullable().optional(), verified_at: Num.nullable().optional(),
+    dataset_origin: z.string().max(32), custodian_id: z.string().max(80), custodian_attestation: z.string().max(128).nullable().optional(),
+    evidence_ref: z.string().max(256).nullable().optional(), reviewer_resolution: z.enum(["resolved", "disagreement"]).nullable(),
+    batch_id: z.string().max(80).optional(), source_reference_id: z.string().max(120).optional(),
+  }).strict().parse(d))
+  .handler(async ({ data }) => {
+    const { classifyFieldIntake } = await import("@/server/gtm-service.server");
+    return classifyFieldIntake(data as never);
+  });

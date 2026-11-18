@@ -1,0 +1,3456 @@
+[
+{
+"schema_version": "0.3.0-r2-mve-mp4",
+"opportunity_id": "opp-w01a01",
+"decision_at": {
+"as_of_epoch": 1752000000,
+"iso8601_utc": "2025-07-08T18:40:00Z",
+"decision_cutoff_day": 12,
+"next_milestone_epoch": 1752604800,
+"next_milestone_iso": "2025-07-15T18:40:00Z",
+"business_deadline_epoch": 1752671200,
+"business_deadline_iso": "2025-07-16T13:06:40Z"
+},
+"candidate_action": "isolated_pilot",
+"required_scope": {
+"key": {
+"tenant": "ten-seccloud-prod",
+"organization": "org-aegis-fin-us",
+"actor": "act-ciso-mchen01",
+"capability": "approve_sandbox",
+"action": "isolated_pilot",
+"terms_digest": "terms-aegis-pilot-500s-30d"
+},
+"domain_axes": {
+"actor": "act-ciso-mchen01 (it_authority)",
+"org_entity": "ten-seccloud-prod/org-aegis-fin-us",
+"action": "approve_sandbox:isolated_pilot",
+"resource_scope": {
+"product_module": "ztna_posture_scanner",
+"environment_boundary": "sandbox_isolated",
+"max_units_or_seats": 500
+},
+"monetary_cap": {
+"max_amount_cents": 2400000,
+"currency": "USD",
+"payment_terms": "no_spend_pilot"
+},
+"validity_window": {
+"valid_from_epoch": 1751900000,
+"valid_until_epoch": 1754592000
+}
+},
+"proposal_terms": {
+"proposal_id": "prop-w01a01-pilot",
+"amount_cents": 2400000,
+"currency": "USD",
+"requires_explicit_approval": true
+}
+},
+"source_type": {
+"channel_category": "security_questionnaire_portal",
+"contract_source_name": "registry",
+"provenance_class": "verified_action",
+"event_type": "approval_granted",
+"is_trusted_source": true
+},
+"provenance_tier": {
+"evidence_namespace": "trusted_intake",
+"contract_record_type": "Record",
+"trusted_authority_record": {
+"key": {
+"tenant": "ten-seccloud-prod",
+"organization": "org-aegis-fin-us",
+"actor": "act-ciso-mchen01",
+"capability": "approve_sandbox",
+"action": "isolated_pilot",
+"terms_digest": "terms-aegis-pilot-500s-30d"
+},
+"source": "registry",
+"revision": 1,
+"event_time": 1751980000,
+"known_time": 1751980300,
+"valid_from": 1751900000,
+"valid_until": 1754592000,
+"effect": "grant",
+"record_digest": "7b1b28aa1ca2e981abf67ea93accf0778b4cd48af53f37ce75d109ac960c9f65"
+},
+"explicit_approval_record": {
+"key": {
+"tenant": "ten-seccloud-prod",
+"organization": "org-aegis-fin-us",
+"actor": "act-ciso-mchen01",
+"capability": "approve_sandbox",
+"action": "isolated_pilot",
+"terms_digest": "terms-aegis-pilot-500s-30d"
+},
+"occurred_at": 1751980300,
+"known_at": 1751980300,
+"explicit": true
+}
+},
+"observed_at": {
+"event_time": 1751980000,
+"known_time": 1751980300,
+"valid_from": 1751900000,
+"ingested_at_iso": "2025-07-08T13:11:40Z",
+"visible_at_decision": true,
+"validation_time": 1751980360,
+"validation_at_iso": "2025-07-08T13:12:40Z"
+},
+"valid_until": 1754592000,
+"authority_state": "allowed",
+"adjudication_reason": "ready_to_launch",
+"degraded_mode": {
+"is_degraded": false,
+"fail_closed_enforced": true,
+"verified_authority_token_minted": true,
+"consequential_dispatch_blocked": false,
+"missing_or_unverified_axes": [],
+"fallback_action": "proceed_ready_to_launch"
+},
+"retrieval_minutes": 6.5,
+"extra_requests": {
+"count": 0,
+"buyer_intervention_required": false,
+"confirmation_requested": false,
+"confirmation_target": null,
+"pipeline_outcome_category": "auto_verified_valid",
+"request_channels": [],
+"sent_at": null,
+"responded_at": null,
+"verified_at": null,
+"rejected_at": null,
+"response_status": "not_applicable",
+"response_actor_authorized": null,
+"response_scope_complete": null
+},
+"first_payment_at": {
+"settled_epoch": 1754150400,
+"iso8601_utc": "2025-08-02T16:00:00Z",
+"reconciliation_id": "rec-stripe-aegis-99201",
+"amount_cents": 2400000,
+"currency": "USD",
+"source": "payment_processor",
+"a11_reconciled": true
+},
+"outcome_status": {
+"evaluator_blinded_at_decision": true,
+"domain_result": "first_payment",
+"commitment_class": "cleared_payment",
+"commercial_lifecycle_state": "won_paid"
+},
+"dataset_origin": "simulado",
+"batch_id": "mve-sim-20-recalculated-v2",
+"engine_commit": "651dfbc414422dd70ff723714b53dfedc77bb47b",
+"metrics_version": "2.0.0-mp4",
+"cutoff_at": "2026-11-16T00:00:00Z",
+"source_reference_id": "vault-ref-simulado-opp-w01a01",
+"timing_breakdown": {
+"search_minutes": 3.58,
+"contact_minutes": 0.0,
+"review_minutes": 2.92,
+"effective_human_minutes": 6.5,
+"wait_minutes": 5.0,
+"failed_attempts_count": 0,
+"clock_start_epoch": 1751980000,
+"clock_start_iso": "2025-07-08T13:06:40Z",
+"business_deadline_epoch": 1752671200,
+"business_deadline_iso": "2025-07-16T13:06:40Z",
+"two_business_days_deadline_epoch": 1752152800,
+"two_business_days_deadline_iso": "2025-07-10T13:06:40Z",
+"next_milestone_epoch": 1752604800,
+"next_milestone_iso": "2025-07-15T18:40:00Z",
+"uncalculable_deadline": false
+},
+"gtm_recommendation": {
+"recommended_action": "isolated_pilot",
+"fallback_policy": "proceed_ready_to_launch",
+"ready_to_launch": true,
+"authority_state": "allowed",
+"adjudication_reason": "ready_to_launch"
+},
+"reviewer_evaluation": {
+"reviewer_id": "rev-indep-audit-01",
+"reviewed_at_epoch": 1752000300,
+"agrees_with_gtm": true,
+"adjudicated_category": "valid_action",
+"flagged_problematic_in_sample": false,
+"notes": "Verified valid_action at cutoff 1752000000."
+}
+},
+{
+"schema_version": "0.3.0-r2-mve-mp4",
+"opportunity_id": "opp-w02a02",
+"decision_at": {
+"as_of_epoch": 1753100000,
+"iso8601_utc": "2025-07-21T12:13:20Z",
+"decision_cutoff_day": 18,
+"next_milestone_epoch": 1753704800,
+"next_milestone_iso": "2025-07-28T12:13:20Z",
+"business_deadline_epoch": 1753736400,
+"business_deadline_iso": "2025-07-28T21:00:00Z"
+},
+"candidate_action": "standard_offer",
+"required_scope": {
+"key": {
+"tenant": "ten-seccloud-prod",
+"organization": "org-kestrel-bio-us",
+"actor": "act-vpfin-rpatel02",
+"capability": "approve_spend",
+"action": "standard_offer",
+"terms_digest": "terms-kestrel-prod-1000s-net30"
+},
+"domain_axes": {
+"actor": "act-vpfin-rpatel02 (budget_owner)",
+"org_entity": "ten-seccloud-prod/org-kestrel-bio-us",
+"action": "approve_spend:standard_offer",
+"resource_scope": {
+"product_module": "cloud_workload_protection",
+"environment_boundary": "production_rollout",
+"max_units_or_seats": 1000
+},
+"monetary_cap": {
+"max_amount_cents": 3600000,
+"currency": "USD",
+"payment_terms": "net_30"
+},
+"validity_window": {
+"valid_from_epoch": 1753000000,
+"valid_until_epoch": 1758270000
+}
+},
+"proposal_terms": {
+"proposal_id": "prop-w02a02-std",
+"amount_cents": 3600000,
+"currency": "USD",
+"requires_explicit_approval": true
+}
+},
+"source_type": {
+"channel_category": "buyer_email_authenticated_dkim",
+"contract_source_name": "buyer_admin",
+"provenance_class": "authenticated_statement",
+"event_type": "approval_granted",
+"is_trusted_source": true
+},
+"provenance_tier": {
+"evidence_namespace": "trusted_intake",
+"contract_record_type": "Record",
+"trusted_authority_record": {
+"key": {
+"tenant": "ten-seccloud-prod",
+"organization": "org-kestrel-bio-us",
+"actor": "act-vpfin-rpatel02",
+"capability": "approve_spend",
+"action": "standard_offer",
+"terms_digest": "terms-kestrel-prod-1000s-net30"
+},
+"source": "buyer_admin",
+"revision": 1,
+"event_time": 1753092000,
+"known_time": 1753092120,
+"valid_from": 1753000000,
+"valid_until": 1758270000,
+"effect": "grant",
+"record_digest": "62a6a94130c08d910c3ba23a0a82ea6a3d79f34ecfdee2298a0aadd2277c0cbd"
+},
+"explicit_approval_record": {
+"key": {
+"tenant": "ten-seccloud-prod",
+"organization": "org-kestrel-bio-us",
+"actor": "act-vpfin-rpatel02",
+"capability": "approve_spend",
+"action": "standard_offer",
+"terms_digest": "terms-kestrel-prod-1000s-net30"
+},
+"occurred_at": 1753092120,
+"known_at": 1753092120,
+"explicit": true
+}
+},
+"observed_at": {
+"event_time": 1753092000,
+"known_time": 1753092120,
+"valid_from": 1753000000,
+"ingested_at_iso": "2025-07-21T10:02:00Z",
+"visible_at_decision": true,
+"validation_time": 1753092180,
+"validation_at_iso": "2025-07-21T10:03:00Z"
+},
+"valid_until": 1758270000,
+"authority_state": "allowed",
+"adjudication_reason": "granted",
+"degraded_mode": {
+"is_degraded": false,
+"fail_closed_enforced": true,
+"verified_authority_token_minted": true,
+"consequential_dispatch_blocked": false,
+"missing_or_unverified_axes": [],
+"fallback_action": "proceed_ready_to_launch"
+},
+"retrieval_minutes": 4.5,
+"extra_requests": {
+"count": 1,
+"buyer_intervention_required": true,
+"confirmation_requested": false,
+"confirmation_target": "act-vpfin-rpatel02",
+"pipeline_outcome_category": "auto_verified_valid",
+"request_channels": [
+"buyer_email_confirmation"
+],
+"sent_at": 1753091400,
+"responded_at": 1753092000,
+"verified_at": 1753092120,
+"rejected_at": null,
+"response_status": "responded_verified_in_time",
+"response_actor_authorized": true,
+"response_scope_complete": true
+},
+"first_payment_at": {
+"settled_epoch": 1755273600,
+"iso8601_utc": "2025-08-15T16:00:00Z",
+"reconciliation_id": "rec-ach-kestrel-44812",
+"amount_cents": 3600000,
+"currency": "USD",
+"source": "bank_ledger",
+"a11_reconciled": true
+},
+"outcome_status": {
+"evaluator_blinded_at_decision": true,
+"domain_result": "first_payment",
+"commitment_class": "cleared_payment",
+"commercial_lifecycle_state": "won_paid"
+},
+"dataset_origin": "simulado",
+"batch_id": "mve-sim-20-recalculated-v2",
+"engine_commit": "651dfbc414422dd70ff723714b53dfedc77bb47b",
+"metrics_version": "2.0.0-mp4",
+"cutoff_at": "2026-11-16T00:00:00Z",
+"source_reference_id": "vault-ref-simulado-opp-w02a02",
+"timing_breakdown": {
+"search_minutes": 1.8,
+"contact_minutes": 1.35,
+"review_minutes": 1.35,
+"effective_human_minutes": 4.5,
+"wait_minutes": 10.0,
+"failed_attempts_count": 0,
+"clock_start_epoch": 1753092000,
+"clock_start_iso": "2025-07-21T10:00:00Z",
+"business_deadline_epoch": 1753736400,
+"business_deadline_iso": "2025-07-28T21:00:00Z",
+"two_business_days_deadline_epoch": 1753218000,
+"two_business_days_deadline_iso": "2025-07-22T21:00:00Z",
+"next_milestone_epoch": 1753704800,
+"next_milestone_iso": "2025-07-28T12:13:20Z",
+"uncalculable_deadline": false
+},
+"gtm_recommendation": {
+"recommended_action": "standard_offer",
+"fallback_policy": "proceed_ready_to_launch",
+"ready_to_launch": true,
+"authority_state": "allowed",
+"adjudication_reason": "granted"
+},
+"reviewer_evaluation": {
+"reviewer_id": "rev-indep-audit-01",
+"reviewed_at_epoch": 1753100300,
+"agrees_with_gtm": true,
+"adjudicated_category": "valid_action",
+"flagged_problematic_in_sample": false,
+"notes": "Verified valid_action at cutoff 1753100000."
+}
+},
+{
+"schema_version": "0.3.0-r2-mve-mp4",
+"opportunity_id": "opp-w03a03",
+"decision_at": {
+"as_of_epoch": 1754300000,
+"iso8601_utc": "2025-08-04T09:33:20Z",
+"decision_cutoff_day": 15,
+"next_milestone_epoch": 1754904800,
+"next_milestone_iso": "2025-08-11T09:33:20Z",
+"business_deadline_epoch": 1754946000,
+"business_deadline_iso": "2025-08-11T21:00:00Z"
+},
+"candidate_action": "standard_offer",
+"required_scope": {
+"key": {
+"tenant": "ten-seccloud-prod",
+"organization": "org-vanguard-grid-us",
+"actor": "act-secdir-jlin03",
+"capability": "approve_spend",
+"action": "standard_offer",
+"terms_digest": "terms-vanguard-prod-1500s-upfront"
+},
+"domain_axes": {
+"actor": "act-secdir-jlin03 (budget_owner)",
+"org_entity": "ten-seccloud-prod/org-vanguard-grid-us",
+"action": "approve_spend:standard_offer",
+"resource_scope": {
+"product_module": "iam_privilege_guard",
+"environment_boundary": "production_rollout",
+"max_units_or_seats": 1500
+},
+"monetary_cap": {
+"max_amount_cents": 5400000,
+"currency": "USD",
+"payment_terms": "standard_upfront"
+},
+"validity_window": {
+"valid_from_epoch": 1754200000,
+"valid_until_epoch": 1759470000
+}
+},
+"proposal_terms": {
+"proposal_id": "prop-w03a03-std",
+"amount_cents": 5400000,
+"currency": "USD",
+"requires_explicit_approval": true
+}
+},
+"source_type": {
+"channel_category": "shared_workspace_action_log",
+"contract_source_name": "delegation_service",
+"provenance_class": "verified_action",
+"event_type": "approval_granted",
+"is_trusted_source": true
+},
+"provenance_tier": {
+"evidence_namespace": "trusted_intake",
+"contract_record_type": "Record",
+"trusted_authority_record": {
+"key": {
+"tenant": "ten-seccloud-prod",
+"organization": "org-vanguard-grid-us",
+"actor": "act-secdir-jlin03",
+"capability": "approve_spend",
+"action": "standard_offer",
+"terms_digest": "terms-vanguard-prod-1500s-upfront"
+},
+"source": "delegation_service",
+"revision": 1,
+"event_time": 1754295000,
+"known_time": 1754295010,
+"valid_from": 1754200000,
+"valid_until": 1759470000,
+"effect": "grant",
+"record_digest": "8dc69c7edc20211367295731f1e3f784ab577945938080e9c621be36b5c37a00"
+},
+"explicit_approval_record": {
+"key": {
+"tenant": "ten-seccloud-prod",
+"organization": "org-vanguard-grid-us",
+"actor": "act-secdir-jlin03",
+"capability": "approve_spend",
+"action": "standard_offer",
+"terms_digest": "terms-vanguard-prod-1500s-upfront"
+},
+"occurred_at": 1754295010,
+"known_at": 1754295010,
+"explicit": true
+}
+},
+"observed_at": {
+"event_time": 1754295000,
+"known_time": 1754295010,
+"valid_from": 1754200000,
+"ingested_at_iso": "2025-08-04T08:10:10Z",
+"visible_at_decision": true,
+"validation_time": 1754295070,
+"validation_at_iso": "2025-08-04T08:11:10Z"
+},
+"valid_until": 1759470000,
+"authority_state": "allowed",
+"adjudication_reason": "ready_to_launch",
+"degraded_mode": {
+"is_degraded": false,
+"fail_closed_enforced": true,
+"verified_authority_token_minted": true,
+"consequential_dispatch_blocked": false,
+"missing_or_unverified_axes": [],
+"fallback_action": "proceed_ready_to_launch"
+},
+"retrieval_minutes": 1.5,
+"extra_requests": {
+"count": 0,
+"buyer_intervention_required": false,
+"confirmation_requested": false,
+"confirmation_target": null,
+"pipeline_outcome_category": "auto_verified_valid",
+"request_channels": [],
+"sent_at": null,
+"responded_at": null,
+"verified_at": null,
+"rejected_at": null,
+"response_status": "not_applicable",
+"response_actor_authorized": null,
+"response_scope_complete": null
+},
+"first_payment_at": {
+"settled_epoch": 1755000000,
+"iso8601_utc": "2025-08-12T12:00:00Z",
+"reconciliation_id": "rec-stripe-vanguard-77310",
+"amount_cents": 5400000,
+"currency": "USD",
+"source": "payment_processor",
+"a11_reconciled": true
+},
+"outcome_status": {
+"evaluator_blinded_at_decision": true,
+"domain_result": "first_payment",
+"commitment_class": "cleared_payment",
+"commercial_lifecycle_state": "won_paid"
+},
+"dataset_origin": "simulado",
+"batch_id": "mve-sim-20-recalculated-v2",
+"engine_commit": "651dfbc414422dd70ff723714b53dfedc77bb47b",
+"metrics_version": "2.0.0-mp4",
+"cutoff_at": "2026-11-16T00:00:00Z",
+"source_reference_id": "vault-ref-simulado-opp-w03a03",
+"timing_breakdown": {
+"search_minutes": 0.83,
+"contact_minutes": 0.0,
+"review_minutes": 0.67,
+"effective_human_minutes": 1.5,
+"wait_minutes": 0.17,
+"failed_attempts_count": 0,
+"clock_start_epoch": 1754295000,
+"clock_start_iso": "2025-08-04T08:10:00Z",
+"business_deadline_epoch": 1754946000,
+"business_deadline_iso": "2025-08-11T21:00:00Z",
+"two_business_days_deadline_epoch": 1754427600,
+"two_business_days_deadline_iso": "2025-08-05T21:00:00Z",
+"next_milestone_epoch": 1754904800,
+"next_milestone_iso": "2025-08-11T09:33:20Z",
+"uncalculable_deadline": false
+},
+"gtm_recommendation": {
+"recommended_action": "standard_offer",
+"fallback_policy": "proceed_ready_to_launch",
+"ready_to_launch": true,
+"authority_state": "allowed",
+"adjudication_reason": "ready_to_launch"
+},
+"reviewer_evaluation": {
+"reviewer_id": "rev-indep-audit-01",
+"reviewed_at_epoch": 1754300300,
+"agrees_with_gtm": true,
+"adjudicated_category": "valid_action",
+"flagged_problematic_in_sample": false,
+"notes": "Verified valid_action at cutoff 1754300000."
+}
+},
+{
+"schema_version": "0.3.0-r2-mve-mp4",
+"opportunity_id": "opp-w04a04",
+"decision_at": {
+"as_of_epoch": 1755500000,
+"iso8601_utc": "2025-08-18T06:53:20Z",
+"decision_cutoff_day": 24,
+"next_milestone_epoch": 1756104800,
+"next_milestone_iso": "2025-08-25T06:53:20Z",
+"business_deadline_epoch": 1756155600,
+"business_deadline_iso": "2025-08-25T21:00:00Z"
+},
+"candidate_action": "deferred_invoice",
+"required_scope": {
+"key": {
+"tenant": "ten-seccloud-prod",
+"organization": "org-meridian-rail-us",
+"actor": "act-proc-knovak04",
+"capability": "issue_po",
+"action": "deferred_invoice",
+"terms_digest": "terms-meridian-po-3000s-net45"
+},
+"domain_axes": {
+"actor": "act-proc-knovak04 (procurement)",
+"org_entity": "ten-seccloud-prod/org-meridian-rail-us",
+"action": "issue_po:deferred_invoice",
+"resource_scope": {
+"product_module": "ot_network_sensor_grid",
+"environment_boundary": "production_rollout",
+"max_units_or_seats": 3000
+},
+"monetary_cap": {
+"max_amount_cents": 9200000,
+"currency": "USD",
+"payment_terms": "net_45"
+},
+"validity_window": {
+"valid_from_epoch": 1755400000,
+"valid_until_epoch": 1763260000
+}
+},
+"proposal_terms": {
+"proposal_id": "prop-w04a04-def",
+"amount_cents": 9200000,
+"currency": "USD",
+"requires_explicit_approval": true
+}
+},
+"source_type": {
+"channel_category": "procurement_erp_po_ledger",
+"contract_source_name": "registry",
+"provenance_class": "verified_action",
+"event_type": "purchase_order",
+"is_trusted_source": true
+},
+"provenance_tier": {
+"evidence_namespace": "trusted_intake",
+"contract_record_type": "Record",
+"trusted_authority_record": {
+"key": {
+"tenant": "ten-seccloud-prod",
+"organization": "org-meridian-rail-us",
+"actor": "act-proc-knovak04",
+"capability": "issue_po",
+"action": "deferred_invoice",
+"terms_digest": "terms-meridian-po-3000s-net45"
+},
+"source": "registry",
+"revision": 2,
+"event_time": 1755480000,
+"known_time": 1755481800,
+"valid_from": 1755400000,
+"valid_until": 1763260000,
+"effect": "grant",
+"record_digest": "b9a8024daff4544b54b7e7959861f96b382c331791872c1e0eeab4043f421d4c"
+},
+"explicit_approval_record": {
+"key": {
+"tenant": "ten-seccloud-prod",
+"organization": "org-meridian-rail-us",
+"actor": "act-proc-knovak04",
+"capability": "issue_po",
+"action": "deferred_invoice",
+"terms_digest": "terms-meridian-po-3000s-net45"
+},
+"occurred_at": 1755481800,
+"known_at": 1755481800,
+"explicit": true
+}
+},
+"observed_at": {
+"event_time": 1755480000,
+"known_time": 1755481800,
+"valid_from": 1755400000,
+"ingested_at_iso": "2025-08-18T01:50:00Z",
+"visible_at_decision": true,
+"validation_time": 1755481860,
+"validation_at_iso": "2025-08-18T01:51:00Z"
+},
+"valid_until": 1763260000,
+"authority_state": "allowed",
+"adjudication_reason": "ready_to_launch",
+"degraded_mode": {
+"is_degraded": false,
+"fail_closed_enforced": true,
+"verified_authority_token_minted": true,
+"consequential_dispatch_blocked": false,
+"missing_or_unverified_axes": [],
+"fallback_action": "proceed_ready_to_launch"
+},
+"retrieval_minutes": 8.5,
+"extra_requests": {
+"count": 0,
+"buyer_intervention_required": false,
+"confirmation_requested": false,
+"confirmation_target": null,
+"pipeline_outcome_category": "auto_verified_valid",
+"request_channels": [],
+"sent_at": null,
+"responded_at": null,
+"verified_at": null,
+"rejected_at": null,
+"response_status": "not_applicable",
+"response_actor_authorized": null,
+"response_scope_complete": null
+},
+"first_payment_at": {
+"settled_epoch": 1759100000,
+"iso8601_utc": "2025-09-28T22:53:20Z",
+"reconciliation_id": "rec-wire-meridian-88401",
+"amount_cents": 9200000,
+"currency": "USD",
+"source": "bank_ledger",
+"a11_reconciled": true
+},
+"outcome_status": {
+"evaluator_blinded_at_decision": true,
+"domain_result": "first_payment",
+"commitment_class": "cleared_payment",
+"commercial_lifecycle_state": "won_paid"
+},
+"dataset_origin": "simulado",
+"batch_id": "mve-sim-20-recalculated-v2",
+"engine_commit": "651dfbc414422dd70ff723714b53dfedc77bb47b",
+"metrics_version": "2.0.0-mp4",
+"cutoff_at": "2026-11-16T00:00:00Z",
+"source_reference_id": "vault-ref-simulado-opp-w04a04",
+"timing_breakdown": {
+"search_minutes": 4.68,
+"contact_minutes": 0.0,
+"review_minutes": 3.82,
+"effective_human_minutes": 8.5,
+"wait_minutes": 30.0,
+"failed_attempts_count": 0,
+"clock_start_epoch": 1755480000,
+"clock_start_iso": "2025-08-18T01:20:00Z",
+"business_deadline_epoch": 1756155600,
+"business_deadline_iso": "2025-08-25T21:00:00Z",
+"two_business_days_deadline_epoch": 1755637200,
+"two_business_days_deadline_iso": "2025-08-19T21:00:00Z",
+"next_milestone_epoch": 1756104800,
+"next_milestone_iso": "2025-08-25T06:53:20Z",
+"uncalculable_deadline": false
+},
+"gtm_recommendation": {
+"recommended_action": "deferred_invoice",
+"fallback_policy": "proceed_ready_to_launch",
+"ready_to_launch": true,
+"authority_state": "allowed",
+"adjudication_reason": "ready_to_launch"
+},
+"reviewer_evaluation": {
+"reviewer_id": "rev-indep-audit-01",
+"reviewed_at_epoch": 1755500300,
+"agrees_with_gtm": true,
+"adjudicated_category": "valid_action",
+"flagged_problematic_in_sample": false,
+"notes": "Verified valid_action at cutoff 1755500000."
+}
+},
+{
+"schema_version": "0.3.0-r2-mve-mp4",
+"opportunity_id": "opp-w05a05",
+"decision_at": {
+"as_of_epoch": 1756700000,
+"iso8601_utc": "2025-09-01T04:13:20Z",
+"decision_cutoff_day": 21,
+"next_milestone_epoch": 1757304800,
+"next_milestone_iso": "2025-09-08T04:13:20Z",
+"business_deadline_epoch": 1757451600,
+"business_deadline_iso": "2025-09-09T21:00:00Z"
+},
+"candidate_action": "standard_offer",
+"required_scope": {
+"key": {
+"tenant": "ten-seccloud-prod",
+"organization": "org-helios-semi-us",
+"actor": "act-gc-sross05",
+"capability": "execute_contract",
+"action": "standard_offer",
+"terms_digest": "terms-helios-msa-2500s-net30"
+},
+"domain_axes": {
+"actor": "act-gc-sross05 (procurement)",
+"org_entity": "ten-seccloud-prod/org-helios-semi-us",
+"action": "execute_contract:standard_offer",
+"resource_scope": {
+"product_module": "supply_chain_code_attestation",
+"environment_boundary": "production_rollout",
+"max_units_or_seats": 2500
+},
+"monetary_cap": {
+"max_amount_cents": 7500000,
+"currency": "USD",
+"payment_terms": "net_30"
+},
+"validity_window": {
+"valid_from_epoch": 1756600000,
+"valid_until_epoch": 1764460000
+}
+},
+"proposal_terms": {
+"proposal_id": "prop-w05a05-std",
+"amount_cents": 7500000,
+"currency": "USD",
+"requires_explicit_approval": true
+}
+},
+"source_type": {
+"channel_category": "clm_countersigned_agreement",
+"contract_source_name": "registry",
+"provenance_class": "verified_action",
+"event_type": "signed_agreement",
+"is_trusted_source": true
+},
+"provenance_tier": {
+"evidence_namespace": "trusted_intake",
+"contract_record_type": "Record",
+"trusted_authority_record": {
+"key": {
+"tenant": "ten-seccloud-prod",
+"organization": "org-helios-semi-us",
+"actor": "act-gc-sross05",
+"capability": "execute_contract",
+"action": "standard_offer",
+"terms_digest": "terms-helios-msa-2500s-net30"
+},
+"source": "registry",
+"revision": 1,
+"event_time": 1756685000,
+"known_time": 1756685400,
+"valid_from": 1756600000,
+"valid_until": 1764460000,
+"effect": "grant",
+"record_digest": "d55dcf499db06342a35d5274f3ad16da9a7c1c6c11050c469863976771cee6a7"
+},
+"explicit_approval_record": {
+"key": {
+"tenant": "ten-seccloud-prod",
+"organization": "org-helios-semi-us",
+"actor": "act-gc-sross05",
+"capability": "execute_contract",
+"action": "standard_offer",
+"terms_digest": "terms-helios-msa-2500s-net30"
+},
+"occurred_at": 1756685400,
+"known_at": 1756685400,
+"explicit": true
+}
+},
+"observed_at": {
+"event_time": 1756685000,
+"known_time": 1756685400,
+"valid_from": 1756600000,
+"ingested_at_iso": "2025-09-01T00:10:00Z",
+"visible_at_decision": true,
+"validation_time": 1756685460,
+"validation_at_iso": "2025-09-01T00:11:00Z"
+},
+"valid_until": 1764460000,
+"authority_state": "allowed",
+"adjudication_reason": "ready_to_launch",
+"degraded_mode": {
+"is_degraded": false,
+"fail_closed_enforced": true,
+"verified_authority_token_minted": true,
+"consequential_dispatch_blocked": false,
+"missing_or_unverified_axes": [],
+"fallback_action": "proceed_ready_to_launch"
+},
+"retrieval_minutes": 9.0,
+"extra_requests": {
+"count": 0,
+"buyer_intervention_required": false,
+"confirmation_requested": false,
+"confirmation_target": null,
+"pipeline_outcome_category": "auto_verified_valid",
+"request_channels": [],
+"sent_at": null,
+"responded_at": null,
+"verified_at": null,
+"rejected_at": null,
+"response_status": "not_applicable",
+"response_actor_authorized": null,
+"response_scope_complete": null
+},
+"first_payment_at": {
+"settled_epoch": 1758900000,
+"iso8601_utc": "2025-09-26T15:20:00Z",
+"reconciliation_id": "rec-ach-helios-55920",
+"amount_cents": 7500000,
+"currency": "USD",
+"source": "bank_ledger",
+"a11_reconciled": true
+},
+"outcome_status": {
+"evaluator_blinded_at_decision": true,
+"domain_result": "first_payment",
+"commitment_class": "cleared_payment",
+"commercial_lifecycle_state": "won_paid"
+},
+"dataset_origin": "simulado",
+"batch_id": "mve-sim-20-recalculated-v2",
+"engine_commit": "651dfbc414422dd70ff723714b53dfedc77bb47b",
+"metrics_version": "2.0.0-mp4",
+"cutoff_at": "2026-11-16T00:00:00Z",
+"source_reference_id": "vault-ref-simulado-opp-w05a05",
+"timing_breakdown": {
+"search_minutes": 4.95,
+"contact_minutes": 0.0,
+"review_minutes": 4.05,
+"effective_human_minutes": 9.0,
+"wait_minutes": 6.67,
+"failed_attempts_count": 0,
+"clock_start_epoch": 1756685000,
+"clock_start_iso": "2025-09-01T00:03:20Z",
+"business_deadline_epoch": 1757451600,
+"business_deadline_iso": "2025-09-09T21:00:00Z",
+"two_business_days_deadline_epoch": 1756933200,
+"two_business_days_deadline_iso": "2025-09-03T21:00:00Z",
+"next_milestone_epoch": 1757304800,
+"next_milestone_iso": "2025-09-08T04:13:20Z",
+"uncalculable_deadline": false
+},
+"gtm_recommendation": {
+"recommended_action": "standard_offer",
+"fallback_policy": "proceed_ready_to_launch",
+"ready_to_launch": true,
+"authority_state": "allowed",
+"adjudication_reason": "ready_to_launch"
+},
+"reviewer_evaluation": {
+"reviewer_id": "rev-indep-audit-01",
+"reviewed_at_epoch": 1756700300,
+"agrees_with_gtm": true,
+"adjudicated_category": "valid_action",
+"flagged_problematic_in_sample": false,
+"notes": "Verified valid_action at cutoff 1756700000."
+}
+},
+{
+"schema_version": "0.3.0-r2-mve-mp4",
+"opportunity_id": "opp-w06a06",
+"decision_at": {
+"as_of_epoch": 1757900000,
+"iso8601_utc": "2025-09-15T01:33:20Z",
+"decision_cutoff_day": 14,
+"next_milestone_epoch": 1758504800,
+"next_milestone_iso": "2025-09-22T01:33:20Z",
+"business_deadline_epoch": 1758574800,
+"business_deadline_iso": "2025-09-22T21:00:00Z"
+},
+"candidate_action": "standard_offer",
+"required_scope": {
+"key": {
+"tenant": "ten-seccloud-prod",
+"organization": "org-cobalt-logistics-us",
+"actor": "act-vpeng-dtorres06",
+"capability": "approve_spend",
+"action": "standard_offer",
+"terms_digest": "terms-cobalt-prod-800s-net30"
+},
+"domain_axes": {
+"actor": "act-vpeng-dtorres06 (budget_owner)",
+"org_entity": "ten-seccloud-prod/org-cobalt-logistics-us",
+"action": "approve_spend:standard_offer",
+"resource_scope": {
+"product_module": "container_runtime_defense",
+"environment_boundary": "production_rollout",
+"max_units_or_seats": 800
+},
+"monetary_cap": {
+"max_amount_cents": 2880000,
+"currency": "USD",
+"payment_terms": "net_30"
+},
+"validity_window": {
+"valid_from_epoch": 1757850000,
+"valid_until_epoch": 1763120000
+}
+},
+"proposal_terms": {
+"proposal_id": "prop-w06a06-std",
+"amount_cents": 2880000,
+"currency": "USD",
+"requires_explicit_approval": true
+}
+},
+"source_type": {
+"channel_category": "buyer_email_forwarded_or_quoted",
+"contract_source_name": "email_thread",
+"provenance_class": "reported_statement",
+"event_type": "evidence_claim",
+"is_trusted_source": false
+},
+"provenance_tier": {
+"evidence_namespace": "candidate",
+"contract_record_type": "CandidateClaimRecord",
+"candidate_claim_record": {
+"claim_id": "clm-w06a06-01",
+"record_id": "rec-email-fwd-w06a06",
+"tenant_id": "ten-seccloud-prod",
+"organization_id": "org-cobalt-logistics-us",
+"speaker": "Alex Rivera (DevSecOps Lead)",
+"speaker_id": "act-ops-arivera06",
+"speaker_role": "operations_champion",
+"quoted_speaker": "Diego Torres (VP Engineering)",
+"is_quoted_or_reported": true,
+"subject": "act-vpeng-dtorres06",
+"asserted_role": "budget_owner",
+"asserted_capability": "approve_spend",
+"asserted_action": "standard_offer",
+"asserted_terms_digest": "terms-cobalt-prod-800s-net30",
+"claim_kind": "budget_approval",
+"polarity": "affirmed",
+"span_start": 42,
+"span_end": 138,
+"span_text": "Diego Torres confirmed in our internal thread that budget is approved for 800 production seats.",
+"span_digest": "dc8771e82259567db5ba9154f294967c1e1a3cf5263d88dfbf085b7a78229fb1",
+"uncertainty": 0.25,
+"abstained": false,
+"hedged": false,
+"is_former_or_interim": false,
+"is_prompt_injection": false,
+"is_sarcastic_or_hypothetical": false,
+"reason_codes": [
+"candidate_quoted_or_self_claim_unverified"
+],
+"extractor_name": "verified_candidate",
+"is_fake_provider": false,
+"evidence_namespace": "candidate"
+}
+},
+"observed_at": {
+"event_time": 1757890000,
+"known_time": 1757890500,
+"valid_from": 1757850000,
+"ingested_at_iso": "2025-09-14T22:55:00Z",
+"visible_at_decision": true,
+"validation_time": 1757890560,
+"validation_at_iso": "2025-09-14T22:56:00Z"
+},
+"valid_until": null,
+"authority_state": "unknown",
+"adjudication_reason": "candidate_only_no_authority",
+"degraded_mode": {
+"is_degraded": true,
+"fail_closed_enforced": true,
+"verified_authority_token_minted": false,
+"consequential_dispatch_blocked": true,
+"missing_or_unverified_axes": [
+"actor",
+"trusted_source",
+"explicit_approval"
+],
+"fallback_action": "request_targeted_confirmation"
+},
+"retrieval_minutes": 5.5,
+"extra_requests": {
+"count": 1,
+"buyer_intervention_required": true,
+"confirmation_requested": true,
+"confirmation_target": "act-vpeng-dtorres06",
+"pipeline_outcome_category": "targeted_confirmation_request",
+"request_channels": [
+"buyer_email_confirmation"
+],
+"sent_at": 1757900000,
+"responded_at": null,
+"verified_at": null,
+"rejected_at": null,
+"response_status": "responded_late_after_cutoff",
+"response_actor_authorized": true,
+"response_scope_complete": true
+},
+"first_payment_at": {
+"settled_epoch": 1760100000,
+"iso8601_utc": "2025-10-10T12:40:00Z",
+"reconciliation_id": "rec-stripe-cobalt-66109",
+"amount_cents": 2880000,
+"currency": "USD",
+"source": "payment_processor",
+"a11_reconciled": true
+},
+"outcome_status": {
+"evaluator_blinded_at_decision": true,
+"domain_result": "first_payment",
+"commitment_class": "cleared_payment",
+"commercial_lifecycle_state": "won_paid"
+},
+"dataset_origin": "simulado",
+"batch_id": "mve-sim-20-recalculated-v2",
+"engine_commit": "651dfbc414422dd70ff723714b53dfedc77bb47b",
+"metrics_version": "2.0.0-mp4",
+"cutoff_at": "2026-11-16T00:00:00Z",
+"source_reference_id": "vault-ref-simulado-opp-w06a06",
+"timing_breakdown": {
+"search_minutes": 2.2,
+"contact_minutes": 1.65,
+"review_minutes": 1.65,
+"effective_human_minutes": 5.5,
+"wait_minutes": 8.33,
+"failed_attempts_count": 0,
+"clock_start_epoch": 1757890000,
+"clock_start_iso": "2025-09-14T22:46:40Z",
+"business_deadline_epoch": 1758574800,
+"business_deadline_iso": "2025-09-22T21:00:00Z",
+"two_business_days_deadline_epoch": 1758056400,
+"two_business_days_deadline_iso": "2025-09-16T21:00:00Z",
+"next_milestone_epoch": 1758504800,
+"next_milestone_iso": "2025-09-22T01:33:20Z",
+"uncalculable_deadline": false
+},
+"gtm_recommendation": {
+"recommended_action": "request_budget_authorization",
+"fallback_policy": "request_targeted_confirmation",
+"ready_to_launch": false,
+"authority_state": "unknown",
+"adjudication_reason": "candidate_only_no_authority"
+},
+"reviewer_evaluation": {
+"reviewer_id": "rev-indep-audit-01",
+"reviewed_at_epoch": 1757900300,
+"agrees_with_gtm": true,
+"adjudicated_category": "correct_block",
+"flagged_problematic_in_sample": false,
+"notes": "Verified correct_block at cutoff 1757900000."
+}
+},
+{
+"schema_version": "0.3.0-r2-mve-mp4",
+"opportunity_id": "opp-w07a07",
+"decision_at": {
+"as_of_epoch": 1759100000,
+"iso8601_utc": "2025-09-28T22:53:20Z",
+"decision_cutoff_day": 19,
+"next_milestone_epoch": 1759704800,
+"next_milestone_iso": "2025-10-05T22:53:20Z",
+"business_deadline_epoch": 1759784400,
+"business_deadline_iso": "2025-10-06T21:00:00Z"
+},
+"candidate_action": "standard_offer",
+"required_scope": {
+"key": {
+"tenant": "ten-seccloud-prod",
+"organization": "org-stratos-health-us",
+"actor": "act-cfo-lmeier07",
+"capability": "approve_spend",
+"action": "standard_offer",
+"terms_digest": "terms-stratos-prod-2000s-net30"
+},
+"domain_axes": {
+"actor": "act-cfo-lmeier07 (budget_owner)",
+"org_entity": "ten-seccloud-prod/org-stratos-health-us",
+"action": "approve_spend:standard_offer",
+"resource_scope": {
+"product_module": "hipaa_enclave_mesh",
+"environment_boundary": "production_rollout",
+"max_units_or_seats": 2000
+},
+"monetary_cap": {
+"max_amount_cents": 6800000,
+"currency": "USD",
+"payment_terms": "net_30"
+},
+"validity_window": {
+"valid_from_epoch": 1759000000,
+"valid_until_epoch": 1764270000
+}
+},
+"proposal_terms": {
+"proposal_id": "prop-w07a07-std-2000s",
+"amount_cents": 6800000,
+"currency": "USD",
+"requires_explicit_approval": true
+}
+},
+"source_type": {
+"channel_category": "security_questionnaire_portal",
+"contract_source_name": "registry",
+"provenance_class": "verified_action",
+"event_type": "source_record",
+"is_trusted_source": true
+},
+"provenance_tier": {
+"evidence_namespace": "trusted_intake",
+"contract_record_type": "Record",
+"trusted_authority_record": {
+"key": {
+"tenant": "ten-seccloud-prod",
+"organization": "org-stratos-health-us",
+"actor": "act-cfo-lmeier07",
+"capability": "approve_spend",
+"action": "standard_offer",
+"terms_digest": "terms-stratos-pilot-500s-cap"
+},
+"source": "registry",
+"revision": 1,
+"event_time": 1759050000,
+"known_time": 1759050200,
+"valid_from": 1759000000,
+"valid_until": 1764270000,
+"effect": "grant",
+"record_digest": "4ae249b412973de51a793b2d39c02ccf886f6adaf8fd482338396f1d656b8ca5"
+}
+},
+"observed_at": {
+"event_time": 1759050000,
+"known_time": 1759050200,
+"valid_from": 1759000000,
+"ingested_at_iso": "2025-09-28T09:03:20Z",
+"visible_at_decision": true,
+"validation_time": 1759050260,
+"validation_at_iso": "2025-09-28T09:04:20Z"
+},
+"valid_until": 1764270000,
+"authority_state": "unknown",
+"adjudication_reason": "scope_mismatch_terms_digest",
+"degraded_mode": {
+"is_degraded": true,
+"fail_closed_enforced": true,
+"verified_authority_token_minted": false,
+"consequential_dispatch_blocked": true,
+"missing_or_unverified_axes": [
+"terms_digest",
+"explicit_approval"
+],
+"fallback_action": "request_targeted_confirmation"
+},
+"retrieval_minutes": 7.0,
+"extra_requests": {
+"count": 1,
+"buyer_intervention_required": true,
+"confirmation_requested": true,
+"confirmation_target": "act-cfo-lmeier07",
+"pipeline_outcome_category": "targeted_confirmation_request",
+"request_channels": [
+"finance_budget_signoff",
+"shared_deal_room_signoff"
+],
+"sent_at": 1759100000,
+"responded_at": null,
+"verified_at": null,
+"rejected_at": null,
+"response_status": "pending_no_response",
+"response_actor_authorized": null,
+"response_scope_complete": null
+},
+"first_payment_at": {
+"settled_epoch": 1761500000,
+"iso8601_utc": "2025-10-26T17:33:20Z",
+"reconciliation_id": "rec-wire-stratos-33904",
+"amount_cents": 6800000,
+"currency": "USD",
+"source": "bank_ledger",
+"a11_reconciled": true
+},
+"outcome_status": {
+"evaluator_blinded_at_decision": true,
+"domain_result": "first_payment",
+"commitment_class": "cleared_payment",
+"commercial_lifecycle_state": "won_paid"
+},
+"dataset_origin": "simulado",
+"batch_id": "mve-sim-20-recalculated-v2",
+"engine_commit": "651dfbc414422dd70ff723714b53dfedc77bb47b",
+"metrics_version": "2.0.0-mp4",
+"cutoff_at": "2026-11-16T00:00:00Z",
+"source_reference_id": "vault-ref-simulado-opp-w07a07",
+"timing_breakdown": {
+"search_minutes": 2.8,
+"contact_minutes": 2.1,
+"review_minutes": 2.1,
+"effective_human_minutes": 7.0,
+"wait_minutes": 3.33,
+"failed_attempts_count": 1,
+"clock_start_epoch": 1759050000,
+"clock_start_iso": "2025-09-28T09:00:00Z",
+"business_deadline_epoch": 1759784400,
+"business_deadline_iso": "2025-10-06T21:00:00Z",
+"two_business_days_deadline_epoch": 1759266000,
+"two_business_days_deadline_iso": "2025-09-30T21:00:00Z",
+"next_milestone_epoch": 1759704800,
+"next_milestone_iso": "2025-10-05T22:53:20Z",
+"uncalculable_deadline": false
+},
+"gtm_recommendation": {
+"recommended_action": "request_budget_authorization",
+"fallback_policy": "request_targeted_confirmation",
+"ready_to_launch": false,
+"authority_state": "unknown",
+"adjudication_reason": "scope_mismatch_terms_digest"
+},
+"reviewer_evaluation": {
+"reviewer_id": "rev-indep-audit-01",
+"reviewed_at_epoch": 1759100300,
+"agrees_with_gtm": true,
+"adjudicated_category": "correct_block",
+"flagged_problematic_in_sample": false,
+"notes": "Verified correct_block at cutoff 1759100000."
+}
+},
+{
+"schema_version": "0.3.0-r2-mve-mp4",
+"opportunity_id": "opp-l01b01",
+"decision_at": {
+"as_of_epoch": 1756684800,
+"iso8601_utc": "2025-09-01T00:00:00Z",
+"decision_cutoff_day": 14,
+"next_milestone_epoch": 1757289600,
+"next_milestone_iso": "2025-09-08T00:00:00Z",
+"business_deadline_epoch": 1757451600,
+"business_deadline_iso": "2025-09-09T21:00:00Z"
+},
+"candidate_action": "standard_offer",
+"required_scope": {
+"key": {
+"tenant": "tnt-sec-b2b",
+"organization": "org-fintech-na",
+"actor": "act-fin-cfo01",
+"capability": "approve_spend",
+"action": "standard_offer",
+"terms_digest": "terms-prod-2000s-120k-net30"
+},
+"domain_axes": {
+"actor": "act-fin-cfo01 (budget_owner)",
+"org_entity": "tnt-sec-b2b/org-fintech-na",
+"action": "approve_spend:standard_offer",
+"resource_scope": {
+"product_module": "endpoint_telemetry_core",
+"environment_boundary": "production_rollout",
+"max_units_or_seats": 2000
+},
+"monetary_cap": {
+"max_amount_cents": 12000000,
+"currency": "USD",
+"payment_terms": "net_30"
+},
+"validity_window": {
+"valid_from_epoch": 1756684800,
+"valid_until_epoch": 1788220800
+}
+},
+"proposal_terms": {
+"proposal_id": "prop-l01b01-exp2000",
+"amount_cents": 12000000,
+"currency": "USD",
+"requires_explicit_approval": true
+}
+},
+"source_type": {
+"channel_category": "security_questionnaire_portal",
+"contract_source_name": "registry",
+"provenance_class": "verified_action",
+"event_type": "source_record",
+"is_trusted_source": true
+},
+"provenance_tier": {
+"evidence_namespace": "trusted_intake",
+"contract_record_type": "Record",
+"trusted_authority_record": {
+"key": {
+"tenant": "tnt-sec-b2b",
+"organization": "org-fintech-na",
+"actor": "act-it-sec01",
+"capability": "approve_sandbox",
+"action": "isolated_pilot",
+"terms_digest": "terms-sbox-500s-0usd-pilot30d"
+},
+"source": "registry",
+"revision": 1,
+"event_time": 1756512000,
+"known_time": 1756512300,
+"valid_from": 1756512000,
+"valid_until": 1759104000,
+"effect": "grant",
+"record_digest": "6f13a16ad162bdf0f46b3d1a9d9227d4d14c214e7db143a1d86083079c89b1a1"
+}
+},
+"observed_at": {
+"event_time": 1756512000,
+"known_time": 1756512300,
+"valid_from": 1756512000,
+"ingested_at_iso": "2025-08-30T00:05:00Z",
+"visible_at_decision": true,
+"validation_time": 1756512360,
+"validation_at_iso": "2025-08-30T00:06:00Z"
+},
+"valid_until": 1759104000,
+"authority_state": "unknown",
+"adjudication_reason": "scope_mismatch_capability",
+"degraded_mode": {
+"is_degraded": true,
+"fail_closed_enforced": true,
+"verified_authority_token_minted": false,
+"consequential_dispatch_blocked": true,
+"missing_or_unverified_axes": [
+"actor",
+"capability",
+"action",
+"terms_digest",
+"explicit_approval"
+],
+"fallback_action": "propose_bounded_technical_alternative"
+},
+"retrieval_minutes": 6.0,
+"extra_requests": {
+"count": 1,
+"buyer_intervention_required": true,
+"confirmation_requested": true,
+"confirmation_target": "act-fin-cfo01",
+"pipeline_outcome_category": "targeted_confirmation_request",
+"request_channels": [
+"finance_budget_signoff"
+],
+"sent_at": 1756684800,
+"responded_at": null,
+"verified_at": null,
+"rejected_at": 1756771200,
+"response_status": "rejected",
+"response_actor_authorized": false,
+"response_scope_complete": false
+},
+"first_payment_at": null,
+"outcome_status": {
+"evaluator_blinded_at_decision": true,
+"domain_result": "explicit_negative",
+"commitment_class": "approval",
+"commercial_lifecycle_state": "lost_explicit_decline"
+},
+"dataset_origin": "simulado",
+"batch_id": "mve-sim-20-recalculated-v2",
+"engine_commit": "651dfbc414422dd70ff723714b53dfedc77bb47b",
+"metrics_version": "2.0.0-mp4",
+"cutoff_at": "2026-11-16T00:00:00Z",
+"source_reference_id": "vault-ref-simulado-opp-l01b01",
+"timing_breakdown": {
+"search_minutes": 2.4,
+"contact_minutes": 1.8,
+"review_minutes": 1.8,
+"effective_human_minutes": 6.0,
+"wait_minutes": 5.0,
+"failed_attempts_count": 1,
+"clock_start_epoch": 1756512000,
+"clock_start_iso": "2025-08-30T00:00:00Z",
+"business_deadline_epoch": 1757451600,
+"business_deadline_iso": "2025-09-09T21:00:00Z",
+"two_business_days_deadline_epoch": 1756933200,
+"two_business_days_deadline_iso": "2025-09-03T21:00:00Z",
+"next_milestone_epoch": 1757289600,
+"next_milestone_iso": "2025-09-08T00:00:00Z",
+"uncalculable_deadline": false
+},
+"gtm_recommendation": {
+"recommended_action": "isolated_pilot",
+"fallback_policy": "propose_bounded_technical_alternative",
+"ready_to_launch": false,
+"authority_state": "unknown",
+"adjudication_reason": "scope_mismatch_capability"
+},
+"reviewer_evaluation": {
+"reviewer_id": "rev-indep-audit-01",
+"reviewed_at_epoch": 1756685100,
+"agrees_with_gtm": true,
+"adjudicated_category": "correct_alternative",
+"flagged_problematic_in_sample": false,
+"notes": "Verified correct_alternative at cutoff 1756684800."
+}
+},
+{
+"schema_version": "0.3.0-r2-mve-mp4",
+"opportunity_id": "opp-l02b02",
+"decision_at": {
+"as_of_epoch": 1757289600,
+"iso8601_utc": "2025-09-08T00:00:00Z",
+"decision_cutoff_day": 18,
+"next_milestone_epoch": 1757894400,
+"next_milestone_iso": "2025-09-15T00:00:00Z",
+"business_deadline_epoch": 1757970000,
+"business_deadline_iso": "2025-09-15T21:00:00Z"
+},
+"candidate_action": "deferred_invoice",
+"required_scope": {
+"key": {
+"tenant": "tnt-sec-b2b",
+"organization": "org-us-hq",
+"actor": "act-proc-vp02",
+"capability": "issue_po",
+"action": "deferred_invoice",
+"terms_digest": "terms-prod-1500s-90k-net45"
+},
+"domain_axes": {
+"actor": "act-proc-vp02 (procurement)",
+"org_entity": "tnt-sec-b2b/org-us-hq",
+"action": "issue_po:deferred_invoice",
+"resource_scope": {
+"product_module": "cloud_posture_guard",
+"environment_boundary": "production_rollout",
+"max_units_or_seats": 1500
+},
+"monetary_cap": {
+"max_amount_cents": 9000000,
+"currency": "USD",
+"payment_terms": "net_45"
+},
+"validity_window": {
+"valid_from_epoch": 1757289600,
+"valid_until_epoch": 1788825600
+}
+},
+"proposal_terms": {
+"proposal_id": "prop-l02b02-ushq-po",
+"amount_cents": 9000000,
+"currency": "USD",
+"requires_explicit_approval": true
+}
+},
+"source_type": {
+"channel_category": "procurement_erp_po_ledger",
+"contract_source_name": "registry",
+"provenance_class": "verified_action",
+"event_type": "purchase_order",
+"is_trusted_source": true
+},
+"provenance_tier": {
+"evidence_namespace": "trusted_intake",
+"contract_record_type": "Record",
+"trusted_authority_record": {
+"key": {
+"tenant": "tnt-sec-b2b",
+"organization": "org-eu-sub",
+"actor": "act-proc-vp02",
+"capability": "issue_po",
+"action": "deferred_invoice",
+"terms_digest": "terms-prod-1500s-90k-net45"
+},
+"source": "registry",
+"revision": 1,
+"event_time": 1757203200,
+"known_time": 1757206800,
+"valid_from": 1757203200,
+"valid_until": 1788739200,
+"effect": "grant",
+"record_digest": "e40a521ff7b71b9fa0a00857c423053d5390cf1206cfcf36f12026f01e4430f9"
+}
+},
+"observed_at": {
+"event_time": 1757203200,
+"known_time": 1757206800,
+"valid_from": 1757203200,
+"ingested_at_iso": "2025-09-07T01:00:00Z",
+"visible_at_decision": true,
+"validation_time": 1757206860,
+"validation_at_iso": "2025-09-07T01:01:00Z"
+},
+"valid_until": 1788739200,
+"authority_state": "unknown",
+"adjudication_reason": "scope_mismatch_organization",
+"degraded_mode": {
+"is_degraded": true,
+"fail_closed_enforced": true,
+"verified_authority_token_minted": false,
+"consequential_dispatch_blocked": true,
+"missing_or_unverified_axes": [
+"organization",
+"explicit_approval"
+],
+"fallback_action": "request_targeted_confirmation"
+},
+"retrieval_minutes": 8.0,
+"extra_requests": {
+"count": 1,
+"buyer_intervention_required": true,
+"confirmation_requested": true,
+"confirmation_target": "org-us-hq",
+"pipeline_outcome_category": "targeted_confirmation_request",
+"request_channels": [
+"procurement_po_reconciliation"
+],
+"sent_at": 1757289600,
+"responded_at": null,
+"verified_at": null,
+"rejected_at": 1757376000,
+"response_status": "rejected",
+"response_actor_authorized": false,
+"response_scope_complete": false
+},
+"first_payment_at": null,
+"outcome_status": {
+"evaluator_blinded_at_decision": true,
+"domain_result": "explicit_negative",
+"commitment_class": "approval",
+"commercial_lifecycle_state": "lost_explicit_decline"
+},
+"dataset_origin": "simulado",
+"batch_id": "mve-sim-20-recalculated-v2",
+"engine_commit": "651dfbc414422dd70ff723714b53dfedc77bb47b",
+"metrics_version": "2.0.0-mp4",
+"cutoff_at": "2026-11-16T00:00:00Z",
+"source_reference_id": "vault-ref-simulado-opp-l02b02",
+"timing_breakdown": {
+"search_minutes": 3.2,
+"contact_minutes": 2.4,
+"review_minutes": 2.4,
+"effective_human_minutes": 8.0,
+"wait_minutes": 60.0,
+"failed_attempts_count": 1,
+"clock_start_epoch": 1757203200,
+"clock_start_iso": "2025-09-07T00:00:00Z",
+"business_deadline_epoch": 1757970000,
+"business_deadline_iso": "2025-09-15T21:00:00Z",
+"two_business_days_deadline_epoch": 1757451600,
+"two_business_days_deadline_iso": "2025-09-09T21:00:00Z",
+"next_milestone_epoch": 1757894400,
+"next_milestone_iso": "2025-09-15T00:00:00Z",
+"uncalculable_deadline": false
+},
+"gtm_recommendation": {
+"recommended_action": "request_budget_authorization",
+"fallback_policy": "request_targeted_confirmation",
+"ready_to_launch": false,
+"authority_state": "unknown",
+"adjudication_reason": "scope_mismatch_organization"
+},
+"reviewer_evaluation": {
+"reviewer_id": "rev-indep-audit-01",
+"reviewed_at_epoch": 1757289900,
+"agrees_with_gtm": true,
+"adjudicated_category": "correct_block",
+"flagged_problematic_in_sample": false,
+"notes": "Verified correct_block at cutoff 1757289600."
+}
+},
+{
+"schema_version": "0.3.0-r2-mve-mp4",
+"opportunity_id": "opp-l03b03",
+"decision_at": {
+"as_of_epoch": 1757894400,
+"iso8601_utc": "2025-09-15T00:00:00Z",
+"decision_cutoff_day": 21,
+"next_milestone_epoch": 1758499200,
+"next_milestone_iso": "2025-09-22T00:00:00Z",
+"business_deadline_epoch": 1758574800,
+"business_deadline_iso": "2025-09-22T21:00:00Z"
+},
+"candidate_action": "standard_offer",
+"required_scope": {
+"key": {
+"tenant": "tnt-sec-b2b",
+"organization": "org-medtech-eu",
+"actor": "act-fin-dir03",
+"capability": "approve_spend",
+"action": "standard_offer",
+"terms_digest": "terms-prod-1000s-75k-net30"
+},
+"domain_axes": {
+"actor": "act-fin-dir03 (budget_owner)",
+"org_entity": "tnt-sec-b2b/org-medtech-eu",
+"action": "approve_spend:standard_offer",
+"resource_scope": {
+"product_module": "identity_access_mesh",
+"environment_boundary": "production_rollout",
+"max_units_or_seats": 1000
+},
+"monetary_cap": {
+"max_amount_cents": 7500000,
+"currency": "EUR",
+"payment_terms": "net_30"
+},
+"validity_window": {
+"valid_from_epoch": 1757808000,
+"valid_until_epoch": 1789344000
+}
+},
+"proposal_terms": {
+"proposal_id": "prop-l03b03-std1000",
+"amount_cents": 7500000,
+"currency": "EUR",
+"requires_explicit_approval": true
+}
+},
+"source_type": {
+"channel_category": "buyer_email_authenticated_dkim",
+"contract_source_name": "buyer_admin",
+"provenance_class": "authenticated_statement",
+"event_type": "retraction",
+"is_trusted_source": true
+},
+"provenance_tier": {
+"evidence_namespace": "trusted_intake",
+"contract_record_type": "Record",
+"trusted_authority_record": {
+"key": {
+"tenant": "tnt-sec-b2b",
+"organization": "org-medtech-eu",
+"actor": "act-fin-dir03",
+"capability": "approve_spend",
+"action": "standard_offer",
+"terms_digest": "terms-prod-1000s-75k-net30"
+},
+"source": "buyer_admin",
+"revision": 2,
+"event_time": 1757880000,
+"known_time": 1757880600,
+"valid_from": 1757880000,
+"valid_until": 1789344000,
+"effect": "revoke",
+"record_digest": "f8be18c002adf02454db963401b3ef0f37f00f1055ec0b853addfcaee3ccc40d"
+}
+},
+"observed_at": {
+"event_time": 1757880000,
+"known_time": 1757880600,
+"valid_from": 1757880000,
+"ingested_at_iso": "2025-09-14T20:10:00Z",
+"visible_at_decision": true,
+"validation_time": 1757880660,
+"validation_at_iso": "2025-09-14T20:11:00Z"
+},
+"valid_until": 1789344000,
+"authority_state": "denied",
+"adjudication_reason": "revoked",
+"degraded_mode": {
+"is_degraded": true,
+"fail_closed_enforced": true,
+"verified_authority_token_minted": false,
+"consequential_dispatch_blocked": true,
+"missing_or_unverified_axes": [
+"capability",
+"explicit_approval"
+],
+"fallback_action": "abstain_and_escalate_to_human"
+},
+"retrieval_minutes": 4.5,
+"extra_requests": {
+"count": 0,
+"buyer_intervention_required": false,
+"confirmation_requested": false,
+"confirmation_target": null,
+"pipeline_outcome_category": "recognized_non_claim_or_decline",
+"request_channels": [],
+"sent_at": null,
+"responded_at": null,
+"verified_at": null,
+"rejected_at": null,
+"response_status": "not_applicable",
+"response_actor_authorized": null,
+"response_scope_complete": null
+},
+"first_payment_at": null,
+"outcome_status": {
+"evaluator_blinded_at_decision": true,
+"domain_result": "explicit_negative",
+"commitment_class": "approval",
+"commercial_lifecycle_state": "lost_authority_revoked"
+},
+"dataset_origin": "simulado",
+"batch_id": "mve-sim-20-recalculated-v2",
+"engine_commit": "651dfbc414422dd70ff723714b53dfedc77bb47b",
+"metrics_version": "2.0.0-mp4",
+"cutoff_at": "2026-11-16T00:00:00Z",
+"source_reference_id": "vault-ref-simulado-opp-l03b03",
+"timing_breakdown": {
+"search_minutes": 2.48,
+"contact_minutes": 0.0,
+"review_minutes": 2.02,
+"effective_human_minutes": 4.5,
+"wait_minutes": 10.0,
+"failed_attempts_count": 0,
+"clock_start_epoch": 1757880000,
+"clock_start_iso": "2025-09-14T20:00:00Z",
+"business_deadline_epoch": 1758574800,
+"business_deadline_iso": "2025-09-22T21:00:00Z",
+"two_business_days_deadline_epoch": 1758056400,
+"two_business_days_deadline_iso": "2025-09-16T21:00:00Z",
+"next_milestone_epoch": 1758499200,
+"next_milestone_iso": "2025-09-22T00:00:00Z",
+"uncalculable_deadline": false
+},
+"gtm_recommendation": {
+"recommended_action": "abstain_and_escalate_to_human",
+"fallback_policy": "abstain_and_escalate_to_human",
+"ready_to_launch": false,
+"authority_state": "denied",
+"adjudication_reason": "revoked"
+},
+"reviewer_evaluation": {
+"reviewer_id": "rev-indep-audit-01",
+"reviewed_at_epoch": 1757894700,
+"agrees_with_gtm": true,
+"adjudicated_category": "correct_block",
+"flagged_problematic_in_sample": false,
+"notes": "Verified correct_block at cutoff 1757894400."
+}
+},
+{
+"schema_version": "0.3.0-r2-mve-mp4",
+"opportunity_id": "opp-l04b04",
+"decision_at": {
+"as_of_epoch": 1758499200,
+"iso8601_utc": "2025-09-22T00:00:00Z",
+"decision_cutoff_day": 12,
+"next_milestone_epoch": 1759104000,
+"next_milestone_iso": "2025-09-29T00:00:00Z",
+"business_deadline_epoch": 1759179600,
+"business_deadline_iso": "2025-09-29T21:00:00Z"
+},
+"candidate_action": "isolated_pilot",
+"required_scope": {
+"key": {
+"tenant": "tnt-sec-b2b",
+"organization": "org-bank-latam",
+"actor": "act-it-ciso04",
+"capability": "approve_sandbox",
+"action": "isolated_pilot",
+"terms_digest": "terms-sbox-300s-0usd-pilot30d"
+},
+"domain_axes": {
+"actor": "act-it-ciso04 (it_authority)",
+"org_entity": "tnt-sec-b2b/org-bank-latam",
+"action": "approve_sandbox:isolated_pilot",
+"resource_scope": {
+"product_module": "siem_connector_agent",
+"environment_boundary": "sandbox_isolated",
+"max_units_or_seats": 300
+},
+"monetary_cap": {
+"max_amount_cents": 0,
+"currency": "USD",
+"payment_terms": "no_spend_pilot"
+},
+"validity_window": {
+"valid_from_epoch": 1758499200,
+"valid_until_epoch": 1761091200
+}
+},
+"proposal_terms": {
+"proposal_id": "prop-l04b04-pilot300",
+"amount_cents": 0,
+"currency": "USD",
+"requires_explicit_approval": true
+}
+},
+"source_type": {
+"channel_category": "security_questionnaire_portal",
+"contract_source_name": "registry",
+"provenance_class": "verified_action",
+"event_type": "explicit_decline",
+"is_trusted_source": true
+},
+"provenance_tier": {
+"evidence_namespace": "trusted_intake",
+"contract_record_type": "Record",
+"trusted_authority_record": {
+"key": {
+"tenant": "tnt-sec-b2b",
+"organization": "org-bank-latam",
+"actor": "act-it-ciso04",
+"capability": "approve_sandbox",
+"action": "isolated_pilot",
+"terms_digest": "terms-sbox-300s-0usd-pilot30d"
+},
+"source": "registry",
+"revision": 1,
+"event_time": 1758456000,
+"known_time": 1758456900,
+"valid_from": 1758456000,
+"valid_until": 1761091200,
+"effect": "explicit_deny",
+"record_digest": "f6dfc813d14907b325695208384114a85bfe4e3268dacbe597074d16ea0cbb7b"
+}
+},
+"observed_at": {
+"event_time": 1758456000,
+"known_time": 1758456900,
+"valid_from": 1758456000,
+"ingested_at_iso": "2025-09-21T12:15:00Z",
+"visible_at_decision": true,
+"validation_time": 1758456960,
+"validation_at_iso": "2025-09-21T12:16:00Z"
+},
+"valid_until": 1761091200,
+"authority_state": "denied",
+"adjudication_reason": "explicit_deny",
+"degraded_mode": {
+"is_degraded": true,
+"fail_closed_enforced": true,
+"verified_authority_token_minted": false,
+"consequential_dispatch_blocked": true,
+"missing_or_unverified_axes": [
+"capability",
+"explicit_approval"
+],
+"fallback_action": "abstain_and_escalate_to_human"
+},
+"retrieval_minutes": 5.0,
+"extra_requests": {
+"count": 0,
+"buyer_intervention_required": false,
+"confirmation_requested": false,
+"confirmation_target": null,
+"pipeline_outcome_category": "recognized_non_claim_or_decline",
+"request_channels": [],
+"sent_at": null,
+"responded_at": null,
+"verified_at": null,
+"rejected_at": null,
+"response_status": "not_applicable",
+"response_actor_authorized": null,
+"response_scope_complete": null
+},
+"first_payment_at": null,
+"outcome_status": {
+"evaluator_blinded_at_decision": true,
+"domain_result": "explicit_negative",
+"commitment_class": "none",
+"commercial_lifecycle_state": "lost_explicit_decline"
+},
+"dataset_origin": "simulado",
+"batch_id": "mve-sim-20-recalculated-v2",
+"engine_commit": "651dfbc414422dd70ff723714b53dfedc77bb47b",
+"metrics_version": "2.0.0-mp4",
+"cutoff_at": "2026-11-16T00:00:00Z",
+"source_reference_id": "vault-ref-simulado-opp-l04b04",
+"timing_breakdown": {
+"search_minutes": 2.75,
+"contact_minutes": 0.0,
+"review_minutes": 2.25,
+"effective_human_minutes": 5.0,
+"wait_minutes": 15.0,
+"failed_attempts_count": 0,
+"clock_start_epoch": 1758456000,
+"clock_start_iso": "2025-09-21T12:00:00Z",
+"business_deadline_epoch": 1759179600,
+"business_deadline_iso": "2025-09-29T21:00:00Z",
+"two_business_days_deadline_epoch": 1758661200,
+"two_business_days_deadline_iso": "2025-09-23T21:00:00Z",
+"next_milestone_epoch": 1759104000,
+"next_milestone_iso": "2025-09-29T00:00:00Z",
+"uncalculable_deadline": false
+},
+"gtm_recommendation": {
+"recommended_action": "abstain_and_escalate_to_human",
+"fallback_policy": "abstain_and_escalate_to_human",
+"ready_to_launch": false,
+"authority_state": "denied",
+"adjudication_reason": "explicit_deny"
+},
+"reviewer_evaluation": {
+"reviewer_id": "rev-indep-audit-01",
+"reviewed_at_epoch": 1758499500,
+"agrees_with_gtm": true,
+"adjudicated_category": "correct_block",
+"flagged_problematic_in_sample": false,
+"notes": "Verified correct_block at cutoff 1758499200."
+}
+},
+{
+"schema_version": "0.3.0-r2-mve-mp4",
+"opportunity_id": "opp-l05b05",
+"decision_at": {
+"as_of_epoch": 1759104000,
+"iso8601_utc": "2025-09-29T00:00:00Z",
+"decision_cutoff_day": 19,
+"next_milestone_epoch": 1759708800,
+"next_milestone_iso": "2025-10-06T00:00:00Z",
+"business_deadline_epoch": 1759784400,
+"business_deadline_iso": "2025-10-06T21:00:00Z"
+},
+"candidate_action": "isolated_deferred",
+"required_scope": {
+"key": {
+"tenant": "tnt-sec-b2b",
+"organization": "org-retail-uk",
+"actor": "act-proc-lead05",
+"capability": "approve_spend",
+"action": "isolated_deferred",
+"terms_digest": "terms-stgr-800s-48k-net60"
+},
+"domain_axes": {
+"actor": "act-proc-lead05 (procurement)",
+"org_entity": "tnt-sec-b2b/org-retail-uk",
+"action": "approve_spend:isolated_deferred",
+"resource_scope": {
+"product_module": "dlp_gateway_module",
+"environment_boundary": "staging_replay",
+"max_units_or_seats": 800
+},
+"monetary_cap": {
+"max_amount_cents": 4800000,
+"currency": "GBP",
+"payment_terms": "net_60"
+},
+"validity_window": {
+"valid_from_epoch": 1759104000,
+"valid_until_epoch": 1790640000
+}
+},
+"proposal_terms": {
+"proposal_id": "prop-l05b05-isodef800",
+"amount_cents": 4800000,
+"currency": "GBP",
+"requires_explicit_approval": true
+}
+},
+"source_type": {
+"channel_category": "delegation_or_directory_service",
+"contract_source_name": "delegation_service",
+"provenance_class": "verified_action",
+"event_type": "source_record",
+"is_trusted_source": true
+},
+"provenance_tier": {
+"evidence_namespace": "trusted_intake",
+"contract_record_type": "Record",
+"trusted_authority_record": {
+"key": {
+"tenant": "tnt-sec-b2b",
+"organization": "org-retail-uk",
+"actor": "act-proc-lead05",
+"capability": "approve_spend",
+"action": "isolated_deferred",
+"terms_digest": "terms-stgr-800s-48k-net60"
+},
+"source": "delegation_service",
+"revision": 2,
+"event_time": 1759060800,
+"known_time": 1759061400,
+"valid_from": 1759060800,
+"valid_until": 1790640000,
+"effect": "revoke",
+"record_digest": "ef74e066e3a2b176e9c39c453b504db5e288ed885aac01f6a8412d1506ee57fe"
+}
+},
+"observed_at": {
+"event_time": 1759060800,
+"known_time": 1759061400,
+"valid_from": 1759060800,
+"ingested_at_iso": "2025-09-28T12:10:00Z",
+"visible_at_decision": true,
+"validation_time": 1759061460,
+"validation_at_iso": "2025-09-28T12:11:00Z"
+},
+"valid_until": 1790640000,
+"authority_state": "conflict",
+"adjudication_reason": "conflict",
+"degraded_mode": {
+"is_degraded": true,
+"fail_closed_enforced": true,
+"verified_authority_token_minted": false,
+"consequential_dispatch_blocked": true,
+"missing_or_unverified_axes": [
+"actor",
+"capability",
+"explicit_approval"
+],
+"fallback_action": "request_targeted_confirmation"
+},
+"retrieval_minutes": 9.5,
+"extra_requests": {
+"count": 1,
+"buyer_intervention_required": true,
+"confirmation_requested": true,
+"confirmation_target": "act-proc-lead05",
+"pipeline_outcome_category": "targeted_confirmation_request",
+"request_channels": [
+"procurement_po_reconciliation",
+"buyer_email_confirmation"
+],
+"sent_at": 1759104000,
+"responded_at": null,
+"verified_at": null,
+"rejected_at": 1759190400,
+"response_status": "rejected",
+"response_actor_authorized": false,
+"response_scope_complete": false
+},
+"first_payment_at": null,
+"outcome_status": {
+"evaluator_blinded_at_decision": true,
+"domain_result": "explicit_negative",
+"commitment_class": "verbal_intent",
+"commercial_lifecycle_state": "lost_explicit_decline"
+},
+"dataset_origin": "simulado",
+"batch_id": "mve-sim-20-recalculated-v2",
+"engine_commit": "651dfbc414422dd70ff723714b53dfedc77bb47b",
+"metrics_version": "2.0.0-mp4",
+"cutoff_at": "2026-11-16T00:00:00Z",
+"source_reference_id": "vault-ref-simulado-opp-l05b05",
+"timing_breakdown": {
+"search_minutes": 3.8,
+"contact_minutes": 2.85,
+"review_minutes": 2.85,
+"effective_human_minutes": 9.5,
+"wait_minutes": 10.0,
+"failed_attempts_count": 1,
+"clock_start_epoch": 1759060800,
+"clock_start_iso": "2025-09-28T12:00:00Z",
+"business_deadline_epoch": 1759784400,
+"business_deadline_iso": "2025-10-06T21:00:00Z",
+"two_business_days_deadline_epoch": 1759266000,
+"two_business_days_deadline_iso": "2025-09-30T21:00:00Z",
+"next_milestone_epoch": 1759708800,
+"next_milestone_iso": "2025-10-06T00:00:00Z",
+"uncalculable_deadline": false
+},
+"gtm_recommendation": {
+"recommended_action": "request_budget_authorization",
+"fallback_policy": "request_targeted_confirmation",
+"ready_to_launch": false,
+"authority_state": "conflict",
+"adjudication_reason": "conflict"
+},
+"reviewer_evaluation": {
+"reviewer_id": "rev-indep-audit-01",
+"reviewed_at_epoch": 1759104300,
+"agrees_with_gtm": true,
+"adjudicated_category": "correct_block",
+"flagged_problematic_in_sample": false,
+"notes": "Verified correct_block at cutoff 1759104000."
+}
+},
+{
+"schema_version": "0.3.0-r2-mve-mp4",
+"opportunity_id": "opp-l06b06",
+"decision_at": {
+"as_of_epoch": 1759708800,
+"iso8601_utc": "2025-10-06T00:00:00Z",
+"decision_cutoff_day": 35,
+"next_milestone_epoch": 1760313600,
+"next_milestone_iso": "2025-10-13T00:00:00Z",
+"business_deadline_epoch": 1757970000,
+"business_deadline_iso": "2025-09-15T21:00:00Z"
+},
+"candidate_action": "standard_offer",
+"required_scope": {
+"key": {
+"tenant": "tnt-sec-b2b",
+"organization": "org-insure-de",
+"actor": "act-fin-vp06",
+"capability": "approve_spend",
+"action": "standard_offer",
+"terms_digest": "terms-prod-600s-54k-upfront"
+},
+"domain_axes": {
+"actor": "act-fin-vp06 (budget_owner)",
+"org_entity": "tnt-sec-b2b/org-insure-de",
+"action": "approve_spend:standard_offer",
+"resource_scope": {
+"product_module": "zero_trust_broker",
+"environment_boundary": "production_rollout",
+"max_units_or_seats": 600
+},
+"monetary_cap": {
+"max_amount_cents": 5400000,
+"currency": "EUR",
+"payment_terms": "standard_upfront"
+},
+"validity_window": {
+"valid_from_epoch": 1757116800,
+"valid_until_epoch": 1759708800
+}
+},
+"proposal_terms": {
+"proposal_id": "prop-l06b06-std600",
+"amount_cents": 5400000,
+"currency": "EUR",
+"requires_explicit_approval": true
+}
+},
+"source_type": {
+"channel_category": "shared_workspace_action_log",
+"contract_source_name": "buyer_admin",
+"provenance_class": "verified_action",
+"event_type": "deadline_expired",
+"is_trusted_source": true
+},
+"provenance_tier": {
+"evidence_namespace": "trusted_intake",
+"contract_record_type": "Record",
+"trusted_authority_record": {
+"key": {
+"tenant": "tnt-sec-b2b",
+"organization": "org-insure-de",
+"actor": "act-fin-vp06",
+"capability": "approve_spend",
+"action": "standard_offer",
+"terms_digest": "terms-prod-600s-54k-upfront"
+},
+"source": "buyer_admin",
+"revision": 1,
+"event_time": 1757116800,
+"known_time": 1757117100,
+"valid_from": 1757116800,
+"valid_until": 1759622400,
+"effect": "grant",
+"record_digest": "f059748bba25e0f1a21e89af1bec37a9cd55005726f7772ba7f0c3d3afb836c1"
+}
+},
+"observed_at": {
+"event_time": 1757116800,
+"known_time": 1757117100,
+"valid_from": 1757116800,
+"ingested_at_iso": "2025-09-06T00:05:00Z",
+"visible_at_decision": true,
+"validation_time": 1757117160,
+"validation_at_iso": "2025-09-06T00:06:00Z"
+},
+"valid_until": 1759622400,
+"authority_state": "unknown",
+"adjudication_reason": "expired",
+"degraded_mode": {
+"is_degraded": true,
+"fail_closed_enforced": true,
+"verified_authority_token_minted": false,
+"consequential_dispatch_blocked": true,
+"missing_or_unverified_axes": [
+"validity_window",
+"explicit_approval"
+],
+"fallback_action": "request_targeted_confirmation"
+},
+"retrieval_minutes": 4.0,
+"extra_requests": {
+"count": 1,
+"buyer_intervention_required": true,
+"confirmation_requested": true,
+"confirmation_target": "act-fin-vp06",
+"pipeline_outcome_category": "targeted_confirmation_request",
+"request_channels": [
+"shared_deal_room_signoff"
+],
+"sent_at": 1759708800,
+"responded_at": null,
+"verified_at": null,
+"rejected_at": 1759795200,
+"response_status": "rejected",
+"response_actor_authorized": false,
+"response_scope_complete": false
+},
+"first_payment_at": null,
+"outcome_status": {
+"evaluator_blinded_at_decision": true,
+"domain_result": "explicit_negative",
+"commitment_class": "approval",
+"commercial_lifecycle_state": "lost_explicit_decline"
+},
+"dataset_origin": "simulado",
+"batch_id": "mve-sim-20-recalculated-v2",
+"engine_commit": "651dfbc414422dd70ff723714b53dfedc77bb47b",
+"metrics_version": "2.0.0-mp4",
+"cutoff_at": "2026-11-16T00:00:00Z",
+"source_reference_id": "vault-ref-simulado-opp-l06b06",
+"timing_breakdown": {
+"search_minutes": 1.6,
+"contact_minutes": 1.2,
+"review_minutes": 1.2,
+"effective_human_minutes": 4.0,
+"wait_minutes": 5.0,
+"failed_attempts_count": 1,
+"clock_start_epoch": 1757116800,
+"clock_start_iso": "2025-09-06T00:00:00Z",
+"business_deadline_epoch": 1757970000,
+"business_deadline_iso": "2025-09-15T21:00:00Z",
+"two_business_days_deadline_epoch": 1757451600,
+"two_business_days_deadline_iso": "2025-09-09T21:00:00Z",
+"next_milestone_epoch": 1760313600,
+"next_milestone_iso": "2025-10-13T00:00:00Z",
+"uncalculable_deadline": false
+},
+"gtm_recommendation": {
+"recommended_action": "request_budget_authorization",
+"fallback_policy": "request_targeted_confirmation",
+"ready_to_launch": false,
+"authority_state": "unknown",
+"adjudication_reason": "expired"
+},
+"reviewer_evaluation": {
+"reviewer_id": "rev-indep-audit-01",
+"reviewed_at_epoch": 1759709100,
+"agrees_with_gtm": true,
+"adjudicated_category": "correct_block",
+"flagged_problematic_in_sample": false,
+"notes": "Verified correct_block at cutoff 1759708800."
+}
+},
+{
+"schema_version": "0.3.0-r2-mve-mp4",
+"opportunity_id": "opp-l07b07",
+"decision_at": {
+"as_of_epoch": 1760313600,
+"iso8601_utc": "2025-10-13T00:00:00Z",
+"decision_cutoff_day": 10,
+"next_milestone_epoch": 1760918400,
+"next_milestone_iso": "2025-10-20T00:00:00Z",
+"business_deadline_epoch": 1760994000,
+"business_deadline_iso": "2025-10-20T21:00:00Z"
+},
+"candidate_action": "standard_offer",
+"required_scope": {
+"key": {
+"tenant": "tnt-sec-b2b",
+"organization": "org-saas-ca",
+"actor": "act-fin-cfo07",
+"capability": "approve_spend",
+"action": "standard_offer",
+"terms_digest": "terms-prod-1200s-84k-net30"
+},
+"domain_axes": {
+"actor": "act-fin-cfo07 (budget_owner)",
+"org_entity": "tnt-sec-b2b/org-saas-ca",
+"action": "approve_spend:standard_offer",
+"resource_scope": {
+"product_module": "runtime_threat_sensor",
+"environment_boundary": "production_rollout",
+"max_units_or_seats": 1200
+},
+"monetary_cap": {
+"max_amount_cents": 8400000,
+"currency": "USD",
+"payment_terms": "net_30"
+},
+"validity_window": {
+"valid_from_epoch": 1760313600,
+"valid_until_epoch": 1791849600
+}
+},
+"proposal_terms": {
+"proposal_id": "prop-l07b07-std1200",
+"amount_cents": 8400000,
+"currency": "USD",
+"requires_explicit_approval": true
+}
+},
+"source_type": {
+"channel_category": "call_transcript_unverified",
+"contract_source_name": "call_transcript",
+"provenance_class": "reported_statement",
+"event_type": "explicit_decline",
+"is_trusted_source": false
+},
+"provenance_tier": {
+"evidence_namespace": "candidate",
+"contract_record_type": "CandidateClaimRecord",
+"candidate_claim_record": {
+"claim_id": "clm-l07b07-01",
+"record_id": "rec-call-l07b07",
+"tenant_id": "tnt-sec-b2b",
+"organization_id": "org-saas-ca",
+"speaker": "Dana Chen",
+"speaker_id": "act-ops-champ07",
+"speaker_role": "operations_champion",
+"quoted_speaker": "act-fin-cfo07",
+"is_quoted_or_reported": true,
+"subject": "act-fin-cfo07",
+"asserted_role": "budget_owner",
+"asserted_capability": "approve_spend",
+"asserted_action": "standard_offer",
+"asserted_terms_digest": "terms-prod-1200s-84k-net30",
+"claim_kind": "decline",
+"polarity": "negated",
+"span_start": 142,
+"span_end": 248,
+"span_text": "Our CFO explicitly declined the $84k production rollout budget for Q4 and froze new security vendor spend.",
+"span_digest": "5db51c9d077e65b576f30df800a4ead1bd369ac16a1800fe29a8dd2d0e2b3e6c",
+"uncertainty": 0.08,
+"abstained": false,
+"hedged": false,
+"is_former_or_interim": false,
+"is_prompt_injection": false,
+"is_sarcastic_or_hypothetical": false,
+"reason_codes": [
+"explicit_negation_detected",
+"reported_third_party_decline"
+],
+"extractor_name": "verified_candidate",
+"is_fake_provider": false,
+"evidence_namespace": "candidate"
+}
+},
+"observed_at": {
+"event_time": 1760284800,
+"known_time": 1760285400,
+"valid_from": 1760284800,
+"ingested_at_iso": "2025-10-12T16:10:00Z",
+"visible_at_decision": true,
+"validation_time": 1760285460,
+"validation_at_iso": "2025-10-12T16:11:00Z"
+},
+"valid_until": null,
+"authority_state": "unknown",
+"adjudication_reason": "candidate_only_no_authority",
+"degraded_mode": {
+"is_degraded": true,
+"fail_closed_enforced": true,
+"verified_authority_token_minted": false,
+"consequential_dispatch_blocked": true,
+"missing_or_unverified_axes": [
+"trusted_source",
+"actor",
+"capability",
+"action",
+"terms_digest",
+"explicit_approval"
+],
+"fallback_action": "abstain_and_escalate_to_human"
+},
+"retrieval_minutes": 2.5,
+"extra_requests": {
+"count": 0,
+"buyer_intervention_required": false,
+"confirmation_requested": false,
+"confirmation_target": null,
+"pipeline_outcome_category": "recognized_non_claim_or_decline",
+"request_channels": [],
+"sent_at": null,
+"responded_at": null,
+"verified_at": null,
+"rejected_at": null,
+"response_status": "not_applicable",
+"response_actor_authorized": null,
+"response_scope_complete": null
+},
+"first_payment_at": null,
+"outcome_status": {
+"evaluator_blinded_at_decision": true,
+"domain_result": "explicit_negative",
+"commitment_class": "none",
+"commercial_lifecycle_state": "lost_explicit_decline"
+},
+"dataset_origin": "simulado",
+"batch_id": "mve-sim-20-recalculated-v2",
+"engine_commit": "651dfbc414422dd70ff723714b53dfedc77bb47b",
+"metrics_version": "2.0.0-mp4",
+"cutoff_at": "2026-11-16T00:00:00Z",
+"source_reference_id": "vault-ref-simulado-opp-l07b07",
+"timing_breakdown": {
+"search_minutes": 1.38,
+"contact_minutes": 0.0,
+"review_minutes": 1.12,
+"effective_human_minutes": 2.5,
+"wait_minutes": 10.0,
+"failed_attempts_count": 0,
+"clock_start_epoch": 1760284800,
+"clock_start_iso": "2025-10-12T16:00:00Z",
+"business_deadline_epoch": 1760994000,
+"business_deadline_iso": "2025-10-20T21:00:00Z",
+"two_business_days_deadline_epoch": 1760475600,
+"two_business_days_deadline_iso": "2025-10-14T21:00:00Z",
+"next_milestone_epoch": 1760918400,
+"next_milestone_iso": "2025-10-20T00:00:00Z",
+"uncalculable_deadline": false
+},
+"gtm_recommendation": {
+"recommended_action": "abstain_and_escalate_to_human",
+"fallback_policy": "abstain_and_escalate_to_human",
+"ready_to_launch": false,
+"authority_state": "unknown",
+"adjudication_reason": "candidate_only_no_authority"
+},
+"reviewer_evaluation": {
+"reviewer_id": "rev-indep-audit-01",
+"reviewed_at_epoch": 1760313900,
+"agrees_with_gtm": true,
+"adjudicated_category": "correct_block",
+"flagged_problematic_in_sample": false,
+"notes": "Verified correct_block at cutoff 1760313600."
+}
+},
+{
+"schema_version": "0.3.0-r2-mve-mp4",
+"opportunity_id": "opp-s01c01",
+"decision_at": {
+"as_of_epoch": 1755216000,
+"iso8601_utc": "2025-08-15T00:00:00Z",
+"decision_cutoff_day": 18,
+"next_milestone_epoch": 1755820800,
+"next_milestone_iso": "2025-08-22T00:00:00Z",
+"business_deadline_epoch": 1755871200,
+"business_deadline_iso": "2025-08-22T14:00:00Z"
+},
+"candidate_action": "deferred_invoice",
+"required_scope": {
+"key": {
+"tenant": "ten-b2b-sec",
+"organization": "org-kestrel-bank",
+"actor": "act-proc-lead-09",
+"capability": "issue_po",
+"action": "deferred_invoice",
+"terms_digest": "terms-prod-1500seats-net45-75k"
+},
+"domain_axes": {
+"actor": "act-proc-lead-09 (procurement)",
+"org_entity": "ten-b2b-sec / org-kestrel-bank",
+"action": "issue_po / deferred_invoice",
+"resource_scope": {
+"product_module": "cloud_posture_sensor",
+"environment_boundary": "production_rollout",
+"max_units_or_seats": 1500
+},
+"monetary_cap": {
+"max_amount_cents": 7500000,
+"currency": "USD",
+"payment_terms": "net_45"
+},
+"validity_window": {
+"valid_from_epoch": 1755129600,
+"valid_until_epoch": 1762905600
+}
+},
+"proposal_terms": {
+"proposal_id": "prop-s01c01-def",
+"amount_cents": 7500000,
+"currency": "USD",
+"requires_explicit_approval": true
+}
+},
+"source_type": {
+"channel_category": "procurement_erp_po_ledger",
+"contract_source_name": "registry",
+"provenance_class": "verified_action",
+"event_type": "purchase_order",
+"is_trusted_source": true
+},
+"provenance_tier": {
+"evidence_namespace": "trusted_intake",
+"contract_record_type": "Record",
+"trusted_authority_record": {
+"key": {
+"tenant": "ten-b2b-sec",
+"organization": "org-kestrel-bank",
+"actor": "act-proc-lead-09",
+"capability": "issue_po",
+"action": "deferred_invoice",
+"terms_digest": "terms-prod-1500seats-net45-75k"
+},
+"source": "registry",
+"revision": 1,
+"event_time": 1755180000,
+"known_time": 1755475200,
+"valid_from": 1755129600,
+"valid_until": 1762905600,
+"effect": "grant",
+"record_digest": "cdae6ff9df7ac0a05d6cc8a318915176ed0e5c8cd39f5592d0e4524d46af995c"
+}
+},
+"observed_at": {
+"event_time": 1755180000,
+"known_time": 1755475200,
+"valid_from": 1755129600,
+"ingested_at_iso": "2025-08-18T00:00:00Z",
+"visible_at_decision": false,
+"validation_time": null,
+"validation_at_iso": null
+},
+"valid_until": 1762905600,
+"authority_state": "unknown",
+"adjudication_reason": "not_yet_known",
+"degraded_mode": {
+"is_degraded": true,
+"fail_closed_enforced": true,
+"verified_authority_token_minted": false,
+"consequential_dispatch_blocked": true,
+"missing_or_unverified_axes": [
+"validity_window",
+"explicit_approval"
+],
+"fallback_action": "request_targeted_confirmation"
+},
+"retrieval_minutes": 12.0,
+"extra_requests": {
+"count": 1,
+"buyer_intervention_required": true,
+"confirmation_requested": true,
+"confirmation_target": "act-proc-lead-09",
+"pipeline_outcome_category": "targeted_confirmation_request",
+"request_channels": [
+"procurement_po_reconciliation"
+],
+"sent_at": 1755216000,
+"responded_at": null,
+"verified_at": null,
+"rejected_at": null,
+"response_status": "pending_no_response",
+"response_actor_authorized": null,
+"response_scope_complete": null
+},
+"first_payment_at": null,
+"outcome_status": {
+"evaluator_blinded_at_decision": true,
+"domain_result": "unresolved_at_account_horizon",
+"commitment_class": "purchase_order",
+"commercial_lifecycle_state": "incomplete_observation_right_censored"
+},
+"dataset_origin": "simulado",
+"batch_id": "mve-sim-20-recalculated-v2",
+"engine_commit": "651dfbc414422dd70ff723714b53dfedc77bb47b",
+"metrics_version": "2.0.0-mp4",
+"cutoff_at": "2026-11-16T00:00:00Z",
+"source_reference_id": "vault-ref-simulado-opp-s01c01",
+"timing_breakdown": {
+"search_minutes": 4.8,
+"contact_minutes": 3.6,
+"review_minutes": 3.6,
+"effective_human_minutes": 12.0,
+"wait_minutes": 4920.0,
+"failed_attempts_count": 1,
+"clock_start_epoch": 1755180000,
+"clock_start_iso": "2025-08-14T14:00:00Z",
+"business_deadline_epoch": 1755871200,
+"business_deadline_iso": "2025-08-22T14:00:00Z",
+"two_business_days_deadline_epoch": 1755525600,
+"two_business_days_deadline_iso": "2025-08-18T14:00:00Z",
+"next_milestone_epoch": 1755820800,
+"next_milestone_iso": "2025-08-22T00:00:00Z",
+"uncalculable_deadline": false
+},
+"gtm_recommendation": {
+"recommended_action": "request_budget_authorization",
+"fallback_policy": "request_targeted_confirmation",
+"ready_to_launch": false,
+"authority_state": "unknown",
+"adjudication_reason": "not_yet_known"
+},
+"reviewer_evaluation": {
+"reviewer_id": "rev-indep-audit-01",
+"reviewed_at_epoch": 1755216300,
+"agrees_with_gtm": true,
+"adjudicated_category": "correct_block",
+"flagged_problematic_in_sample": false,
+"notes": "Verified correct_block at cutoff 1755216000."
+}
+},
+{
+"schema_version": "0.3.0-r2-mve-mp4",
+"opportunity_id": "opp-s02c02",
+"decision_at": {
+"as_of_epoch": 1755648000,
+"iso8601_utc": "2025-08-20T00:00:00Z",
+"decision_cutoff_day": 21,
+"next_milestone_epoch": 1756252800,
+"next_milestone_iso": "2025-08-27T00:00:00Z",
+"business_deadline_epoch": 1756242000,
+"business_deadline_iso": "2025-08-26T21:00:00Z"
+},
+"candidate_action": "standard_offer",
+"required_scope": {
+"key": {
+"tenant": "ten-b2b-sec",
+"organization": "org-vanguard-med",
+"actor": "act-cfo-14",
+"capability": "execute_contract",
+"action": "standard_offer",
+"terms_digest": "terms-prod-2000seats-net30-120k"
+},
+"domain_axes": {
+"actor": "act-cfo-14 (budget_owner)",
+"org_entity": "ten-b2b-sec / org-vanguard-med",
+"action": "execute_contract / standard_offer",
+"resource_scope": {
+"product_module": "zero_trust_gateway",
+"environment_boundary": "production_rollout",
+"max_units_or_seats": 2000
+},
+"monetary_cap": {
+"max_amount_cents": 12000000,
+"currency": "USD",
+"payment_terms": "net_30"
+},
+"validity_window": {
+"valid_from_epoch": 1756684800,
+"valid_until_epoch": 1788220800
+}
+},
+"proposal_terms": {
+"proposal_id": "prop-s02c02-std",
+"amount_cents": 12000000,
+"currency": "USD",
+"requires_explicit_approval": true
+}
+},
+"source_type": {
+"channel_category": "clm_countersigned_agreement",
+"contract_source_name": "registry",
+"provenance_class": "verified_action",
+"event_type": "signed_agreement",
+"is_trusted_source": true
+},
+"provenance_tier": {
+"evidence_namespace": "trusted_intake",
+"contract_record_type": "Record",
+"trusted_authority_record": {
+"key": {
+"tenant": "ten-b2b-sec",
+"organization": "org-vanguard-med",
+"actor": "act-cfo-14",
+"capability": "execute_contract",
+"action": "standard_offer",
+"terms_digest": "terms-prod-2000seats-net30-120k"
+},
+"source": "registry",
+"revision": 1,
+"event_time": 1755561600,
+"known_time": 1755604800,
+"valid_from": 1756684800,
+"valid_until": 1788220800,
+"effect": "grant",
+"record_digest": "c8053af114ed19e5933da85ba0558938980afd854a4a1bee84badb560e240a57"
+}
+},
+"observed_at": {
+"event_time": 1755561600,
+"known_time": 1755604800,
+"valid_from": 1756684800,
+"ingested_at_iso": "2025-08-19T12:00:00Z",
+"visible_at_decision": false,
+"validation_time": null,
+"validation_at_iso": null
+},
+"valid_until": 1788220800,
+"authority_state": "unknown",
+"adjudication_reason": "not_yet_effective",
+"degraded_mode": {
+"is_degraded": true,
+"fail_closed_enforced": true,
+"verified_authority_token_minted": false,
+"consequential_dispatch_blocked": true,
+"missing_or_unverified_axes": [
+"validity_window"
+],
+"fallback_action": "propose_bounded_technical_alternative"
+},
+"retrieval_minutes": 7.5,
+"extra_requests": {
+"count": 1,
+"buyer_intervention_required": true,
+"confirmation_requested": true,
+"confirmation_target": "act-cfo-14",
+"pipeline_outcome_category": "targeted_confirmation_request",
+"request_channels": [
+"legal_clm_countersignature"
+],
+"sent_at": 1755648000,
+"responded_at": null,
+"verified_at": null,
+"rejected_at": null,
+"response_status": "pending_no_response",
+"response_actor_authorized": null,
+"response_scope_complete": null
+},
+"first_payment_at": null,
+"outcome_status": {
+"evaluator_blinded_at_decision": true,
+"domain_result": "unresolved_at_account_horizon",
+"commitment_class": "signed_agreement",
+"commercial_lifecycle_state": "incomplete_observation_right_censored"
+},
+"dataset_origin": "simulado",
+"batch_id": "mve-sim-20-recalculated-v2",
+"engine_commit": "651dfbc414422dd70ff723714b53dfedc77bb47b",
+"metrics_version": "2.0.0-mp4",
+"cutoff_at": "2026-11-16T00:00:00Z",
+"source_reference_id": "vault-ref-simulado-opp-s02c02",
+"timing_breakdown": {
+"search_minutes": 3.0,
+"contact_minutes": 2.25,
+"review_minutes": 2.25,
+"effective_human_minutes": 7.5,
+"wait_minutes": 720.0,
+"failed_attempts_count": 1,
+"clock_start_epoch": 1755561600,
+"clock_start_iso": "2025-08-19T00:00:00Z",
+"business_deadline_epoch": 1756242000,
+"business_deadline_iso": "2025-08-26T21:00:00Z",
+"two_business_days_deadline_epoch": 1755723600,
+"two_business_days_deadline_iso": "2025-08-20T21:00:00Z",
+"next_milestone_epoch": 1756252800,
+"next_milestone_iso": "2025-08-27T00:00:00Z",
+"uncalculable_deadline": false
+},
+"gtm_recommendation": {
+"recommended_action": "isolated_pilot",
+"fallback_policy": "propose_bounded_technical_alternative",
+"ready_to_launch": false,
+"authority_state": "unknown",
+"adjudication_reason": "not_yet_effective"
+},
+"reviewer_evaluation": {
+"reviewer_id": "rev-indep-audit-01",
+"reviewed_at_epoch": 1755648300,
+"agrees_with_gtm": true,
+"adjudicated_category": "correct_alternative",
+"flagged_problematic_in_sample": false,
+"notes": "Verified correct_alternative at cutoff 1755648000."
+}
+},
+{
+"schema_version": "0.3.0-r2-mve-mp4",
+"opportunity_id": "opp-s03c03",
+"decision_at": {
+"as_of_epoch": 1756080000,
+"iso8601_utc": "2025-08-25T00:00:00Z",
+"decision_cutoff_day": 15,
+"next_milestone_epoch": 1756684800,
+"next_milestone_iso": "2025-09-01T00:00:00Z",
+"business_deadline_epoch": 1756846800,
+"business_deadline_iso": "2025-09-02T21:00:00Z"
+},
+"candidate_action": "isolated_pilot",
+"required_scope": {
+"key": {
+"tenant": "ten-b2b-sec",
+"organization": "org-meridian-grid",
+"actor": "act-it-dir-chen-01",
+"capability": "approve_sandbox",
+"action": "isolated_pilot",
+"terms_digest": "terms-sandbox-500seats-nospend-30d"
+},
+"domain_axes": {
+"actor": "act-it-dir-chen-01 (it_authority)",
+"org_entity": "ten-b2b-sec / org-meridian-grid",
+"action": "approve_sandbox / isolated_pilot",
+"resource_scope": {
+"product_module": "runtime_edr_agent",
+"environment_boundary": "sandbox_isolated",
+"max_units_or_seats": 500
+},
+"monetary_cap": {
+"max_amount_cents": 0,
+"currency": "USD",
+"payment_terms": "no_spend_pilot"
+},
+"validity_window": {
+"valid_from_epoch": 1755907200,
+"valid_until_epoch": 1758499200
+}
+},
+"proposal_terms": {
+"proposal_id": "prop-s03c03-pil",
+"amount_cents": 0,
+"currency": "USD",
+"requires_explicit_approval": true
+}
+},
+"source_type": {
+"channel_category": "delegation_or_directory_service",
+"contract_source_name": "delegation_service",
+"provenance_class": "verified_action",
+"event_type": "source_record",
+"is_trusted_source": true
+},
+"provenance_tier": {
+"evidence_namespace": "trusted_intake",
+"contract_record_type": "Record",
+"trusted_authority_record": {
+"key": {
+"tenant": "ten-b2b-sec",
+"organization": "org-meridian-grid",
+"actor": "act-ext-contractor-chen-02",
+"capability": "approve_sandbox",
+"action": "isolated_pilot",
+"terms_digest": "terms-sandbox-500seats-nospend-30d"
+},
+"source": "delegation_service",
+"revision": 1,
+"event_time": 1755993600,
+"known_time": 1756000800,
+"valid_from": 1755907200,
+"valid_until": 1758499200,
+"effect": "grant",
+"record_digest": "ab076840a4654dc6c226030a41303f490501f2c9df1ce466f97ab3a01a004809"
+}
+},
+"observed_at": {
+"event_time": 1755993600,
+"known_time": 1756000800,
+"valid_from": 1755907200,
+"ingested_at_iso": "2025-08-24T02:00:00Z",
+"visible_at_decision": true,
+"validation_time": 1756000860,
+"validation_at_iso": "2025-08-24T02:01:00Z"
+},
+"valid_until": 1758499200,
+"authority_state": "unknown",
+"adjudication_reason": "scope_mismatch_actor",
+"degraded_mode": {
+"is_degraded": true,
+"fail_closed_enforced": true,
+"verified_authority_token_minted": false,
+"consequential_dispatch_blocked": true,
+"missing_or_unverified_axes": [
+"actor"
+],
+"fallback_action": "request_targeted_confirmation"
+},
+"retrieval_minutes": 6.5,
+"extra_requests": {
+"count": 1,
+"buyer_intervention_required": true,
+"confirmation_requested": true,
+"confirmation_target": "act-it-dir-chen-01",
+"pipeline_outcome_category": "targeted_confirmation_request",
+"request_channels": [
+"it_security_portal_attestation"
+],
+"sent_at": 1756080000,
+"responded_at": null,
+"verified_at": null,
+"rejected_at": null,
+"response_status": "pending_no_response",
+"response_actor_authorized": null,
+"response_scope_complete": null
+},
+"first_payment_at": null,
+"outcome_status": {
+"evaluator_blinded_at_decision": true,
+"domain_result": "no_response_by_action_deadline",
+"commitment_class": "none",
+"commercial_lifecycle_state": "stalled_no_response"
+},
+"dataset_origin": "simulado",
+"batch_id": "mve-sim-20-recalculated-v2",
+"engine_commit": "651dfbc414422dd70ff723714b53dfedc77bb47b",
+"metrics_version": "2.0.0-mp4",
+"cutoff_at": "2026-11-16T00:00:00Z",
+"source_reference_id": "vault-ref-simulado-opp-s03c03",
+"timing_breakdown": {
+"search_minutes": 2.6,
+"contact_minutes": 1.95,
+"review_minutes": 1.95,
+"effective_human_minutes": 6.5,
+"wait_minutes": 120.0,
+"failed_attempts_count": 1,
+"clock_start_epoch": 1755993600,
+"clock_start_iso": "2025-08-24T00:00:00Z",
+"business_deadline_epoch": 1756846800,
+"business_deadline_iso": "2025-09-02T21:00:00Z",
+"two_business_days_deadline_epoch": 1756242000,
+"two_business_days_deadline_iso": "2025-08-26T21:00:00Z",
+"next_milestone_epoch": 1756684800,
+"next_milestone_iso": "2025-09-01T00:00:00Z",
+"uncalculable_deadline": false
+},
+"gtm_recommendation": {
+"recommended_action": "request_it_authorization",
+"fallback_policy": "request_targeted_confirmation",
+"ready_to_launch": false,
+"authority_state": "unknown",
+"adjudication_reason": "scope_mismatch_actor"
+},
+"reviewer_evaluation": {
+"reviewer_id": "rev-indep-audit-01",
+"reviewed_at_epoch": 1756080300,
+"agrees_with_gtm": true,
+"adjudicated_category": "correct_block",
+"flagged_problematic_in_sample": false,
+"notes": "Verified correct_block at cutoff 1756080000."
+}
+},
+{
+"schema_version": "0.3.0-r2-mve-mp4",
+"opportunity_id": "opp-s04c04",
+"decision_at": {
+"as_of_epoch": 1756512000,
+"iso8601_utc": "2025-08-30T00:00:00Z",
+"decision_cutoff_day": 19,
+"next_milestone_epoch": 1757116800,
+"next_milestone_iso": "2025-09-06T00:00:00Z",
+"business_deadline_epoch": 1757433600,
+"business_deadline_iso": "2025-09-09T16:00:00Z"
+},
+"candidate_action": "standard_offer",
+"required_scope": {
+"key": {
+"tenant": "ten-b2b-sec",
+"organization": "org-solaris-freight",
+"actor": "act-vp-fin-22",
+"capability": "approve_spend",
+"action": "standard_offer",
+"terms_digest": "terms-prod-1000seats-net30-60k"
+},
+"domain_axes": {
+"actor": "act-vp-fin-22 (budget_owner)",
+"org_entity": "ten-b2b-sec / org-solaris-freight",
+"action": "approve_spend / standard_offer",
+"resource_scope": {
+"product_module": "identity_threat_monitor",
+"environment_boundary": "production_rollout",
+"max_units_or_seats": 1000
+},
+"monetary_cap": {
+"max_amount_cents": 6000000,
+"currency": "USD",
+"payment_terms": "net_30"
+},
+"validity_window": {
+"valid_from_epoch": 1756425600,
+"valid_until_epoch": 1764201600
+}
+},
+"proposal_terms": {
+"proposal_id": "prop-s04c04-std",
+"amount_cents": 6000000,
+"currency": "USD",
+"requires_explicit_approval": true
+}
+},
+"source_type": {
+"channel_category": "buyer_email_forwarded_or_quoted",
+"contract_source_name": "email_thread",
+"provenance_class": "reported_statement",
+"event_type": "evidence_claim",
+"is_trusted_source": false
+},
+"provenance_tier": {
+"evidence_namespace": "candidate",
+"contract_record_type": "CandidateClaimRecord",
+"candidate_claim_record": {
+"claim_id": "clm-s04c04-01",
+"record_id": "rec-eml-fwd-404",
+"tenant_id": "ten-b2b-sec",
+"organization_id": "org-solaris-freight",
+"speaker": "act-ops-champ-08",
+"speaker_id": "act-ops-champ-08",
+"speaker_role": "operations_champion",
+"quoted_speaker": "act-vp-fin-22",
+"is_quoted_or_reported": true,
+"subject": "act-vp-fin-22",
+"asserted_role": "budget_owner",
+"asserted_capability": "approve_spend",
+"asserted_action": "standard_offer",
+"asserted_terms_digest": "terms-prod-1000seats-net30-60k",
+"claim_kind": "budget_approval",
+"polarity": "affirmed",
+"span_start": 14,
+"span_end": 118,
+"span_text": "Forwarding note from our VP Finance: she said the $60k production rollout for 1,000 seats is good to go.",
+"span_digest": "607708c388890765aed4b486246d00009cd40f7bc87d8fc75c98b595d0c2a9ef",
+"uncertainty": 0.22,
+"abstained": false,
+"hedged": false,
+"is_former_or_interim": false,
+"is_prompt_injection": false,
+"is_sarcastic_or_hypothetical": false,
+"reason_codes": [
+"quoted_third_party_unverified",
+"unauthenticated_forward"
+],
+"extractor_name": "verified_candidate",
+"is_fake_provider": false,
+"evidence_namespace": "candidate"
+}
+},
+"observed_at": {
+"event_time": 1756483200,
+"known_time": 1756486800,
+"valid_from": 1756425600,
+"ingested_at_iso": "2025-08-29T17:00:00Z",
+"visible_at_decision": true,
+"validation_time": 1756486860,
+"validation_at_iso": "2025-08-29T17:01:00Z"
+},
+"valid_until": null,
+"authority_state": "unknown",
+"adjudication_reason": "candidate_only_no_authority",
+"degraded_mode": {
+"is_degraded": true,
+"fail_closed_enforced": true,
+"verified_authority_token_minted": false,
+"consequential_dispatch_blocked": true,
+"missing_or_unverified_axes": [
+"actor",
+"trusted_source",
+"explicit_approval"
+],
+"fallback_action": "request_targeted_confirmation"
+},
+"retrieval_minutes": 3.5,
+"extra_requests": {
+"count": 1,
+"buyer_intervention_required": true,
+"confirmation_requested": true,
+"confirmation_target": "act-vp-fin-22",
+"pipeline_outcome_category": "targeted_confirmation_request",
+"request_channels": [
+"buyer_email_confirmation",
+"finance_budget_signoff"
+],
+"sent_at": 1756512000,
+"responded_at": null,
+"verified_at": null,
+"rejected_at": null,
+"response_status": "pending_no_response",
+"response_actor_authorized": null,
+"response_scope_complete": null
+},
+"first_payment_at": null,
+"outcome_status": {
+"evaluator_blinded_at_decision": true,
+"domain_result": "no_response_by_action_deadline",
+"commitment_class": "verbal_intent",
+"commercial_lifecycle_state": "stalled_no_response"
+},
+"dataset_origin": "simulado",
+"batch_id": "mve-sim-20-recalculated-v2",
+"engine_commit": "651dfbc414422dd70ff723714b53dfedc77bb47b",
+"metrics_version": "2.0.0-mp4",
+"cutoff_at": "2026-11-16T00:00:00Z",
+"source_reference_id": "vault-ref-simulado-opp-s04c04",
+"timing_breakdown": {
+"search_minutes": 1.4,
+"contact_minutes": 1.05,
+"review_minutes": 1.05,
+"effective_human_minutes": 3.5,
+"wait_minutes": 60.0,
+"failed_attempts_count": 1,
+"clock_start_epoch": 1756483200,
+"clock_start_iso": "2025-08-29T16:00:00Z",
+"business_deadline_epoch": 1757433600,
+"business_deadline_iso": "2025-09-09T16:00:00Z",
+"two_business_days_deadline_epoch": 1756915200,
+"two_business_days_deadline_iso": "2025-09-03T16:00:00Z",
+"next_milestone_epoch": 1757116800,
+"next_milestone_iso": "2025-09-06T00:00:00Z",
+"uncalculable_deadline": false
+},
+"gtm_recommendation": {
+"recommended_action": "request_budget_authorization",
+"fallback_policy": "request_targeted_confirmation",
+"ready_to_launch": false,
+"authority_state": "unknown",
+"adjudication_reason": "candidate_only_no_authority"
+},
+"reviewer_evaluation": {
+"reviewer_id": "rev-indep-audit-01",
+"reviewed_at_epoch": 1756512300,
+"agrees_with_gtm": true,
+"adjudicated_category": "correct_block",
+"flagged_problematic_in_sample": false,
+"notes": "Verified correct_block at cutoff 1756512000."
+}
+},
+{
+"schema_version": "0.3.0-r2-mve-mp4",
+"opportunity_id": "opp-s05c05",
+"decision_at": {
+"as_of_epoch": 1756944000,
+"iso8601_utc": "2025-09-04T00:00:00Z",
+"decision_cutoff_day": 24,
+"next_milestone_epoch": 1757548800,
+"next_milestone_iso": "2025-09-11T00:00:00Z",
+"business_deadline_epoch": 1757606400,
+"business_deadline_iso": "2025-09-11T16:00:00Z"
+},
+"candidate_action": "deferred_invoice",
+"required_scope": {
+"key": {
+"tenant": "ten-b2b-sec",
+"organization": "org-ironclad-mfg",
+"actor": "act-budget-dir-31",
+"capability": "approve_spend",
+"action": "deferred_invoice",
+"terms_digest": "terms-prod-800seats-net60-48k"
+},
+"domain_axes": {
+"actor": "act-budget-dir-31 (budget_owner)",
+"org_entity": "ten-b2b-sec / org-ironclad-mfg",
+"action": "approve_spend / deferred_invoice",
+"resource_scope": {
+"product_module": "ot_network_segmentation",
+"environment_boundary": "production_rollout",
+"max_units_or_seats": 800
+},
+"monetary_cap": {
+"max_amount_cents": 4800000,
+"currency": "USD",
+"payment_terms": "net_60"
+},
+"validity_window": {
+"valid_from_epoch": 1756857600,
+"valid_until_epoch": 1764633600
+}
+},
+"proposal_terms": {
+"proposal_id": "prop-s05c05-def",
+"amount_cents": 4800000,
+"currency": "USD",
+"requires_explicit_approval": true
+}
+},
+"source_type": {
+"channel_category": "crm_seller_note",
+"contract_source_name": "crm_note",
+"provenance_class": "reported_statement",
+"event_type": "evidence_claim",
+"is_trusted_source": false
+},
+"provenance_tier": {
+"evidence_namespace": "candidate",
+"contract_record_type": "CandidateClaimRecord",
+"candidate_claim_record": {
+"claim_id": "clm-s05c05-01",
+"record_id": "rec-crm-note-505",
+"tenant_id": "ten-b2b-sec",
+"organization_id": "org-ironclad-mfg",
+"speaker": "seller-ae-04",
+"speaker_id": null,
+"speaker_role": "unknown",
+"quoted_speaker": "act-budget-dir-31",
+"is_quoted_or_reported": true,
+"subject": "act-budget-dir-31",
+"asserted_role": "budget_owner",
+"asserted_capability": "approve_spend",
+"asserted_action": "deferred_invoice",
+"asserted_terms_digest": "terms-prod-800seats-net60-48k",
+"claim_kind": "budget_approval",
+"polarity": "affirmed",
+"span_start": 0,
+"span_end": 96,
+"span_text": "AE call note: Plant IT and budget director verbally agreed to $48k Net-60 invoice for 800 units.",
+"span_digest": "431459c5fe770593efe206b6be8c9b9dc8c6af1db70bdf42206fc86cef5c741f",
+"uncertainty": 0.35,
+"abstained": false,
+"hedged": false,
+"is_former_or_interim": false,
+"is_prompt_injection": false,
+"is_sarcastic_or_hypothetical": false,
+"reason_codes": [
+"seller_self_report_unverified",
+"no_dkim_or_portal_artifact"
+],
+"extractor_name": "verified_candidate",
+"is_fake_provider": false,
+"evidence_namespace": "candidate"
+}
+},
+"observed_at": {
+"event_time": 1756915200,
+"known_time": 1756918800,
+"valid_from": 1756857600,
+"ingested_at_iso": "2025-09-03T17:00:00Z",
+"visible_at_decision": true,
+"validation_time": 1756918860,
+"validation_at_iso": "2025-09-03T17:01:00Z"
+},
+"valid_until": null,
+"authority_state": "unknown",
+"adjudication_reason": "untrusted_source",
+"degraded_mode": {
+"is_degraded": true,
+"fail_closed_enforced": true,
+"verified_authority_token_minted": false,
+"consequential_dispatch_blocked": true,
+"missing_or_unverified_axes": [
+"actor",
+"capability",
+"terms_digest",
+"trusted_source",
+"explicit_approval"
+],
+"fallback_action": "request_targeted_confirmation"
+},
+"retrieval_minutes": 2.0,
+"extra_requests": {
+"count": 2,
+"buyer_intervention_required": true,
+"confirmation_requested": true,
+"confirmation_target": "act-budget-dir-31",
+"pipeline_outcome_category": "targeted_confirmation_request",
+"request_channels": [
+"buyer_email_confirmation",
+"procurement_po_reconciliation"
+],
+"sent_at": 1756944000,
+"responded_at": null,
+"verified_at": null,
+"rejected_at": null,
+"response_status": "pending_no_response",
+"response_actor_authorized": null,
+"response_scope_complete": null
+},
+"first_payment_at": null,
+"outcome_status": {
+"evaluator_blinded_at_decision": true,
+"domain_result": "no_response_by_action_deadline",
+"commitment_class": "verbal_intent",
+"commercial_lifecycle_state": "stalled_no_response"
+},
+"dataset_origin": "simulado",
+"batch_id": "mve-sim-20-recalculated-v2",
+"engine_commit": "651dfbc414422dd70ff723714b53dfedc77bb47b",
+"metrics_version": "2.0.0-mp4",
+"cutoff_at": "2026-11-16T00:00:00Z",
+"source_reference_id": "vault-ref-simulado-opp-s05c05",
+"timing_breakdown": {
+"search_minutes": 0.8,
+"contact_minutes": 0.6,
+"review_minutes": 0.6,
+"effective_human_minutes": 2.0,
+"wait_minutes": 60.0,
+"failed_attempts_count": 2,
+"clock_start_epoch": 1756915200,
+"clock_start_iso": "2025-09-03T16:00:00Z",
+"business_deadline_epoch": 1757606400,
+"business_deadline_iso": "2025-09-11T16:00:00Z",
+"two_business_days_deadline_epoch": 1757088000,
+"two_business_days_deadline_iso": "2025-09-05T16:00:00Z",
+"next_milestone_epoch": 1757548800,
+"next_milestone_iso": "2025-09-11T00:00:00Z",
+"uncalculable_deadline": false
+},
+"gtm_recommendation": {
+"recommended_action": "request_budget_authorization",
+"fallback_policy": "request_targeted_confirmation",
+"ready_to_launch": false,
+"authority_state": "unknown",
+"adjudication_reason": "untrusted_source"
+},
+"reviewer_evaluation": {
+"reviewer_id": "rev-indep-audit-01",
+"reviewed_at_epoch": 1756944300,
+"agrees_with_gtm": true,
+"adjudicated_category": "correct_block",
+"flagged_problematic_in_sample": false,
+"notes": "Verified correct_block at cutoff 1756944000."
+}
+},
+{
+"schema_version": "0.3.0-r2-mve-mp4",
+"opportunity_id": "opp-s06c06",
+"decision_at": {
+"as_of_epoch": 1757376000,
+"iso8601_utc": "2025-09-09T00:00:00Z",
+"decision_cutoff_day": 16,
+"next_milestone_epoch": 1757980800,
+"next_milestone_iso": "2025-09-16T00:00:00Z",
+"business_deadline_epoch": 1757970000,
+"business_deadline_iso": "2025-09-15T21:00:00Z"
+},
+"candidate_action": "isolated_deferred",
+"required_scope": {
+"key": {
+"tenant": "ten-b2b-sec",
+"organization": "org-borealis-cloud",
+"actor": "act-sec-arch-19",
+"capability": "approve_sandbox",
+"action": "isolated_deferred",
+"terms_digest": "terms-isodef-500seats-net45-35k"
+},
+"domain_axes": {
+"actor": "act-sec-arch-19 (it_authority)",
+"org_entity": "ten-b2b-sec / org-borealis-cloud",
+"action": "approve_sandbox / isolated_deferred",
+"resource_scope": {
+"product_module": "container_runtime_shield",
+"environment_boundary": "sandbox_isolated",
+"max_units_or_seats": 500
+},
+"monetary_cap": {
+"max_amount_cents": 3500000,
+"currency": "USD",
+"payment_terms": "net_45"
+},
+"validity_window": {
+"valid_from_epoch": 1757203200,
+"valid_until_epoch": 1759795200
+}
+},
+"proposal_terms": {
+"proposal_id": "prop-s06c06-isodef",
+"amount_cents": 3500000,
+"currency": "USD",
+"requires_explicit_approval": true
+}
+},
+"source_type": {
+"channel_category": "security_questionnaire_portal",
+"contract_source_name": "registry",
+"provenance_class": "verified_action",
+"event_type": "source_record",
+"is_trusted_source": true
+},
+"provenance_tier": {
+"evidence_namespace": "trusted_intake",
+"contract_record_type": "Record",
+"trusted_authority_record": {
+"key": {
+"tenant": "ten-b2b-sec",
+"organization": "org-borealis-cloud",
+"actor": "act-sec-arch-19",
+"capability": "approve_sandbox",
+"action": "isolated_deferred",
+"terms_digest": "terms-isodef-500seats-net45-35k"
+},
+"source": "registry",
+"revision": 1,
+"event_time": 1757289600,
+"known_time": 1757293200,
+"valid_from": 1757203200,
+"valid_until": 1759795200,
+"effect": "grant",
+"record_digest": "734506b610b2c813e7bc753c8d1583c6b6f37d32a70406adec82ab5ccc37f759"
+}
+},
+"observed_at": {
+"event_time": 1757289600,
+"known_time": 1757293200,
+"valid_from": 1757203200,
+"ingested_at_iso": "2025-09-08T01:00:00Z",
+"visible_at_decision": true,
+"validation_time": 1757293260,
+"validation_at_iso": "2025-09-08T01:01:00Z"
+},
+"valid_until": 1759795200,
+"authority_state": "unknown",
+"adjudication_reason": "missing_approval",
+"degraded_mode": {
+"is_degraded": true,
+"fail_closed_enforced": true,
+"verified_authority_token_minted": false,
+"consequential_dispatch_blocked": true,
+"missing_or_unverified_axes": [
+"explicit_approval"
+],
+"fallback_action": "propose_bounded_technical_alternative"
+},
+"retrieval_minutes": 8.5,
+"extra_requests": {
+"count": 1,
+"buyer_intervention_required": true,
+"confirmation_requested": true,
+"confirmation_target": "act-sec-arch-19",
+"pipeline_outcome_category": "targeted_confirmation_request",
+"request_channels": [
+"shared_deal_room_signoff",
+"finance_budget_signoff"
+],
+"sent_at": 1757376000,
+"responded_at": null,
+"verified_at": null,
+"rejected_at": null,
+"response_status": "pending_no_response",
+"response_actor_authorized": null,
+"response_scope_complete": null
+},
+"first_payment_at": null,
+"outcome_status": {
+"evaluator_blinded_at_decision": true,
+"domain_result": "unresolved_at_account_horizon",
+"commitment_class": "approval",
+"commercial_lifecycle_state": "incomplete_observation_right_censored"
+},
+"dataset_origin": "simulado",
+"batch_id": "mve-sim-20-recalculated-v2",
+"engine_commit": "651dfbc414422dd70ff723714b53dfedc77bb47b",
+"metrics_version": "2.0.0-mp4",
+"cutoff_at": "2026-11-16T00:00:00Z",
+"source_reference_id": "vault-ref-simulado-opp-s06c06",
+"timing_breakdown": {
+"search_minutes": 3.4,
+"contact_minutes": 2.55,
+"review_minutes": 2.55,
+"effective_human_minutes": 8.5,
+"wait_minutes": 60.0,
+"failed_attempts_count": 1,
+"clock_start_epoch": 1757289600,
+"clock_start_iso": "2025-09-08T00:00:00Z",
+"business_deadline_epoch": 1757970000,
+"business_deadline_iso": "2025-09-15T21:00:00Z",
+"two_business_days_deadline_epoch": 1757451600,
+"two_business_days_deadline_iso": "2025-09-09T21:00:00Z",
+"next_milestone_epoch": 1757980800,
+"next_milestone_iso": "2025-09-16T00:00:00Z",
+"uncalculable_deadline": false
+},
+"gtm_recommendation": {
+"recommended_action": "isolated_pilot",
+"fallback_policy": "propose_bounded_technical_alternative",
+"ready_to_launch": false,
+"authority_state": "unknown",
+"adjudication_reason": "missing_approval"
+},
+"reviewer_evaluation": {
+"reviewer_id": "rev-indep-audit-01",
+"reviewed_at_epoch": 1757376300,
+"agrees_with_gtm": true,
+"adjudicated_category": "correct_alternative",
+"flagged_problematic_in_sample": false,
+"notes": "Verified correct_alternative at cutoff 1757376000."
+}
+}
+]

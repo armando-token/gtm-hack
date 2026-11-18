@@ -149,3 +149,42 @@ Files: src/domain/intervention.ts (cost table, frozen configs, budget ledger wit
 Gaps: phase-06 policy runs in domain/tests only; no UI controls for budget/probe yet (Experiments simulation slots stay PENDING until phase 07). Detector thresholds are config inputs, no calibrated run yet. Server functions remain unauthenticated.
 
 Next: phase 07 (policy simulation engine), then 08.
+
+## Phase 07 · Policy simulation engine — NOT RECEIVED
+
+No phase-07 instructions were supplied. Experiments → Policy simulation slots stay PENDING with empty fresh metrics.
+
+## Phase 08 · MVE v2, field intake and pilot gate — 2026-11-18
+
+Files: src/domain/{business-clock,field}.ts, src/server/fixtures/field-sim-20.json (original simulated 20-case operational fixture), src/evaluation/field-oracle.json (evaluator-only metrics oracle), src/evaluation/history.ts (PRIOR_GATES), src/server/gtm-service.server.ts (fieldReport, classifyFieldIntake with HMAC custodian check), src/lib/gtm.functions.ts (fieldReportFn, classifyIntakeFn), src/routes/{field,evidencia}.tsx, src/test/phase08-field.test.ts.
+
+| ID | Status | Evidence |
+|---|---|---|
+| F01 | VERIFIED | vitest + browser: 0/20, all indicators open/unavailable, HOLD_OBSERVATION_RESOLVE_CAUSE |
+| F02 | VERIFIED | vitest: declared simulated, synthetic template id, duplicate, unverifiable custodian (well-shaped hash, failed HMAC) → quarantined, parent/child substitution, prospective outcome known; browser: sample → rejected · known_synthetic_template_id |
+| F03 | VERIFIED | reply 09:25 / verified 09:33 / cutoff 09:30 → not confirmed |
+| F04 | VERIFIED | computed from fixture timestamps: 14/20 timely, 1/13 one-request, 12/13 sent; coverage 16/20, visible 14/20, authorized 5/20, buckets and timeliness match oracle, median 6.25 min |
+| F05 | VERIFIED | real study starts 0 observed / 0 accounts; historical import never touches real counters |
+| F06 | VERIFIED | FIELD_GATE_CONFIG frozen, version field-gate-1.0.0; explicit open indicators |
+| F07 | VERIFIED | B1/B2/B3 CSV templates + metrics/decision JSON export on /field |
+
+Business clock: explicit IANA zone, workdays, hours, holidays; 48 business h = 6 workdays and 2 business days = 16 h stored as distinct fields; DST start crossing and holiday skip tested. Trust boundary strengthened vs a format-only validator: origin text and hash shape are assertions; only a verified HMAC custodian attestation confirms provenance.
+
+Gaps: intake checks are not persisted (no permitted real study); no server-owned evidence references are issued yet; cost/savings indicator stays open pending supervised rework comparison.
+
+## Phase 09 · Guided 90-second presentation — 2026-11-18
+
+Files: src/routes/demo.tsx (presentation bar, 5 steps, timer, keyboard/buttons, live highlights, evidence drawer, live 24-case step).
+
+Browser /tmp/browser/p89/check_present.py at 1280x720 (+375x800 check, scrollWidth 375), 0 console errors:
+
+| ID | Status | Evidence |
+|---|---|---|
+| V01 | VERIFIED | ArrowLeft/ArrowRight and Previous/Next move through steps 1–5 |
+| V02 | VERIFIED | step 2 highlighted grant control → engine returns scope_mismatch_terms_digest / confirm_expansion_and_review_pilot_500 |
+| V03 | VERIFIED | step 3, twice after reset each: positive committed (effects 1), revoked blocked · revoked (effects 0) |
+| V04 | VERIFIED | timer ran (00:19) independently; decisions use virtual t100/t105/t110 |
+| V05 | VERIFIED | usable at 1280x720 and 375px without horizontal scroll |
+| V06 | VERIFIED | step 4 shows current run id (24/24, 14/24, 13/24) with origin; historical run id labeled separately |
+
+Remaining: phase 07 not received; server functions are unauthenticated.

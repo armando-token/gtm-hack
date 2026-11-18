@@ -5,7 +5,8 @@ import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "
 import { AxisTable, Col, DecisionBadge, ErrorLine, Kv, TraceJson, btn, btnPrimary, field } from "@/components/gtm/DemoParts";
 import { useSandboxSession } from "@/hooks/use-sandbox-session";
 import { createRequestGuard } from "@/lib/request-guard";
-import { dispatchActionFn, evaluateCaseFn, evaluateScopeFn, insertRevocationFn, prepareActionFn, sessionTimelineFn } from "@/lib/gtm.functions";
+import { PRIOR_RESEARCH } from "@/evaluation/history";
+import { dispatchActionFn, evaluateCaseFn, evaluateScopeFn, fullRunFn, insertRevocationFn, prepareActionFn, sessionTimelineFn } from "@/lib/gtm.functions";
 
 export const Route = createFileRoute("/demo")({
   head: () => ({
@@ -24,11 +25,22 @@ export const Route = createFileRoute("/demo")({
 const usd = (minor: number) => new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(minor / 100);
 type Scene = "scope" | "revocation";
 
+const HL = "ring-2 ring-primary ring-offset-2 ring-offset-background rounded";
+type Hl = readonly string[];
+
 function Demo() {
   const [scene, setScene] = useState<Scene>("scope");
   const { sessionId, reset } = useSandboxSession();
+  const [present, setPresent] = useState(false);
+  const [step, setStep] = useState(0);
+  const hl: Hl = present ? STEPS[step]!.hl : [];
+  useEffect(() => { if (present) { const sc = STEPS[step]!.scene; if (sc) setScene(sc); } }, [present, step]);
   return (
     <div className="space-y-4">
+      <div className="flex justify-end">
+        {!present ? <button className={btn} onClick={() => { setPresent(true); setStep(0); }}>Presentation mode</button> : null}
+      </div>
+      {present && <PresentationBar step={step} setStep={setStep} onExit={() => setPresent(false)} />}
       <div className="flex flex-wrap items-center gap-3">
         <h1 className="mr-auto text-xl font-semibold">Decision workbench</h1>
         <div role="tablist" aria-label="Scene" className="flex gap-1 rounded border border-border p-1">
@@ -41,7 +53,7 @@ function Demo() {
         </div>
         <span className="font-mono text-xs text-muted-foreground">session {sessionId?.slice(5, 18) ?? "…"}</span>
       </div>
-      {scene === "scope" ? <ScopeScene onReset={reset} /> : sessionId ? <RevocationScene key={sessionId} sessionId={sessionId} onReset={reset} /> : <p className="text-sm">Starting sandbox session…</p>}
+      {present && step === 3 ? <ComparisonStep /> : scene === "scope" ? <ScopeScene onReset={reset} hl={hl} /> : sessionId ? <RevocationScene key={sessionId} sessionId={sessionId} onReset={reset} hl={hl} /> : <p className="text-sm">Starting sandbox session…</p>}
     </div>
   );
 }
@@ -50,7 +62,8 @@ function Demo() {
 type ScopeResult = Awaited<ReturnType<typeof evaluateScopeFn>>;
 const INITIAL = { requestedSeats: 2000 as 500 | 2000, grantSeats: 2000 as 500 | 2000, grantOrganization: "org-f500-telco" as const as "org-f500-telco" | "org-f500-telco-emea-sub", grantCapability: "approve_spend" as "approve_spend" | "approve_sandbox", asOf: 100, grantValidUntil: 200 };
 
-function ScopeScene({ onReset }: { onReset: () => void }) {
+function ScopeScene({ onReset, hl = [] }: { onReset: () => void; hl?: Hl }) {
+  const h = (k: string) => (hl.includes(k) ? HL : "");
   const evaluate = useServerFn(evaluateScopeFn);
   const [ctl, setCtl] = useState(INITIAL);
   const [res, setRes] = useState<ScopeResult | null>(null);
@@ -80,7 +93,7 @@ function ScopeScene({ onReset }: { onReset: () => void }) {
     <>
       <div className="grid gap-4 lg:grid-cols-[1fr_1.1fr_1.1fr]">
         <Col title="Buyer message · unchanged">
-          <blockquote className="whitespace-pre-wrap rounded border border-border bg-background p-3 text-sm text-foreground">{res?.message.text ?? "…"}</blockquote>
+          <blockquote data-hl="message" className={`whitespace-pre-wrap rounded border border-border bg-background p-3 text-sm text-foreground ${h("message")}`}>{res?.message.text ?? "…"}</blockquote>
           <p className="text-xs text-muted-foreground">Candidate statement only — never grants authority. Received {res?.message.first_known_at ?? "…"} (UTC).</p>
           <h3 className="pt-2 text-xs font-semibold text-foreground">Trusted simulator registry</h3>
           {res && (
@@ -98,13 +111,13 @@ function ScopeScene({ onReset }: { onReset: () => void }) {
         </Col>
 
         <Col title="Target action & registered scope">
-          <fieldset className="space-y-1">
+          <fieldset data-hl="requested" className={`space-y-1 p-1 ${h("requested")}`}>
             <legend className="text-xs text-muted-foreground">Requested seats (proposal)</legend>
             <div className="flex gap-2">{([500, 2000] as const).map((s) => (
               <label key={s} className="flex items-center gap-1 text-sm"><input type="radio" name="req" checked={ctl.requestedSeats === s} onChange={() => set("requestedSeats", s)} />{s.toLocaleString()}</label>
             ))}</div>
           </fieldset>
-          <fieldset className="space-y-1">
+          <fieldset data-hl="grant" className={`space-y-1 p-1 ${h("grant")}`}>
             <legend className="text-xs text-muted-foreground">Authoritative permission fixture (grant + its explicit approval)</legend>
             <div className="flex gap-2">{([500, 2000] as const).map((s) => (
               <label key={s} className="flex items-center gap-1 text-sm"><input type="radio" name="grant" checked={ctl.grantSeats === s} onChange={() => set("grantSeats", s)} />{s.toLocaleString()} seats</label>
@@ -150,8 +163,8 @@ function ScopeScene({ onReset }: { onReset: () => void }) {
         <Col title="Computed decision">
           {res ? (
             <>
-              <div aria-live="polite"><DecisionBadge ok={ok} label={res.readiness} /></div>
-              <Kv k="next action" v={res.action.action} tone={ok ? "ok" : "warn"} />
+              <div aria-live="polite" data-hl="decision" className={h("decision")}><DecisionBadge ok={ok} label={res.readiness} /></div>
+              <div data-hl="next" className={h("next")}><Kv k="next action" v={res.action.action} tone={ok ? "ok" : "warn"} /></div>
               <Kv k="authority" v={`${res.authority.state} · ${res.authority.reason}`} tone={res.authority.state === "allowed" ? "ok" : "bad"} />
               <Kv k="approval" v={res.approval.ok ? "valid explicit" : res.approval.reason} tone={res.approval.ok ? "ok" : "bad"} />
               <Kv k="mismatch axes" v={res.authority.proof.mismatch_axes.join(", ") || "none"} />
@@ -192,7 +205,8 @@ const CASE = "CF-02A";
 type Ev = Awaited<ReturnType<typeof evaluateCaseFn>>;
 type Tl = Awaited<ReturnType<typeof sessionTimelineFn>>;
 
-function RevocationScene({ sessionId, onReset }: { sessionId: string; onReset: () => void }) {
+function RevocationScene({ sessionId, onReset, hl = [] }: { sessionId: string; onReset: () => void; hl?: Hl }) {
+  const h = (k: string) => (hl.includes(k) ? HL : "");
   const evaluateFn = useServerFn(evaluateCaseFn);
   const prepareFn = useServerFn(prepareActionFn);
   const revokeFn = useServerFn(insertRevocationFn);
@@ -286,7 +300,7 @@ function RevocationScene({ sessionId, onReset }: { sessionId: string; onReset: (
               <li key={s.t} aria-current={tickNow === s.t ? "step" : undefined} className={`flex-1 rounded border px-2 py-1 text-center ${tickNow === s.t ? "border-primary text-foreground" : "border-border text-muted-foreground"}`}>t{s.t}<br />{s.l}</li>
             ))}
           </ol>
-          <div className="flex flex-wrap gap-2">
+          <div data-hl="controls" className={`flex flex-wrap gap-2 p-1 ${h("controls")}`}>
             <button className={btn} disabled={busy} onClick={doEvaluate}>{inflight === "Evaluate" ? "Evaluating…" : "Evaluate"}</button>
             <button className={btn} disabled={busy || !ev || !!intent} onClick={doPrepare}>{inflight === "Prepare" ? "Preparing…" : "Prepare (t100)"}</button>
             <button className={`${btn} border-denied/50 text-denied`} disabled={busy || !intent || !!revoked || !!disp} onClick={doRevoke}>{inflight === "Revoke approval" ? "Revoking…" : "Revoke approval (t105)"}</button>
@@ -304,10 +318,10 @@ function RevocationScene({ sessionId, onReset }: { sessionId: string; onReset: (
               <div aria-live="polite">
                 {disp ? <DecisionBadge ok={disp.status === "committed"} label={`dispatch ${disp.status} · ${disp.reason}`} /> : <DecisionBadge ok={ok} label={`${ev.readiness} at t${ev.as_of}`} />}
               </div>
-              <Kv k="next action" v={ev.selected_action.action} tone={ok ? "ok" : "warn"} />
+              <div data-hl="next" className={h("next")}><Kv k="next action" v={ev.selected_action.action} tone={ok ? "ok" : "warn"} /></div>
               <Kv k="original revision (at prepare)" v={intent ? `v${intent.version}` : "—"} />
               <Kv k="current revision" v={`v${ev.registry_version}`} tone={intent && ev.registry_version !== intent.version ? "warn" : undefined} />
-              <Kv k="simulated effects" v={String(tl?.effects ?? 0)} tone={(tl?.effects ?? 0) > 0 ? "ok" : undefined} />
+              <div data-hl="effects" className={h("effects")}><Kv k="simulated effects" v={String(tl?.effects ?? 0)} tone={(tl?.effects ?? 0) > 0 ? "ok" : undefined} /></div>
               <h3 className="pt-1 text-xs font-semibold text-foreground">Event timeline</h3>
               <ol className="space-y-1 text-xs">
                 {tl?.items.map((i, n) => (
@@ -340,5 +354,91 @@ function RevocationScene({ sessionId, onReset }: { sessionId: string; onReset: (
         </SheetContent>
       </Sheet>
     </>
+  );
+}
+
+/* ---------------- Phase 09 · presentation mode ---------------- */
+const STEPS: readonly { t: string; title: string; caption: string; scene: Scene | null; hl: Hl }[] = [
+  { t: "0–15s", title: "Buyer says approved", caption: "The buyer says “approved”; the proposal asks for 2,000 seats.", scene: "scope", hl: ["message", "requested"] },
+  { t: "15–35s", title: "Permission is only 500", caption: "Switch the authoritative permission to 500 seats. Watch the computed mismatch and the confirmation action.", scene: "scope", hl: ["grant", "decision", "next"] },
+  { t: "35–60s", title: "Revoke before dispatch", caption: "Reset, Prepare at t100, Revoke at t105, Dispatch at t110. Proof is rechecked; zero effects.", scene: "revocation", hl: ["controls", "effects"] },
+  { t: "60–75s", title: "Fresh comparison", caption: "Run the 24-case comparison now. Origin label and run id are shown.", scene: null, hl: ["run24"] },
+  { t: "75–90s", title: "Next permitted step", caption: "The founder takes the permitted path or requests the missing authorization.", scene: "scope", hl: ["next"] },
+];
+
+function PresentationBar({ step, setStep, onExit }: { step: number; setStep: (n: number) => void; onExit: () => void }) {
+  const [elapsed, setElapsed] = useState(0);
+  const [running, setRunning] = useState(false);
+  const [drawer, setDrawer] = useState(false);
+  useEffect(() => { if (!running) return; const id = setInterval(() => setElapsed((e) => e + 1), 1000); return () => clearInterval(id); }, [running]);
+  useEffect(() => {
+    const on = (e: KeyboardEvent) => {
+      const tag = (e.target as HTMLElement | null)?.tagName;
+      if (tag === "INPUT" || tag === "SELECT" || tag === "TEXTAREA") return;
+      if (e.key === "ArrowRight") setStep(Math.min(STEPS.length - 1, step + 1));
+      if (e.key === "ArrowLeft") setStep(Math.max(0, step - 1));
+    };
+    window.addEventListener("keydown", on); return () => window.removeEventListener("keydown", on);
+  }, [step, setStep]);
+  const s = STEPS[step]!;
+  const mmss = `${String(Math.floor(elapsed / 60)).padStart(2, "0")}:${String(elapsed % 60).padStart(2, "0")}`;
+  return (
+    <section aria-label="Presentation" className="space-y-2 rounded-md border border-primary/50 bg-card p-3">
+      <ol className="grid grid-cols-5 gap-1" aria-label="Presentation steps">
+        {STEPS.map((x, i) => (
+          <li key={x.t}><button aria-current={i === step ? "step" : undefined} onClick={() => setStep(i)} className={`w-full rounded px-1 py-1 text-[11px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${i === step ? "bg-primary text-primary-foreground" : i < step ? "bg-accent text-foreground" : "bg-background text-muted-foreground"}`}>
+            <span className="block font-mono">{x.t}</span><span className="hidden sm:block">{x.title}</span></button></li>
+        ))}
+      </ol>
+      <div className="flex flex-wrap items-center gap-2">
+        <p className="mr-auto min-w-0 text-sm text-foreground"><span className="font-semibold">Step {step + 1}/5 · {s.title}.</span> {s.caption}</p>
+        <button className={btn} disabled={step === 0} onClick={() => setStep(step - 1)}>Previous</button>
+        <button className={btn} disabled={step === STEPS.length - 1} onClick={() => setStep(step + 1)}>Next</button>
+        <span className="font-mono text-sm" aria-label="Rehearsal timer">{mmss}</span>
+        <button className={btn} onClick={() => setRunning(!running)}>{running ? "Pause" : "Start"}</button>
+        <button className={btn} onClick={() => { setRunning(false); setElapsed(0); }}>Reset timer</button>
+        <button className={btn} onClick={() => setDrawer(true)}>Evidence</button>
+        <button className={btnPrimary} onClick={onExit}>Exit presentation mode</button>
+      </div>
+      <p className="text-[11px] text-muted-foreground">Rehearsal timer only — authorization time is the virtual scenario clock (t100/t105/t110). Captions never change a decision. Prior research run {PRIOR_RESEARCH.run_id}.</p>
+      {step === 0 && <p className="text-xs italic text-muted-foreground">“A buyer says yes. Did they approve a 500-user pilot or a 2000-user rollout? This decision engine checks the exact approval, recommends the next step, and checks it again before acting. Watch what happens when I revoke permission after the proposal is ready.”</p>}
+      <Sheet open={drawer} onOpenChange={setDrawer}>
+        <SheetContent className="w-full overflow-y-auto sm:max-w-lg">
+          <SheetHeader><SheetTitle>Evidence answers</SheetTitle><SheetDescription>Short answers with origin labels.</SheetDescription></SheetHeader>
+          <dl className="mt-4 space-y-3 text-sm">
+            {[
+              ["Buyer authority", "Buyer text is a candidate only. Authority comes from a trusted simulator registry record matching all six axes, plus an explicit approval, checked at decision and again at dispatch."],
+              ["Historical data source", `Prior sealed study, run ${PRIOR_RESEARCH.run_id} (revision ${PRIOR_RESEARCH.evaluated_revision}). Shown as historical, never as current results.`],
+              ["Local proxy vs real product", "Arm B is a local CRM rule proxy. It does not measure any deployed product. The external product arm is UNTESTED."],
+              ["Simulated revenue", "D01 figures (contingent 50.84 vs adaptive 50.46) are simulated payments per 100 synthetic organizations, not revenue."],
+              ["Retained policy", "The simpler contingent policy (probe IT, then branch) was retained over the adaptive one."],
+              ["Field observations", "Real field: 0/20 observations, 0 accounts assigned. Pilot gate HOLD."],
+              ["Next commercial experiment", "Enroll 12 retrospective + 8 prospective real opportunities with custodian attestation and measure one-request confirmation."],
+            ].map(([q, a]) => <div key={q}><dt className="font-semibold text-foreground">{q}</dt><dd className="text-muted-foreground">{a}</dd></div>)}
+          </dl>
+        </SheetContent>
+      </Sheet>
+    </section>
+  );
+}
+
+function ComparisonStep() {
+  const run = useServerFn(fullRunFn);
+  const [r, setR] = useState<Awaited<ReturnType<typeof fullRunFn>> | null>(null);
+  const [busy, setBusy] = useState(false);
+  const [err, setErr] = useState<unknown>(null);
+  const go = async () => { setBusy(true); setErr(null); try { setR(await run()); } catch (e) { setErr(e); } finally { setBusy(false); } };
+  return (
+    <Col title="Newly executed 24-case comparison">
+      <button data-hl="run24" className={`${btnPrimary} ${HL}`} disabled={busy} onClick={go}>{busy ? "Running…" : "Run 24-case comparison"}</button>
+      <ErrorLine what="Comparison" error={err} onRetry={go} />
+      {r && (
+        <>
+          <table className="w-full text-left text-xs"><thead className="text-muted-foreground"><tr><th className="py-1">Arm</th><th>Valid</th><th>False authorize</th><th>Pairs</th></tr></thead>
+            <tbody className="font-mono">{r.arms.map((a) => <tr key={a.arm} className="border-t border-border"><td className="py-1">{a.arm === "D" ? "D · Exact GTM" : a.arm === "C" ? "C · Superficial rules" : "B · Local CRM rule proxy"}</td><td>{a.valid}/{a.denominator}</td><td>{a.false_authorize}/{a.traps}</td><td>{a.pairs_ok}/{a.pairs_total}</td></tr>)}</tbody></table>
+          <p className="text-xs">Origin: current run <span className="font-mono">{r.run_id}</span> · {r.executed_at} · 24 synthetic cases. Historical reference ({PRIOR_RESEARCH.run_id}) is shown separately on Benchmark.</p>
+        </>
+      )}
+    </Col>
   );
 }
