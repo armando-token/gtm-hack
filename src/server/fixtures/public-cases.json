@@ -1,0 +1,2579 @@
+[
+ {
+  "case_id": "CF-01A",
+  "pair_id": "MP01",
+  "pair_index": "MP01-A",
+  "variant": "valid_control",
+  "category": "scope_and_entity",
+  "mechanism": "pilot_vs_expansion_scope",
+  "title": "Cloudflare Access 2,000-seat commercial expansion vs 500-seat pilot scope",
+  "decision_time": 100,
+  "dispatch_time": 105,
+  "tenant_id": "tenant-cloudflare-bench",
+  "organization_id": "org-f500-telco",
+  "target_key": {
+   "tenant": "tenant-cloudflare-bench",
+   "organization": "org-f500-telco",
+   "actor": "act-elena-vance",
+   "capability": "approve_spend",
+   "action": "standard_offer",
+   "terms_digest": "terms-access-2000-seats-annual"
+  },
+  "fallback_pilot_key": null,
+  "amount_cents": 24000000,
+  "catalogue": [
+   "prepare_proposal_2000_users",
+   "confirm_expansion_and_review_pilot_500",
+   "propose_isolated_technical_pilot"
+  ],
+  "communication_records": [
+   {
+    "record_id": "comm-cf-01a",
+    "tenant_id": "tenant-cloudflare-bench",
+    "account_id": "acct-org-f500-telco",
+    "organization_id": "org-f500-telco",
+    "actor_role": "budget_owner",
+    "speaker_role": "budget_owner",
+    "speaker": "Elena Vance",
+    "record_type": "email",
+    "source_id": "src-cf-01a",
+    "source_version": "v1",
+    "stream_key": "email:cf-01a",
+    "dependence_group": "dep:mp01",
+    "occurred_at": "2026-11-16T10:00:00Z",
+    "first_known_at": "2026-11-16T10:05:00Z",
+    "filename": "cf-01a.eml",
+    "text": "From: Elena Vance (VP IT & Security) <elena.vance@telco-f500.example>\nPodemos avanzar con Access. Approved to proceed with the Cloudflare Access rollout under our active governance sign-off.",
+    "terms_digest": "terms-access-2000-seats-annual",
+    "structured_payload": {
+     "speaker": "Elena Vance",
+     "terms_digest": "terms-access-2000-seats-annual"
+    },
+    "synthetic": true,
+    "actor_id": "act-elena-vance"
+   }
+  ],
+  "directory": [
+   {
+    "actor_id": "act-elena-vance",
+    "display_name": "Elena Vance",
+    "role": "budget_owner"
+   }
+  ],
+  "service_records": [
+   {
+    "evidence_id": "ev-cf01a-reg-2000",
+    "key": {
+     "tenant": "tenant-cloudflare-bench",
+     "organization": "org-f500-telco",
+     "actor": "act-elena-vance",
+     "capability": "approve_spend",
+     "action": "standard_offer",
+     "terms_digest": "terms-access-2000-seats-annual"
+    },
+    "source": "registry",
+    "revision": 2,
+    "event_time": 90,
+    "known_time": 90,
+    "valid_from": 90,
+    "valid_until": 200,
+    "effect": "grant"
+   }
+  ],
+  "service_approval": {
+   "evidence_id": "ev-cf01a-app-2000",
+   "key": {
+    "tenant": "tenant-cloudflare-bench",
+    "organization": "org-f500-telco",
+    "actor": "act-elena-vance",
+    "capability": "approve_spend",
+    "action": "standard_offer",
+    "terms_digest": "terms-access-2000-seats-annual"
+   },
+   "occurred_at": 92,
+   "known_at": 92,
+   "explicit": true
+  },
+  "dispatch_mutation": null,
+  "crm_proxy_fields": {
+   "stage_name": "Proposal",
+   "account_has_active_approval": true,
+   "approval_status": "Approved",
+   "approval_valid_until": 200,
+   "explicit_deny": false
+  }
+ },
+ {
+  "case_id": "CF-01B",
+  "pair_id": "MP01",
+  "pair_index": "MP01-B",
+  "variant": "trap_treatment",
+  "category": "scope_and_entity",
+  "mechanism": "pilot_vs_expansion_scope",
+  "title": "Cloudflare Access 2,000-seat commercial expansion vs 500-seat pilot scope",
+  "decision_time": 100,
+  "dispatch_time": 105,
+  "tenant_id": "tenant-cloudflare-bench",
+  "organization_id": "org-f500-telco",
+  "target_key": {
+   "tenant": "tenant-cloudflare-bench",
+   "organization": "org-f500-telco",
+   "actor": "act-elena-vance",
+   "capability": "approve_spend",
+   "action": "standard_offer",
+   "terms_digest": "terms-access-2000-seats-annual"
+  },
+  "fallback_pilot_key": null,
+  "amount_cents": 24000000,
+  "catalogue": [
+   "prepare_proposal_2000_users",
+   "confirm_expansion_and_review_pilot_500",
+   "propose_isolated_technical_pilot"
+  ],
+  "communication_records": [
+   {
+    "record_id": "comm-cf-01b",
+    "tenant_id": "tenant-cloudflare-bench",
+    "account_id": "acct-org-f500-telco",
+    "organization_id": "org-f500-telco",
+    "actor_role": "budget_owner",
+    "speaker_role": "budget_owner",
+    "speaker": "Elena Vance",
+    "record_type": "email",
+    "source_id": "src-cf-01b",
+    "source_version": "v1",
+    "stream_key": "email:cf-01b",
+    "dependence_group": "dep:mp01",
+    "occurred_at": "2026-11-16T10:00:00Z",
+    "first_known_at": "2026-11-16T10:05:00Z",
+    "filename": "cf-01b.eml",
+    "text": "From: Elena Vance (VP IT & Security) <elena.vance@telco-f500.example>\nPodemos avanzar con Access. Approved to proceed with the Cloudflare Access rollout under our active governance sign-off.",
+    "terms_digest": "terms-access-2000-seats-annual",
+    "structured_payload": {
+     "speaker": "Elena Vance",
+     "terms_digest": "terms-access-2000-seats-annual"
+    },
+    "synthetic": true,
+    "actor_id": "act-elena-vance"
+   }
+  ],
+  "directory": [
+   {
+    "actor_id": "act-elena-vance",
+    "display_name": "Elena Vance",
+    "role": "budget_owner"
+   }
+  ],
+  "service_records": [
+   {
+    "evidence_id": "ev-cf01b-reg-500",
+    "key": {
+     "tenant": "tenant-cloudflare-bench",
+     "organization": "org-f500-telco",
+     "actor": "act-elena-vance",
+     "capability": "approve_spend",
+     "action": "standard_offer",
+     "terms_digest": "terms-access-500-pilot-only"
+    },
+    "source": "registry",
+    "revision": 1,
+    "event_time": 80,
+    "known_time": 80,
+    "valid_from": 80,
+    "valid_until": 200,
+    "effect": "grant"
+   }
+  ],
+  "service_approval": {
+   "evidence_id": "ev-cf01b-app-500",
+   "key": {
+    "tenant": "tenant-cloudflare-bench",
+    "organization": "org-f500-telco",
+    "actor": "act-elena-vance",
+    "capability": "approve_spend",
+    "action": "standard_offer",
+    "terms_digest": "terms-access-500-pilot-only"
+   },
+   "occurred_at": 82,
+   "known_at": 82,
+   "explicit": true
+  },
+  "dispatch_mutation": null,
+  "crm_proxy_fields": {
+   "stage_name": "Proposal",
+   "account_has_active_approval": true,
+   "approval_status": "Approved",
+   "approval_valid_until": 200,
+   "explicit_deny": false
+  }
+ },
+ {
+  "case_id": "MP02-A",
+  "pair_id": "MP02",
+  "pair_index": "MP02-A",
+  "variant": "valid_control",
+  "category": "scope_and_entity",
+  "mechanism": "subsidiary_vs_parent_entity",
+  "title": "Parent corporation enterprise rollout vs regional subsidiary grant only",
+  "decision_time": 100,
+  "dispatch_time": 104,
+  "tenant_id": "tenant-enterprise-bench",
+  "organization_id": "org-omni-parent-global",
+  "target_key": {
+   "tenant": "tenant-enterprise-bench",
+   "organization": "org-omni-parent-global",
+   "actor": "act-marcus-sterling",
+   "capability": "approve_spend",
+   "action": "standard_offer",
+   "terms_digest": "terms-global-parent-rollout"
+  },
+  "fallback_pilot_key": null,
+  "amount_cents": 18000000,
+  "catalogue": [
+   "execute_parent_enterprise_rollout",
+   "clarify_parent_entity_authority"
+  ],
+  "communication_records": [
+   {
+    "record_id": "comm-mp02-a",
+    "tenant_id": "tenant-enterprise-bench",
+    "account_id": "acct-org-omni-parent-global",
+    "organization_id": "org-omni-parent-global",
+    "actor_role": "budget_owner",
+    "speaker_role": "budget_owner",
+    "speaker": "Marcus Sterling",
+    "record_type": "email",
+    "source_id": "src-mp02-a",
+    "source_version": "v1",
+    "stream_key": "email:mp02-a",
+    "dependence_group": "dep:mp02",
+    "occurred_at": "2026-11-16T10:00:00Z",
+    "first_known_at": "2026-11-16T10:05:00Z",
+    "filename": "mp02-a.eml",
+    "text": "From: Marcus Sterling (VP Global Operations) <m.sterling@omni-holdings.example>\nWe have approved the enterprise production deployment and budget allocation for our organization.",
+    "terms_digest": "terms-global-parent-rollout",
+    "structured_payload": {
+     "speaker": "Marcus Sterling",
+     "terms_digest": "terms-global-parent-rollout"
+    },
+    "synthetic": true,
+    "actor_id": "act-marcus-sterling"
+   }
+  ],
+  "directory": [
+   {
+    "actor_id": "act-marcus-sterling",
+    "display_name": "Marcus Sterling",
+    "role": "budget_owner"
+   }
+  ],
+  "service_records": [
+   {
+    "evidence_id": "ev-mp02a-parent-grant",
+    "key": {
+     "tenant": "tenant-enterprise-bench",
+     "organization": "org-omni-parent-global",
+     "actor": "act-marcus-sterling",
+     "capability": "approve_spend",
+     "action": "standard_offer",
+     "terms_digest": "terms-global-parent-rollout"
+    },
+    "source": "buyer_admin",
+    "revision": 1,
+    "event_time": 85,
+    "known_time": 85,
+    "valid_from": 85,
+    "valid_until": 220,
+    "effect": "grant"
+   }
+  ],
+  "service_approval": {
+   "evidence_id": "ev-mp02a-parent-app",
+   "key": {
+    "tenant": "tenant-enterprise-bench",
+    "organization": "org-omni-parent-global",
+    "actor": "act-marcus-sterling",
+    "capability": "approve_spend",
+    "action": "standard_offer",
+    "terms_digest": "terms-global-parent-rollout"
+   },
+   "occurred_at": 88,
+   "known_at": 88,
+   "explicit": true
+  },
+  "dispatch_mutation": null,
+  "crm_proxy_fields": {
+   "stage_name": "Negotiation",
+   "account_has_active_approval": true,
+   "approval_status": "Approved",
+   "approval_valid_until": 220,
+   "explicit_deny": false
+  }
+ },
+ {
+  "case_id": "MP02-B",
+  "pair_id": "MP02",
+  "pair_index": "MP02-B",
+  "variant": "trap_treatment",
+  "category": "scope_and_entity",
+  "mechanism": "subsidiary_vs_parent_entity",
+  "title": "Parent corporation enterprise rollout vs regional subsidiary grant only",
+  "decision_time": 100,
+  "dispatch_time": 104,
+  "tenant_id": "tenant-enterprise-bench",
+  "organization_id": "org-omni-parent-global",
+  "target_key": {
+   "tenant": "tenant-enterprise-bench",
+   "organization": "org-omni-parent-global",
+   "actor": "act-marcus-sterling",
+   "capability": "approve_spend",
+   "action": "standard_offer",
+   "terms_digest": "terms-global-parent-rollout"
+  },
+  "fallback_pilot_key": null,
+  "amount_cents": 18000000,
+  "catalogue": [
+   "execute_parent_enterprise_rollout",
+   "clarify_parent_entity_authority"
+  ],
+  "communication_records": [
+   {
+    "record_id": "comm-mp02-b",
+    "tenant_id": "tenant-enterprise-bench",
+    "account_id": "acct-org-omni-parent-global",
+    "organization_id": "org-omni-parent-global",
+    "actor_role": "budget_owner",
+    "speaker_role": "budget_owner",
+    "speaker": "Marcus Sterling",
+    "record_type": "email",
+    "source_id": "src-mp02-b",
+    "source_version": "v1",
+    "stream_key": "email:mp02-b",
+    "dependence_group": "dep:mp02",
+    "occurred_at": "2026-11-16T10:00:00Z",
+    "first_known_at": "2026-11-16T10:05:00Z",
+    "filename": "mp02-b.eml",
+    "text": "From: Marcus Sterling (VP Global Operations) <m.sterling@omni-holdings.example>\nWe have approved the enterprise production deployment and budget allocation for our organization.",
+    "terms_digest": "terms-global-parent-rollout",
+    "structured_payload": {
+     "speaker": "Marcus Sterling",
+     "terms_digest": "terms-global-parent-rollout"
+    },
+    "synthetic": true,
+    "actor_id": "act-marcus-sterling"
+   }
+  ],
+  "directory": [
+   {
+    "actor_id": "act-marcus-sterling",
+    "display_name": "Marcus Sterling",
+    "role": "budget_owner"
+   }
+  ],
+  "service_records": [
+   {
+    "evidence_id": "ev-mp02b-sub-grant",
+    "key": {
+     "tenant": "tenant-enterprise-bench",
+     "organization": "org-omni-latam-sub",
+     "actor": "act-marcus-sterling",
+     "capability": "approve_spend",
+     "action": "standard_offer",
+     "terms_digest": "terms-global-parent-rollout"
+    },
+    "source": "buyer_admin",
+    "revision": 1,
+    "event_time": 85,
+    "known_time": 85,
+    "valid_from": 85,
+    "valid_until": 220,
+    "effect": "grant"
+   }
+  ],
+  "service_approval": {
+   "evidence_id": "ev-mp02b-sub-app",
+   "key": {
+    "tenant": "tenant-enterprise-bench",
+    "organization": "org-omni-latam-sub",
+    "actor": "act-marcus-sterling",
+    "capability": "approve_spend",
+    "action": "standard_offer",
+    "terms_digest": "terms-global-parent-rollout"
+   },
+   "occurred_at": 88,
+   "known_at": 88,
+   "explicit": true
+  },
+  "dispatch_mutation": null,
+  "crm_proxy_fields": {
+   "stage_name": "Negotiation",
+   "account_has_active_approval": true,
+   "approval_status": "Approved",
+   "approval_valid_until": 220,
+   "explicit_deny": false
+  }
+ },
+ {
+  "case_id": "MP03-A",
+  "pair_id": "MP03",
+  "pair_index": "MP03-A",
+  "variant": "valid_control",
+  "category": "scope_and_entity",
+  "mechanism": "technical_role_vs_commercial_approval",
+  "title": "Technical sandbox capability vs commercial spend order form authority",
+  "decision_time": 100,
+  "dispatch_time": 103,
+  "tenant_id": "tenant-helios-bench",
+  "organization_id": "org-helios-bank",
+  "target_key": {
+   "tenant": "tenant-helios-bench",
+   "organization": "org-helios-bank",
+   "actor": "act-priya-nair",
+   "capability": "approve_spend",
+   "action": "standard_offer",
+   "terms_digest": "terms-helios-annual-order"
+  },
+  "fallback_pilot_key": null,
+  "amount_cents": 15000000,
+  "catalogue": [
+   "issue_commercial_order_form",
+   "request_budget_owner_signoff_or_run_sandbox"
+  ],
+  "communication_records": [
+   {
+    "record_id": "comm-mp03-a",
+    "tenant_id": "tenant-helios-bench",
+    "account_id": "acct-org-helios-bank",
+    "organization_id": "org-helios-bank",
+    "actor_role": "it_authority",
+    "speaker_role": "it_authority",
+    "speaker": "Priya Nair",
+    "record_type": "email",
+    "source_id": "src-mp03-a",
+    "source_version": "v1",
+    "stream_key": "email:mp03-a",
+    "dependence_group": "dep:mp03",
+    "occurred_at": "2026-11-16T10:00:00Z",
+    "first_known_at": "2026-11-16T10:05:00Z",
+    "filename": "mp03-a.eml",
+    "text": "From: Priya Nair (Director of Cloud Platform) <priya.nair@helios-bank.example>\nI have signed off and approved the annual commercial production order form for immediate billing.",
+    "terms_digest": "terms-helios-annual-order",
+    "structured_payload": {
+     "speaker": "Priya Nair",
+     "terms_digest": "terms-helios-annual-order"
+    },
+    "synthetic": true,
+    "actor_id": "act-priya-nair"
+   }
+  ],
+  "directory": [
+   {
+    "actor_id": "act-priya-nair",
+    "display_name": "Priya Nair",
+    "role": "it_authority"
+   }
+  ],
+  "service_records": [
+   {
+    "evidence_id": "ev-mp03a-spend-grant",
+    "key": {
+     "tenant": "tenant-helios-bench",
+     "organization": "org-helios-bank",
+     "actor": "act-priya-nair",
+     "capability": "approve_spend",
+     "action": "standard_offer",
+     "terms_digest": "terms-helios-annual-order"
+    },
+    "source": "delegation_service",
+    "revision": 1,
+    "event_time": 75,
+    "known_time": 75,
+    "valid_from": 75,
+    "valid_until": 190,
+    "effect": "grant"
+   }
+  ],
+  "service_approval": {
+   "evidence_id": "ev-mp03a-spend-app",
+   "key": {
+    "tenant": "tenant-helios-bench",
+    "organization": "org-helios-bank",
+    "actor": "act-priya-nair",
+    "capability": "approve_spend",
+    "action": "standard_offer",
+    "terms_digest": "terms-helios-annual-order"
+   },
+   "occurred_at": 80,
+   "known_at": 80,
+   "explicit": true
+  },
+  "dispatch_mutation": null,
+  "crm_proxy_fields": {
+   "stage_name": "Negotiation",
+   "account_has_active_approval": true,
+   "approval_status": "Approved",
+   "approval_valid_until": 190,
+   "explicit_deny": false
+  }
+ },
+ {
+  "case_id": "MP03-B",
+  "pair_id": "MP03",
+  "pair_index": "MP03-B",
+  "variant": "trap_treatment",
+  "category": "scope_and_entity",
+  "mechanism": "technical_role_vs_commercial_approval",
+  "title": "Technical sandbox capability vs commercial spend order form authority",
+  "decision_time": 100,
+  "dispatch_time": 103,
+  "tenant_id": "tenant-helios-bench",
+  "organization_id": "org-helios-bank",
+  "target_key": {
+   "tenant": "tenant-helios-bench",
+   "organization": "org-helios-bank",
+   "actor": "act-priya-nair",
+   "capability": "approve_spend",
+   "action": "standard_offer",
+   "terms_digest": "terms-helios-annual-order"
+  },
+  "fallback_pilot_key": null,
+  "amount_cents": 15000000,
+  "catalogue": [
+   "issue_commercial_order_form",
+   "request_budget_owner_signoff_or_run_sandbox"
+  ],
+  "communication_records": [
+   {
+    "record_id": "comm-mp03-b",
+    "tenant_id": "tenant-helios-bench",
+    "account_id": "acct-org-helios-bank",
+    "organization_id": "org-helios-bank",
+    "actor_role": "it_authority",
+    "speaker_role": "it_authority",
+    "speaker": "Priya Nair",
+    "record_type": "email",
+    "source_id": "src-mp03-b",
+    "source_version": "v1",
+    "stream_key": "email:mp03-b",
+    "dependence_group": "dep:mp03",
+    "occurred_at": "2026-11-16T10:00:00Z",
+    "first_known_at": "2026-11-16T10:05:00Z",
+    "filename": "mp03-b.eml",
+    "text": "From: Priya Nair (Director of Cloud Platform) <priya.nair@helios-bank.example>\nI have signed off and approved the annual commercial production order form for immediate billing.",
+    "terms_digest": "terms-helios-annual-order",
+    "structured_payload": {
+     "speaker": "Priya Nair",
+     "terms_digest": "terms-helios-annual-order"
+    },
+    "synthetic": true,
+    "actor_id": "act-priya-nair"
+   }
+  ],
+  "directory": [
+   {
+    "actor_id": "act-priya-nair",
+    "display_name": "Priya Nair",
+    "role": "it_authority"
+   }
+  ],
+  "service_records": [
+   {
+    "evidence_id": "ev-mp03b-sandbox-only",
+    "key": {
+     "tenant": "tenant-helios-bench",
+     "organization": "org-helios-bank",
+     "actor": "act-priya-nair",
+     "capability": "approve_sandbox",
+     "action": "isolated_pilot",
+     "terms_digest": "terms-helios-annual-order"
+    },
+    "source": "delegation_service",
+    "revision": 1,
+    "event_time": 75,
+    "known_time": 75,
+    "valid_from": 75,
+    "valid_until": 190,
+    "effect": "grant"
+   }
+  ],
+  "service_approval": {
+   "evidence_id": "ev-mp03b-sandbox-app",
+   "key": {
+    "tenant": "tenant-helios-bench",
+    "organization": "org-helios-bank",
+    "actor": "act-priya-nair",
+    "capability": "approve_sandbox",
+    "action": "isolated_pilot",
+    "terms_digest": "terms-helios-annual-order"
+   },
+   "occurred_at": 80,
+   "known_at": 80,
+   "explicit": true
+  },
+  "dispatch_mutation": null,
+  "crm_proxy_fields": {
+   "stage_name": "Negotiation",
+   "account_has_active_approval": true,
+   "approval_status": "Approved",
+   "approval_valid_until": 190,
+   "explicit_deny": false
+  }
+ },
+ {
+  "case_id": "CF-02A",
+  "pair_id": "MP04",
+  "pair_index": "MP04-A",
+  "variant": "valid_control",
+  "category": "temporal",
+  "mechanism": "approved_vs_revoked_before_send_k14",
+  "title": "Cloudflare Access proposal send valid vs revoked between recommendation and dispatch (K14)",
+  "decision_time": 100,
+  "dispatch_time": 110,
+  "tenant_id": "tenant-cloudflare-bench",
+  "organization_id": "org-f500-telco",
+  "target_key": {
+   "tenant": "tenant-cloudflare-bench",
+   "organization": "org-f500-telco",
+   "actor": "act-elena-vance",
+   "capability": "approve_spend",
+   "action": "standard_offer",
+   "terms_digest": "terms-access-proposal-send"
+  },
+  "fallback_pilot_key": null,
+  "amount_cents": 24000000,
+  "catalogue": [
+   "send_approved_proposal",
+   "invalidate_send_and_confirm_new_scope"
+  ],
+  "communication_records": [
+   {
+    "record_id": "comm-cf-02a",
+    "tenant_id": "tenant-cloudflare-bench",
+    "account_id": "acct-org-f500-telco",
+    "organization_id": "org-f500-telco",
+    "actor_role": "budget_owner",
+    "speaker_role": "budget_owner",
+    "speaker": "Elena Vance",
+    "record_type": "email",
+    "source_id": "src-cf-02a",
+    "source_version": "v1",
+    "stream_key": "email:cf-02a",
+    "dependence_group": "dep:mp04",
+    "occurred_at": "2026-11-16T10:00:00Z",
+    "first_known_at": "2026-11-16T10:05:00Z",
+    "filename": "cf-02a.eml",
+    "text": "From: Elena Vance (VP Finance) <elena.vance@telco-f500.example>\nPueden enviarnos la propuesta. Budget is approved to receive and execute the formal Access expansion proposal.",
+    "terms_digest": "terms-access-proposal-send",
+    "structured_payload": {
+     "speaker": "Elena Vance",
+     "terms_digest": "terms-access-proposal-send"
+    },
+    "synthetic": true,
+    "actor_id": "act-elena-vance"
+   }
+  ],
+  "directory": [
+   {
+    "actor_id": "act-elena-vance",
+    "display_name": "Elena Vance",
+    "role": "budget_owner"
+   }
+  ],
+  "service_records": [
+   {
+    "evidence_id": "ev-cf02a-grant",
+    "key": {
+     "tenant": "tenant-cloudflare-bench",
+     "organization": "org-f500-telco",
+     "actor": "act-elena-vance",
+     "capability": "approve_spend",
+     "action": "standard_offer",
+     "terms_digest": "terms-access-proposal-send"
+    },
+    "source": "registry",
+    "revision": 1,
+    "event_time": 80,
+    "known_time": 80,
+    "valid_from": 80,
+    "valid_until": 200,
+    "effect": "grant"
+   }
+  ],
+  "service_approval": {
+   "evidence_id": "ev-cf02a-app",
+   "key": {
+    "tenant": "tenant-cloudflare-bench",
+    "organization": "org-f500-telco",
+    "actor": "act-elena-vance",
+    "capability": "approve_spend",
+    "action": "standard_offer",
+    "terms_digest": "terms-access-proposal-send"
+   },
+   "occurred_at": 85,
+   "known_at": 85,
+   "explicit": true
+  },
+  "dispatch_mutation": null,
+  "crm_proxy_fields": {
+   "stage_name": "Proposal",
+   "account_has_active_approval": true,
+   "approval_status": "Approved",
+   "approval_valid_until": 200,
+   "explicit_deny": false
+  }
+ },
+ {
+  "case_id": "CF-02B",
+  "pair_id": "MP04",
+  "pair_index": "MP04-B",
+  "variant": "trap_treatment",
+  "category": "temporal",
+  "mechanism": "approved_vs_revoked_before_send_k14",
+  "title": "Cloudflare Access proposal send valid vs revoked between recommendation and dispatch (K14)",
+  "decision_time": 100,
+  "dispatch_time": 110,
+  "tenant_id": "tenant-cloudflare-bench",
+  "organization_id": "org-f500-telco",
+  "target_key": {
+   "tenant": "tenant-cloudflare-bench",
+   "organization": "org-f500-telco",
+   "actor": "act-elena-vance",
+   "capability": "approve_spend",
+   "action": "standard_offer",
+   "terms_digest": "terms-access-proposal-send"
+  },
+  "fallback_pilot_key": null,
+  "amount_cents": 24000000,
+  "catalogue": [
+   "send_approved_proposal",
+   "invalidate_send_and_confirm_new_scope"
+  ],
+  "communication_records": [
+   {
+    "record_id": "comm-cf-02b",
+    "tenant_id": "tenant-cloudflare-bench",
+    "account_id": "acct-org-f500-telco",
+    "organization_id": "org-f500-telco",
+    "actor_role": "budget_owner",
+    "speaker_role": "budget_owner",
+    "speaker": "Elena Vance",
+    "record_type": "email",
+    "source_id": "src-cf-02b",
+    "source_version": "v1",
+    "stream_key": "email:cf-02b",
+    "dependence_group": "dep:mp04",
+    "occurred_at": "2026-11-16T10:00:00Z",
+    "first_known_at": "2026-11-16T10:05:00Z",
+    "filename": "cf-02b.eml",
+    "text": "From: Elena Vance (VP Finance) <elena.vance@telco-f500.example>\nPueden enviarnos la propuesta. Budget is approved to receive and execute the formal Access expansion proposal.",
+    "terms_digest": "terms-access-proposal-send",
+    "structured_payload": {
+     "speaker": "Elena Vance",
+     "terms_digest": "terms-access-proposal-send"
+    },
+    "synthetic": true,
+    "actor_id": "act-elena-vance"
+   }
+  ],
+  "directory": [
+   {
+    "actor_id": "act-elena-vance",
+    "display_name": "Elena Vance",
+    "role": "budget_owner"
+   }
+  ],
+  "service_records": [
+   {
+    "evidence_id": "ev-cf02b-grant-t80",
+    "key": {
+     "tenant": "tenant-cloudflare-bench",
+     "organization": "org-f500-telco",
+     "actor": "act-elena-vance",
+     "capability": "approve_spend",
+     "action": "standard_offer",
+     "terms_digest": "terms-access-proposal-send"
+    },
+    "source": "registry",
+    "revision": 1,
+    "event_time": 80,
+    "known_time": 80,
+    "valid_from": 80,
+    "valid_until": 200,
+    "effect": "grant"
+   },
+   {
+    "evidence_id": "ev-cf02b-revoke-t105",
+    "key": {
+     "tenant": "tenant-cloudflare-bench",
+     "organization": "org-f500-telco",
+     "actor": "act-elena-vance",
+     "capability": "approve_spend",
+     "action": "standard_offer",
+     "terms_digest": "terms-access-proposal-send"
+    },
+    "source": "registry",
+    "revision": 2,
+    "event_time": 105,
+    "known_time": 105,
+    "valid_from": 105,
+    "valid_until": 200,
+    "effect": "revoke"
+   }
+  ],
+  "service_approval": {
+   "evidence_id": "ev-cf02b-app-t85",
+   "key": {
+    "tenant": "tenant-cloudflare-bench",
+    "organization": "org-f500-telco",
+    "actor": "act-elena-vance",
+    "capability": "approve_spend",
+    "action": "standard_offer",
+    "terms_digest": "terms-access-proposal-send"
+   },
+   "occurred_at": 85,
+   "known_at": 85,
+   "explicit": true
+  },
+  "dispatch_mutation": null,
+  "crm_proxy_fields": {
+   "stage_name": "Proposal",
+   "account_has_active_approval": true,
+   "approval_status": "Approved",
+   "approval_valid_until": 200,
+   "explicit_deny": false
+  }
+ },
+ {
+  "case_id": "MP05-A",
+  "pair_id": "MP05",
+  "pair_index": "MP05-A",
+  "variant": "valid_control",
+  "category": "temporal",
+  "mechanism": "active_vs_expired_window",
+  "title": "Active authorization window vs expired quarter-end budget authorization",
+  "decision_time": 100,
+  "dispatch_time": 105,
+  "tenant_id": "tenant-vectra-bench",
+  "organization_id": "org-vectra-logistics",
+  "target_key": {
+   "tenant": "tenant-vectra-bench",
+   "organization": "org-vectra-logistics",
+   "actor": "act-david-kim",
+   "capability": "approve_spend",
+   "action": "standard_offer",
+   "terms_digest": "terms-vectra-q3-cap"
+  },
+  "fallback_pilot_key": null,
+  "amount_cents": 9500000,
+  "catalogue": [
+   "send_approved_proposal",
+   "invalidate_send_and_confirm_new_scope"
+  ],
+  "communication_records": [
+   {
+    "record_id": "comm-mp05-a",
+    "tenant_id": "tenant-vectra-bench",
+    "account_id": "acct-org-vectra-logistics",
+    "organization_id": "org-vectra-logistics",
+    "actor_role": "budget_owner",
+    "speaker_role": "budget_owner",
+    "speaker": "David Kim",
+    "record_type": "email",
+    "source_id": "src-mp05-a",
+    "source_version": "v1",
+    "stream_key": "email:mp05-a",
+    "dependence_group": "dep:mp05",
+    "occurred_at": "2026-11-16T10:00:00Z",
+    "first_known_at": "2026-11-16T10:05:00Z",
+    "filename": "mp05-a.eml",
+    "text": "From: David Kim (CFO) <d.kim@vectra-logistics.example>\nBudget sign-off is approved under our Q3 capital allocation window; you may dispatch the commercial agreement.",
+    "terms_digest": "terms-vectra-q3-cap",
+    "structured_payload": {
+     "speaker": "David Kim",
+     "terms_digest": "terms-vectra-q3-cap"
+    },
+    "synthetic": true,
+    "actor_id": "act-david-kim"
+   }
+  ],
+  "directory": [
+   {
+    "actor_id": "act-david-kim",
+    "display_name": "David Kim",
+    "role": "budget_owner"
+   }
+  ],
+  "service_records": [
+   {
+    "evidence_id": "ev-mp05a-active-grant",
+    "key": {
+     "tenant": "tenant-vectra-bench",
+     "organization": "org-vectra-logistics",
+     "actor": "act-david-kim",
+     "capability": "approve_spend",
+     "action": "standard_offer",
+     "terms_digest": "terms-vectra-q3-cap"
+    },
+    "source": "registry",
+    "revision": 1,
+    "event_time": 60,
+    "known_time": 60,
+    "valid_from": 60,
+    "valid_until": 160,
+    "effect": "grant"
+   }
+  ],
+  "service_approval": {
+   "evidence_id": "ev-mp05a-app",
+   "key": {
+    "tenant": "tenant-vectra-bench",
+    "organization": "org-vectra-logistics",
+    "actor": "act-david-kim",
+    "capability": "approve_spend",
+    "action": "standard_offer",
+    "terms_digest": "terms-vectra-q3-cap"
+   },
+   "occurred_at": 70,
+   "known_at": 70,
+   "explicit": true
+  },
+  "dispatch_mutation": null,
+  "crm_proxy_fields": {
+   "stage_name": "Proposal",
+   "account_has_active_approval": true,
+   "approval_status": "Approved",
+   "approval_valid_until": 160,
+   "explicit_deny": false
+  }
+ },
+ {
+  "case_id": "MP05-B",
+  "pair_id": "MP05",
+  "pair_index": "MP05-B",
+  "variant": "trap_treatment",
+  "category": "temporal",
+  "mechanism": "active_vs_expired_window",
+  "title": "Active authorization window vs expired quarter-end budget authorization",
+  "decision_time": 100,
+  "dispatch_time": 105,
+  "tenant_id": "tenant-vectra-bench",
+  "organization_id": "org-vectra-logistics",
+  "target_key": {
+   "tenant": "tenant-vectra-bench",
+   "organization": "org-vectra-logistics",
+   "actor": "act-david-kim",
+   "capability": "approve_spend",
+   "action": "standard_offer",
+   "terms_digest": "terms-vectra-q3-cap"
+  },
+  "fallback_pilot_key": null,
+  "amount_cents": 9500000,
+  "catalogue": [
+   "send_approved_proposal",
+   "invalidate_send_and_confirm_new_scope"
+  ],
+  "communication_records": [
+   {
+    "record_id": "comm-mp05-b",
+    "tenant_id": "tenant-vectra-bench",
+    "account_id": "acct-org-vectra-logistics",
+    "organization_id": "org-vectra-logistics",
+    "actor_role": "budget_owner",
+    "speaker_role": "budget_owner",
+    "speaker": "David Kim",
+    "record_type": "email",
+    "source_id": "src-mp05-b",
+    "source_version": "v1",
+    "stream_key": "email:mp05-b",
+    "dependence_group": "dep:mp05",
+    "occurred_at": "2026-11-16T10:00:00Z",
+    "first_known_at": "2026-11-16T10:05:00Z",
+    "filename": "mp05-b.eml",
+    "text": "From: David Kim (CFO) <d.kim@vectra-logistics.example>\nBudget sign-off is approved under our Q3 capital allocation window; you may dispatch the commercial agreement.",
+    "terms_digest": "terms-vectra-q3-cap",
+    "structured_payload": {
+     "speaker": "David Kim",
+     "terms_digest": "terms-vectra-q3-cap"
+    },
+    "synthetic": true,
+    "actor_id": "act-david-kim"
+   }
+  ],
+  "directory": [
+   {
+    "actor_id": "act-david-kim",
+    "display_name": "David Kim",
+    "role": "budget_owner"
+   }
+  ],
+  "service_records": [
+   {
+    "evidence_id": "ev-mp05b-expired-grant",
+    "key": {
+     "tenant": "tenant-vectra-bench",
+     "organization": "org-vectra-logistics",
+     "actor": "act-david-kim",
+     "capability": "approve_spend",
+     "action": "standard_offer",
+     "terms_digest": "terms-vectra-q3-cap"
+    },
+    "source": "registry",
+    "revision": 1,
+    "event_time": 50,
+    "known_time": 50,
+    "valid_from": 50,
+    "valid_until": 95,
+    "effect": "grant"
+   }
+  ],
+  "service_approval": {
+   "evidence_id": "ev-mp05b-app",
+   "key": {
+    "tenant": "tenant-vectra-bench",
+    "organization": "org-vectra-logistics",
+    "actor": "act-david-kim",
+    "capability": "approve_spend",
+    "action": "standard_offer",
+    "terms_digest": "terms-vectra-q3-cap"
+   },
+   "occurred_at": 60,
+   "known_at": 60,
+   "explicit": true
+  },
+  "dispatch_mutation": null,
+  "crm_proxy_fields": {
+   "stage_name": "Proposal",
+   "account_has_active_approval": true,
+   "approval_status": "Approved",
+   "approval_valid_until": 95,
+   "explicit_deny": false
+  }
+ },
+ {
+  "case_id": "MP06-A",
+  "pair_id": "MP06",
+  "pair_index": "MP06-A",
+  "variant": "valid_control",
+  "category": "temporal",
+  "mechanism": "concurrent_terms_change_between_recommendation_and_effect",
+  "title": "Unchanged terms at dispatch vs concurrent commercial terms/amount mutation before effect",
+  "decision_time": 100,
+  "dispatch_time": 108,
+  "tenant_id": "tenant-aurum-bench",
+  "organization_id": "org-aurum-health",
+  "target_key": {
+   "tenant": "tenant-aurum-bench",
+   "organization": "org-aurum-health",
+   "actor": "act-hannah-abbott",
+   "capability": "approve_spend",
+   "action": "standard_offer",
+   "terms_digest": "terms-aurum-v1-approved"
+  },
+  "fallback_pilot_key": null,
+  "amount_cents": 12000000,
+  "catalogue": [
+   "send_approved_proposal",
+   "invalidate_send_and_confirm_new_scope"
+  ],
+  "communication_records": [
+   {
+    "record_id": "comm-mp06-a",
+    "tenant_id": "tenant-aurum-bench",
+    "account_id": "acct-org-aurum-health",
+    "organization_id": "org-aurum-health",
+    "actor_role": "budget_owner",
+    "speaker_role": "budget_owner",
+    "speaker": "Hannah Abbott",
+    "record_type": "email",
+    "source_id": "src-mp06-a",
+    "source_version": "v1",
+    "stream_key": "email:mp06-a",
+    "dependence_group": "dep:mp06",
+    "occurred_at": "2026-11-16T10:00:00Z",
+    "first_known_at": "2026-11-16T10:05:00Z",
+    "filename": "mp06-a.eml",
+    "text": "From: Hannah Abbott (VP Finance) <h.abbott@aurum-health.example>\nFinance has cleared and approved the budget for the standard annual subscription terms for immediate execution.",
+    "terms_digest": "terms-aurum-v1-approved",
+    "structured_payload": {
+     "speaker": "Hannah Abbott",
+     "terms_digest": "terms-aurum-v1-approved"
+    },
+    "synthetic": true,
+    "actor_id": "act-hannah-abbott"
+   }
+  ],
+  "directory": [
+   {
+    "actor_id": "act-hannah-abbott",
+    "display_name": "Hannah Abbott",
+    "role": "budget_owner"
+   }
+  ],
+  "service_records": [
+   {
+    "evidence_id": "ev-mp06a-grant-v1",
+    "key": {
+     "tenant": "tenant-aurum-bench",
+     "organization": "org-aurum-health",
+     "actor": "act-hannah-abbott",
+     "capability": "approve_spend",
+     "action": "standard_offer",
+     "terms_digest": "terms-aurum-v1-approved"
+    },
+    "source": "buyer_admin",
+    "revision": 1,
+    "event_time": 80,
+    "known_time": 80,
+    "valid_from": 80,
+    "valid_until": 200,
+    "effect": "grant"
+   }
+  ],
+  "service_approval": {
+   "evidence_id": "ev-mp06a-app-v1",
+   "key": {
+    "tenant": "tenant-aurum-bench",
+    "organization": "org-aurum-health",
+    "actor": "act-hannah-abbott",
+    "capability": "approve_spend",
+    "action": "standard_offer",
+    "terms_digest": "terms-aurum-v1-approved"
+   },
+   "occurred_at": 84,
+   "known_at": 84,
+   "explicit": true
+  },
+  "dispatch_mutation": null,
+  "crm_proxy_fields": {
+   "stage_name": "Negotiation",
+   "account_has_active_approval": true,
+   "approval_status": "Approved",
+   "approval_valid_until": 200,
+   "explicit_deny": false
+  }
+ },
+ {
+  "case_id": "MP06-B",
+  "pair_id": "MP06",
+  "pair_index": "MP06-B",
+  "variant": "trap_treatment",
+  "category": "temporal",
+  "mechanism": "concurrent_terms_change_between_recommendation_and_effect",
+  "title": "Unchanged terms at dispatch vs concurrent commercial terms/amount mutation before effect",
+  "decision_time": 100,
+  "dispatch_time": 108,
+  "tenant_id": "tenant-aurum-bench",
+  "organization_id": "org-aurum-health",
+  "target_key": {
+   "tenant": "tenant-aurum-bench",
+   "organization": "org-aurum-health",
+   "actor": "act-hannah-abbott",
+   "capability": "approve_spend",
+   "action": "standard_offer",
+   "terms_digest": "terms-aurum-v1-approved"
+  },
+  "fallback_pilot_key": null,
+  "amount_cents": 12000000,
+  "catalogue": [
+   "send_approved_proposal",
+   "invalidate_send_and_confirm_new_scope"
+  ],
+  "communication_records": [
+   {
+    "record_id": "comm-mp06-b",
+    "tenant_id": "tenant-aurum-bench",
+    "account_id": "acct-org-aurum-health",
+    "organization_id": "org-aurum-health",
+    "actor_role": "budget_owner",
+    "speaker_role": "budget_owner",
+    "speaker": "Hannah Abbott",
+    "record_type": "email",
+    "source_id": "src-mp06-b",
+    "source_version": "v1",
+    "stream_key": "email:mp06-b",
+    "dependence_group": "dep:mp06",
+    "occurred_at": "2026-11-16T10:00:00Z",
+    "first_known_at": "2026-11-16T10:05:00Z",
+    "filename": "mp06-b.eml",
+    "text": "From: Hannah Abbott (VP Finance) <h.abbott@aurum-health.example>\nFinance has cleared and approved the budget for the standard annual subscription terms for immediate execution.",
+    "terms_digest": "terms-aurum-v1-approved",
+    "structured_payload": {
+     "speaker": "Hannah Abbott",
+     "terms_digest": "terms-aurum-v1-approved"
+    },
+    "synthetic": true,
+    "actor_id": "act-hannah-abbott"
+   }
+  ],
+  "directory": [
+   {
+    "actor_id": "act-hannah-abbott",
+    "display_name": "Hannah Abbott",
+    "role": "budget_owner"
+   }
+  ],
+  "service_records": [
+   {
+    "evidence_id": "ev-mp06b-grant-v1",
+    "key": {
+     "tenant": "tenant-aurum-bench",
+     "organization": "org-aurum-health",
+     "actor": "act-hannah-abbott",
+     "capability": "approve_spend",
+     "action": "standard_offer",
+     "terms_digest": "terms-aurum-v1-approved"
+    },
+    "source": "buyer_admin",
+    "revision": 1,
+    "event_time": 80,
+    "known_time": 80,
+    "valid_from": 80,
+    "valid_until": 200,
+    "effect": "grant"
+   }
+  ],
+  "service_approval": {
+   "evidence_id": "ev-mp06b-app-v1",
+   "key": {
+    "tenant": "tenant-aurum-bench",
+    "organization": "org-aurum-health",
+    "actor": "act-hannah-abbott",
+    "capability": "approve_spend",
+    "action": "standard_offer",
+    "terms_digest": "terms-aurum-v1-approved"
+   },
+   "occurred_at": 84,
+   "known_at": 84,
+   "explicit": true
+  },
+  "dispatch_mutation": {
+   "evidence_id": "ev-mp06b-concurrent-mutation-t106",
+   "new_terms_digest": "terms-aurum-v2-uplift",
+   "new_amount_cents": 16500000
+  },
+  "crm_proxy_fields": {
+   "stage_name": "Negotiation",
+   "account_has_active_approval": true,
+   "approval_status": "Approved",
+   "approval_valid_until": 200,
+   "explicit_deny": false
+  }
+ },
+ {
+  "case_id": "MP07-A",
+  "pair_id": "MP07",
+  "pair_index": "MP07-A",
+  "variant": "valid_control",
+  "category": "evidence",
+  "mechanism": "authoritative_source_vs_indirect_mention",
+  "title": "Trusted registry backing vs indirect champion hearsay without trusted record",
+  "decision_time": 100,
+  "dispatch_time": 104,
+  "tenant_id": "tenant-kestrel-bench",
+  "organization_id": "org-kestrel-mfg",
+  "target_key": {
+   "tenant": "tenant-kestrel-bench",
+   "organization": "org-kestrel-mfg",
+   "actor": "act-sarah-jenkins",
+   "capability": "approve_spend",
+   "action": "standard_offer",
+   "terms_digest": "terms-kestrel-annual"
+  },
+  "fallback_pilot_key": null,
+  "amount_cents": 14000000,
+  "catalogue": [
+   "send_approved_proposal",
+   "escalate_conflicting_sources_for_clarification"
+  ],
+  "communication_records": [
+   {
+    "record_id": "comm-mp07-a",
+    "tenant_id": "tenant-kestrel-bench",
+    "account_id": "acct-org-kestrel-mfg",
+    "organization_id": "org-kestrel-mfg",
+    "actor_role": "operations_champion",
+    "speaker_role": "operations_champion",
+    "speaker": "Lucas Meyer",
+    "record_type": "email",
+    "source_id": "src-mp07-a",
+    "source_version": "v1",
+    "stream_key": "email:mp07-a",
+    "dependence_group": "dep:mp07",
+    "occurred_at": "2026-11-16T10:00:00Z",
+    "first_known_at": "2026-11-16T10:05:00Z",
+    "filename": "mp07-a.eml",
+    "text": "From: Lucas Meyer (Operations Champion) <l.meyer@kestrel-mfg.example>\nAccording to Sarah Jenkins (CFO), finance has approved the $140,000 annual budget and cleared the order.",
+    "terms_digest": "terms-kestrel-annual",
+    "structured_payload": {
+     "speaker": "Lucas Meyer",
+     "terms_digest": "terms-kestrel-annual"
+    },
+    "synthetic": true,
+    "actor_id": "act-lucas-meyer"
+   }
+  ],
+  "directory": [
+   {
+    "actor_id": "act-lucas-meyer",
+    "display_name": "Lucas Meyer",
+    "role": "operations_champion"
+   },
+   {
+    "actor_id": "act-sarah-jenkins",
+    "display_name": "Sarah Jenkins",
+    "role": "budget_owner"
+   }
+  ],
+  "service_records": [
+   {
+    "evidence_id": "ev-mp07a-cfo-trusted",
+    "key": {
+     "tenant": "tenant-kestrel-bench",
+     "organization": "org-kestrel-mfg",
+     "actor": "act-sarah-jenkins",
+     "capability": "approve_spend",
+     "action": "standard_offer",
+     "terms_digest": "terms-kestrel-annual"
+    },
+    "source": "registry",
+    "revision": 1,
+    "event_time": 88,
+    "known_time": 88,
+    "valid_from": 88,
+    "valid_until": 200,
+    "effect": "grant"
+   }
+  ],
+  "service_approval": {
+   "evidence_id": "ev-mp07a-cfo-app",
+   "key": {
+    "tenant": "tenant-kestrel-bench",
+    "organization": "org-kestrel-mfg",
+    "actor": "act-sarah-jenkins",
+    "capability": "approve_spend",
+    "action": "standard_offer",
+    "terms_digest": "terms-kestrel-annual"
+   },
+   "occurred_at": 90,
+   "known_at": 90,
+   "explicit": true
+  },
+  "dispatch_mutation": null,
+  "crm_proxy_fields": {
+   "stage_name": "Proposal",
+   "account_has_active_approval": true,
+   "approval_status": "Approved",
+   "approval_valid_until": 200,
+   "explicit_deny": false
+  }
+ },
+ {
+  "case_id": "MP07-B",
+  "pair_id": "MP07",
+  "pair_index": "MP07-B",
+  "variant": "trap_treatment",
+  "category": "evidence",
+  "mechanism": "authoritative_source_vs_indirect_mention",
+  "title": "Trusted registry backing vs indirect champion hearsay without trusted record",
+  "decision_time": 100,
+  "dispatch_time": 104,
+  "tenant_id": "tenant-kestrel-bench",
+  "organization_id": "org-kestrel-mfg",
+  "target_key": {
+   "tenant": "tenant-kestrel-bench",
+   "organization": "org-kestrel-mfg",
+   "actor": "act-sarah-jenkins",
+   "capability": "approve_spend",
+   "action": "standard_offer",
+   "terms_digest": "terms-kestrel-annual"
+  },
+  "fallback_pilot_key": null,
+  "amount_cents": 14000000,
+  "catalogue": [
+   "send_approved_proposal",
+   "escalate_conflicting_sources_for_clarification"
+  ],
+  "communication_records": [
+   {
+    "record_id": "comm-mp07-b",
+    "tenant_id": "tenant-kestrel-bench",
+    "account_id": "acct-org-kestrel-mfg",
+    "organization_id": "org-kestrel-mfg",
+    "actor_role": "operations_champion",
+    "speaker_role": "operations_champion",
+    "speaker": "Lucas Meyer",
+    "record_type": "email",
+    "source_id": "src-mp07-b",
+    "source_version": "v1",
+    "stream_key": "email:mp07-b",
+    "dependence_group": "dep:mp07",
+    "occurred_at": "2026-11-16T10:00:00Z",
+    "first_known_at": "2026-11-16T10:05:00Z",
+    "filename": "mp07-b.eml",
+    "text": "From: Lucas Meyer (Operations Champion) <l.meyer@kestrel-mfg.example>\nAccording to Sarah Jenkins (CFO), finance has approved the $140,000 annual budget and cleared the order.",
+    "terms_digest": "terms-kestrel-annual",
+    "structured_payload": {
+     "speaker": "Lucas Meyer",
+     "terms_digest": "terms-kestrel-annual"
+    },
+    "synthetic": true,
+    "actor_id": "act-lucas-meyer"
+   }
+  ],
+  "directory": [
+   {
+    "actor_id": "act-lucas-meyer",
+    "display_name": "Lucas Meyer",
+    "role": "operations_champion"
+   },
+   {
+    "actor_id": "act-sarah-jenkins",
+    "display_name": "Sarah Jenkins",
+    "role": "budget_owner"
+   }
+  ],
+  "service_records": [
+   {
+    "evidence_id": "ev-mp07b-untrusted-note",
+    "key": {
+     "tenant": "tenant-kestrel-bench",
+     "organization": "org-kestrel-mfg",
+     "actor": "act-sarah-jenkins",
+     "capability": "approve_spend",
+     "action": "standard_offer",
+     "terms_digest": "terms-kestrel-annual"
+    },
+    "source": "crm_unverified_note",
+    "revision": 1,
+    "event_time": 88,
+    "known_time": 88,
+    "valid_from": 88,
+    "valid_until": 200,
+    "effect": "grant"
+   }
+  ],
+  "service_approval": {
+   "evidence_id": "ev-mp07b-unverified-app",
+   "key": {
+    "tenant": "tenant-kestrel-bench",
+    "organization": "org-kestrel-mfg",
+    "actor": "act-sarah-jenkins",
+    "capability": "approve_spend",
+    "action": "standard_offer",
+    "terms_digest": "terms-kestrel-annual"
+   },
+   "occurred_at": 90,
+   "known_at": 90,
+   "explicit": true
+  },
+  "dispatch_mutation": null,
+  "crm_proxy_fields": {
+   "stage_name": "Proposal",
+   "account_has_active_approval": true,
+   "approval_status": "Approved",
+   "approval_valid_until": 200,
+   "explicit_deny": false
+  }
+ },
+ {
+  "case_id": "MP08-A",
+  "pair_id": "MP08",
+  "pair_index": "MP08-A",
+  "variant": "valid_control",
+  "category": "evidence",
+  "mechanism": "consistent_vs_conflicting_trusted_sources",
+  "title": "Consistent multi-source grant vs cross-source conflict (buyer_admin grant vs registry explicit_deny)",
+  "decision_time": 100,
+  "dispatch_time": 105,
+  "tenant_id": "tenant-meridian-bench",
+  "organization_id": "org-meridian-bio",
+  "target_key": {
+   "tenant": "tenant-meridian-bench",
+   "organization": "org-meridian-bio",
+   "actor": "act-sofia-rossi",
+   "capability": "approve_spend",
+   "action": "standard_offer",
+   "terms_digest": "terms-meridian-std"
+  },
+  "fallback_pilot_key": null,
+  "amount_cents": 11000000,
+  "catalogue": [
+   "send_approved_proposal",
+   "escalate_conflicting_sources_for_clarification"
+  ],
+  "communication_records": [
+   {
+    "record_id": "comm-mp08-a",
+    "tenant_id": "tenant-meridian-bench",
+    "account_id": "acct-org-meridian-bio",
+    "organization_id": "org-meridian-bio",
+    "actor_role": "budget_owner",
+    "speaker_role": "budget_owner",
+    "speaker": "Sofia Rossi",
+    "record_type": "email",
+    "source_id": "src-mp08-a",
+    "source_version": "v1",
+    "stream_key": "email:mp08-a",
+    "dependence_group": "dep:mp08",
+    "occurred_at": "2026-11-16T10:00:00Z",
+    "first_known_at": "2026-11-16T10:05:00Z",
+    "filename": "mp08-a.eml",
+    "text": "From: Sofia Rossi (VP Finance) <s.rossi@meridian-bio.example>\nWe have approved the commercial budget and authorized the standard deployment package.",
+    "terms_digest": "terms-meridian-std",
+    "structured_payload": {
+     "speaker": "Sofia Rossi",
+     "terms_digest": "terms-meridian-std"
+    },
+    "synthetic": true,
+    "actor_id": "act-sofia-rossi"
+   }
+  ],
+  "directory": [
+   {
+    "actor_id": "act-sofia-rossi",
+    "display_name": "Sofia Rossi",
+    "role": "budget_owner"
+   }
+  ],
+  "service_records": [
+   {
+    "evidence_id": "ev-mp08a-admin-grant",
+    "key": {
+     "tenant": "tenant-meridian-bench",
+     "organization": "org-meridian-bio",
+     "actor": "act-sofia-rossi",
+     "capability": "approve_spend",
+     "action": "standard_offer",
+     "terms_digest": "terms-meridian-std"
+    },
+    "source": "buyer_admin",
+    "revision": 1,
+    "event_time": 80,
+    "known_time": 80,
+    "valid_from": 80,
+    "valid_until": 200,
+    "effect": "grant"
+   },
+   {
+    "evidence_id": "ev-mp08a-reg-grant",
+    "key": {
+     "tenant": "tenant-meridian-bench",
+     "organization": "org-meridian-bio",
+     "actor": "act-sofia-rossi",
+     "capability": "approve_spend",
+     "action": "standard_offer",
+     "terms_digest": "terms-meridian-std"
+    },
+    "source": "registry",
+    "revision": 1,
+    "event_time": 82,
+    "known_time": 82,
+    "valid_from": 82,
+    "valid_until": 200,
+    "effect": "grant"
+   }
+  ],
+  "service_approval": {
+   "evidence_id": "ev-mp08a-app",
+   "key": {
+    "tenant": "tenant-meridian-bench",
+    "organization": "org-meridian-bio",
+    "actor": "act-sofia-rossi",
+    "capability": "approve_spend",
+    "action": "standard_offer",
+    "terms_digest": "terms-meridian-std"
+   },
+   "occurred_at": 85,
+   "known_at": 85,
+   "explicit": true
+  },
+  "dispatch_mutation": null,
+  "crm_proxy_fields": {
+   "stage_name": "Proposal",
+   "account_has_active_approval": true,
+   "approval_status": "Approved",
+   "approval_valid_until": 200,
+   "explicit_deny": false
+  }
+ },
+ {
+  "case_id": "MP08-B",
+  "pair_id": "MP08",
+  "pair_index": "MP08-B",
+  "variant": "trap_treatment",
+  "category": "evidence",
+  "mechanism": "consistent_vs_conflicting_trusted_sources",
+  "title": "Consistent multi-source grant vs cross-source conflict (buyer_admin grant vs registry explicit_deny)",
+  "decision_time": 100,
+  "dispatch_time": 105,
+  "tenant_id": "tenant-meridian-bench",
+  "organization_id": "org-meridian-bio",
+  "target_key": {
+   "tenant": "tenant-meridian-bench",
+   "organization": "org-meridian-bio",
+   "actor": "act-sofia-rossi",
+   "capability": "approve_spend",
+   "action": "standard_offer",
+   "terms_digest": "terms-meridian-std"
+  },
+  "fallback_pilot_key": null,
+  "amount_cents": 11000000,
+  "catalogue": [
+   "send_approved_proposal",
+   "escalate_conflicting_sources_for_clarification"
+  ],
+  "communication_records": [
+   {
+    "record_id": "comm-mp08-b",
+    "tenant_id": "tenant-meridian-bench",
+    "account_id": "acct-org-meridian-bio",
+    "organization_id": "org-meridian-bio",
+    "actor_role": "budget_owner",
+    "speaker_role": "budget_owner",
+    "speaker": "Sofia Rossi",
+    "record_type": "email",
+    "source_id": "src-mp08-b",
+    "source_version": "v1",
+    "stream_key": "email:mp08-b",
+    "dependence_group": "dep:mp08",
+    "occurred_at": "2026-11-16T10:00:00Z",
+    "first_known_at": "2026-11-16T10:05:00Z",
+    "filename": "mp08-b.eml",
+    "text": "From: Sofia Rossi (VP Finance) <s.rossi@meridian-bio.example>\nWe have approved the commercial budget and authorized the standard deployment package.",
+    "terms_digest": "terms-meridian-std",
+    "structured_payload": {
+     "speaker": "Sofia Rossi",
+     "terms_digest": "terms-meridian-std"
+    },
+    "synthetic": true,
+    "actor_id": "act-sofia-rossi"
+   }
+  ],
+  "directory": [
+   {
+    "actor_id": "act-sofia-rossi",
+    "display_name": "Sofia Rossi",
+    "role": "budget_owner"
+   }
+  ],
+  "service_records": [
+   {
+    "evidence_id": "ev-mp08b-admin-grant",
+    "key": {
+     "tenant": "tenant-meridian-bench",
+     "organization": "org-meridian-bio",
+     "actor": "act-sofia-rossi",
+     "capability": "approve_spend",
+     "action": "standard_offer",
+     "terms_digest": "terms-meridian-std"
+    },
+    "source": "buyer_admin",
+    "revision": 1,
+    "event_time": 80,
+    "known_time": 80,
+    "valid_from": 80,
+    "valid_until": 200,
+    "effect": "grant"
+   },
+   {
+    "evidence_id": "ev-mp08b-admin-conflict-revoke",
+    "key": {
+     "tenant": "tenant-meridian-bench",
+     "organization": "org-meridian-bio",
+     "actor": "act-sofia-rossi",
+     "capability": "approve_spend",
+     "action": "standard_offer",
+     "terms_digest": "terms-meridian-std"
+    },
+    "source": "buyer_admin",
+    "revision": 1,
+    "event_time": 81,
+    "known_time": 81,
+    "valid_from": 81,
+    "valid_until": 200,
+    "effect": "revoke"
+   }
+  ],
+  "service_approval": {
+   "evidence_id": "ev-mp08b-app",
+   "key": {
+    "tenant": "tenant-meridian-bench",
+    "organization": "org-meridian-bio",
+    "actor": "act-sofia-rossi",
+    "capability": "approve_spend",
+    "action": "standard_offer",
+    "terms_digest": "terms-meridian-std"
+   },
+   "occurred_at": 85,
+   "known_at": 85,
+   "explicit": true
+  },
+  "dispatch_mutation": null,
+  "crm_proxy_fields": {
+   "stage_name": "Proposal",
+   "account_has_active_approval": true,
+   "approval_status": "Approved",
+   "approval_valid_until": 200,
+   "explicit_deny": false
+  }
+ },
+ {
+  "case_id": "MP09-A",
+  "pair_id": "MP09",
+  "pair_index": "MP09-A",
+  "variant": "valid_control",
+  "category": "evidence",
+  "mechanism": "structured_explicit_approval_vs_missing_structured_signal",
+  "title": "Explicit structured approval receipt present vs missing structured approval receipt",
+  "decision_time": 100,
+  "dispatch_time": 105,
+  "tenant_id": "tenant-boreal-bench",
+  "organization_id": "org-boreal-energy",
+  "target_key": {
+   "tenant": "tenant-boreal-bench",
+   "organization": "org-boreal-energy",
+   "actor": "act-victor-chen",
+   "capability": "approve_spend",
+   "action": "standard_offer",
+   "terms_digest": "terms-boreal-std"
+  },
+  "fallback_pilot_key": null,
+  "amount_cents": 13000000,
+  "catalogue": [
+   "send_approved_proposal",
+   "escalate_conflicting_sources_for_clarification"
+  ],
+  "communication_records": [
+   {
+    "record_id": "comm-mp09-a",
+    "tenant_id": "tenant-boreal-bench",
+    "account_id": "acct-org-boreal-energy",
+    "organization_id": "org-boreal-energy",
+    "actor_role": "budget_owner",
+    "speaker_role": "budget_owner",
+    "speaker": "Victor Chen",
+    "record_type": "email",
+    "source_id": "src-mp09-a",
+    "source_version": "v1",
+    "stream_key": "email:mp09-a",
+    "dependence_group": "dep:mp09",
+    "occurred_at": "2026-11-16T10:00:00Z",
+    "first_known_at": "2026-11-16T10:05:00Z",
+    "filename": "mp09-a.eml",
+    "text": "From: Victor Chen (VP Finance) <v.chen@boreal-energy.example>\nBudget is approved on our side; we are good to go with the standard commercial rollout.",
+    "terms_digest": "terms-boreal-std",
+    "structured_payload": {
+     "speaker": "Victor Chen",
+     "terms_digest": "terms-boreal-std"
+    },
+    "synthetic": true,
+    "actor_id": "act-victor-chen"
+   }
+  ],
+  "directory": [
+   {
+    "actor_id": "act-victor-chen",
+    "display_name": "Victor Chen",
+    "role": "budget_owner"
+   }
+  ],
+  "service_records": [
+   {
+    "evidence_id": "ev-mp09a-grant",
+    "key": {
+     "tenant": "tenant-boreal-bench",
+     "organization": "org-boreal-energy",
+     "actor": "act-victor-chen",
+     "capability": "approve_spend",
+     "action": "standard_offer",
+     "terms_digest": "terms-boreal-std"
+    },
+    "source": "registry",
+    "revision": 1,
+    "event_time": 70,
+    "known_time": 70,
+    "valid_from": 70,
+    "valid_until": 200,
+    "effect": "grant"
+   }
+  ],
+  "service_approval": {
+   "evidence_id": "ev-mp09a-explicit-app",
+   "key": {
+    "tenant": "tenant-boreal-bench",
+    "organization": "org-boreal-energy",
+    "actor": "act-victor-chen",
+    "capability": "approve_spend",
+    "action": "standard_offer",
+    "terms_digest": "terms-boreal-std"
+   },
+   "occurred_at": 80,
+   "known_at": 80,
+   "explicit": true
+  },
+  "dispatch_mutation": null,
+  "crm_proxy_fields": {
+   "stage_name": "Proposal",
+   "account_has_active_approval": true,
+   "approval_status": "Approved",
+   "approval_valid_until": 200,
+   "explicit_deny": false
+  }
+ },
+ {
+  "case_id": "MP09-B",
+  "pair_id": "MP09",
+  "pair_index": "MP09-B",
+  "variant": "trap_treatment",
+  "category": "evidence",
+  "mechanism": "structured_explicit_approval_vs_missing_structured_signal",
+  "title": "Explicit structured approval receipt present vs missing structured approval receipt",
+  "decision_time": 100,
+  "dispatch_time": 105,
+  "tenant_id": "tenant-boreal-bench",
+  "organization_id": "org-boreal-energy",
+  "target_key": {
+   "tenant": "tenant-boreal-bench",
+   "organization": "org-boreal-energy",
+   "actor": "act-victor-chen",
+   "capability": "approve_spend",
+   "action": "standard_offer",
+   "terms_digest": "terms-boreal-std"
+  },
+  "fallback_pilot_key": null,
+  "amount_cents": 13000000,
+  "catalogue": [
+   "send_approved_proposal",
+   "escalate_conflicting_sources_for_clarification"
+  ],
+  "communication_records": [
+   {
+    "record_id": "comm-mp09-b",
+    "tenant_id": "tenant-boreal-bench",
+    "account_id": "acct-org-boreal-energy",
+    "organization_id": "org-boreal-energy",
+    "actor_role": "budget_owner",
+    "speaker_role": "budget_owner",
+    "speaker": "Victor Chen",
+    "record_type": "email",
+    "source_id": "src-mp09-b",
+    "source_version": "v1",
+    "stream_key": "email:mp09-b",
+    "dependence_group": "dep:mp09",
+    "occurred_at": "2026-11-16T10:00:00Z",
+    "first_known_at": "2026-11-16T10:05:00Z",
+    "filename": "mp09-b.eml",
+    "text": "From: Victor Chen (VP Finance) <v.chen@boreal-energy.example>\nBudget is approved on our side; we are good to go with the standard commercial rollout.",
+    "terms_digest": "terms-boreal-std",
+    "structured_payload": {
+     "speaker": "Victor Chen",
+     "terms_digest": "terms-boreal-std"
+    },
+    "synthetic": true,
+    "actor_id": "act-victor-chen"
+   }
+  ],
+  "directory": [
+   {
+    "actor_id": "act-victor-chen",
+    "display_name": "Victor Chen",
+    "role": "budget_owner"
+   }
+  ],
+  "service_records": [
+   {
+    "evidence_id": "ev-mp09b-grant-only",
+    "key": {
+     "tenant": "tenant-boreal-bench",
+     "organization": "org-boreal-energy",
+     "actor": "act-victor-chen",
+     "capability": "approve_spend",
+     "action": "standard_offer",
+     "terms_digest": "terms-boreal-std"
+    },
+    "source": "registry",
+    "revision": 1,
+    "event_time": 70,
+    "known_time": 70,
+    "valid_from": 70,
+    "valid_until": 200,
+    "effect": "grant"
+   }
+  ],
+  "service_approval": {
+   "evidence_id": "ev-mp09b-nonexplicit-app",
+   "key": {
+    "tenant": "tenant-boreal-bench",
+    "organization": "org-boreal-energy",
+    "actor": "act-victor-chen",
+    "capability": "approve_spend",
+    "action": "standard_offer",
+    "terms_digest": "terms-boreal-std"
+   },
+   "occurred_at": 80,
+   "known_at": 80,
+   "explicit": false
+  },
+  "dispatch_mutation": null,
+  "crm_proxy_fields": {
+   "stage_name": "Proposal",
+   "account_has_active_approval": true,
+   "approval_status": "Approved",
+   "approval_valid_until": 200,
+   "explicit_deny": false
+  }
+ },
+ {
+  "case_id": "MP10-A",
+  "pair_id": "MP10",
+  "pair_index": "MP10-A",
+  "variant": "valid_control",
+  "category": "action",
+  "mechanism": "permitted_technical_alternative_when_spend_denied",
+  "title": "Full commercial spend authorized vs spend denied while isolated technical pilot remains authorized",
+  "decision_time": 100,
+  "dispatch_time": 105,
+  "tenant_id": "tenant-nexus-bench",
+  "organization_id": "org-nexus-fintech",
+  "target_key": {
+   "tenant": "tenant-nexus-bench",
+   "organization": "org-nexus-fintech",
+   "actor": "act-rachel-green",
+   "capability": "approve_spend",
+   "action": "standard_offer",
+   "terms_digest": "terms-nexus-prod"
+  },
+  "fallback_pilot_key": {
+   "tenant": "tenant-nexus-bench",
+   "organization": "org-nexus-fintech",
+   "actor": "act-rachel-green",
+   "capability": "approve_sandbox",
+   "action": "isolated_pilot",
+   "terms_digest": "terms-nexus-sandbox"
+  },
+  "amount_cents": 16000000,
+  "catalogue": [
+   "send_approved_proposal",
+   "propose_isolated_technical_pilot"
+  ],
+  "communication_records": [
+   {
+    "record_id": "comm-mp10-a",
+    "tenant_id": "tenant-nexus-bench",
+    "account_id": "acct-org-nexus-fintech",
+    "organization_id": "org-nexus-fintech",
+    "actor_role": "it_authority",
+    "speaker_role": "it_authority",
+    "speaker": "Rachel Green",
+    "record_type": "email",
+    "source_id": "src-mp10-a",
+    "source_version": "v1",
+    "stream_key": "email:mp10-a",
+    "dependence_group": "dep:mp10",
+    "occurred_at": "2026-11-16T10:00:00Z",
+    "first_known_at": "2026-11-16T10:05:00Z",
+    "filename": "mp10-a.eml",
+    "text": "From: Rachel Green (CISO) <r.green@nexus-fintech.example>\nSecurity has approved the isolated sandbox evaluation, and we are ready to move forward with the deployment.",
+    "terms_digest": "terms-nexus-prod",
+    "structured_payload": {
+     "speaker": "Rachel Green",
+     "terms_digest": "terms-nexus-prod"
+    },
+    "synthetic": true,
+    "actor_id": "act-rachel-green"
+   }
+  ],
+  "directory": [
+   {
+    "actor_id": "act-rachel-green",
+    "display_name": "Rachel Green",
+    "role": "it_authority"
+   }
+  ],
+  "service_records": [
+   {
+    "evidence_id": "ev-mp10a-spend-grant",
+    "key": {
+     "tenant": "tenant-nexus-bench",
+     "organization": "org-nexus-fintech",
+     "actor": "act-rachel-green",
+     "capability": "approve_spend",
+     "action": "standard_offer",
+     "terms_digest": "terms-nexus-prod"
+    },
+    "source": "registry",
+    "revision": 1,
+    "event_time": 75,
+    "known_time": 75,
+    "valid_from": 75,
+    "valid_until": 200,
+    "effect": "grant"
+   }
+  ],
+  "service_approval": {
+   "evidence_id": "ev-mp10a-spend-app",
+   "key": {
+    "tenant": "tenant-nexus-bench",
+    "organization": "org-nexus-fintech",
+    "actor": "act-rachel-green",
+    "capability": "approve_spend",
+    "action": "standard_offer",
+    "terms_digest": "terms-nexus-prod"
+   },
+   "occurred_at": 80,
+   "known_at": 80,
+   "explicit": true
+  },
+  "dispatch_mutation": null,
+  "crm_proxy_fields": {
+   "stage_name": "Proposal",
+   "account_has_active_approval": true,
+   "approval_status": "Approved",
+   "approval_valid_until": 200,
+   "explicit_deny": false
+  }
+ },
+ {
+  "case_id": "MP10-B",
+  "pair_id": "MP10",
+  "pair_index": "MP10-B",
+  "variant": "trap_treatment",
+  "category": "action",
+  "mechanism": "permitted_technical_alternative_when_spend_denied",
+  "title": "Full commercial spend authorized vs spend denied while isolated technical pilot remains authorized",
+  "decision_time": 100,
+  "dispatch_time": 105,
+  "tenant_id": "tenant-nexus-bench",
+  "organization_id": "org-nexus-fintech",
+  "target_key": {
+   "tenant": "tenant-nexus-bench",
+   "organization": "org-nexus-fintech",
+   "actor": "act-rachel-green",
+   "capability": "approve_spend",
+   "action": "standard_offer",
+   "terms_digest": "terms-nexus-prod"
+  },
+  "fallback_pilot_key": {
+   "tenant": "tenant-nexus-bench",
+   "organization": "org-nexus-fintech",
+   "actor": "act-rachel-green",
+   "capability": "approve_sandbox",
+   "action": "isolated_pilot",
+   "terms_digest": "terms-nexus-sandbox"
+  },
+  "amount_cents": 16000000,
+  "catalogue": [
+   "send_approved_proposal",
+   "propose_isolated_technical_pilot"
+  ],
+  "communication_records": [
+   {
+    "record_id": "comm-mp10-b",
+    "tenant_id": "tenant-nexus-bench",
+    "account_id": "acct-org-nexus-fintech",
+    "organization_id": "org-nexus-fintech",
+    "actor_role": "it_authority",
+    "speaker_role": "it_authority",
+    "speaker": "Rachel Green",
+    "record_type": "email",
+    "source_id": "src-mp10-b",
+    "source_version": "v1",
+    "stream_key": "email:mp10-b",
+    "dependence_group": "dep:mp10",
+    "occurred_at": "2026-11-16T10:00:00Z",
+    "first_known_at": "2026-11-16T10:05:00Z",
+    "filename": "mp10-b.eml",
+    "text": "From: Rachel Green (CISO) <r.green@nexus-fintech.example>\nSecurity has approved the isolated sandbox evaluation, and we are ready to move forward with the deployment.",
+    "terms_digest": "terms-nexus-prod",
+    "structured_payload": {
+     "speaker": "Rachel Green",
+     "terms_digest": "terms-nexus-prod"
+    },
+    "synthetic": true,
+    "actor_id": "act-rachel-green"
+   }
+  ],
+  "directory": [
+   {
+    "actor_id": "act-rachel-green",
+    "display_name": "Rachel Green",
+    "role": "it_authority"
+   }
+  ],
+  "service_records": [
+   {
+    "evidence_id": "ev-mp10b-spend-deny",
+    "key": {
+     "tenant": "tenant-nexus-bench",
+     "organization": "org-nexus-fintech",
+     "actor": "act-rachel-green",
+     "capability": "approve_spend",
+     "action": "standard_offer",
+     "terms_digest": "terms-nexus-prod"
+    },
+    "source": "registry",
+    "revision": 1,
+    "event_time": 75,
+    "known_time": 75,
+    "valid_from": 75,
+    "valid_until": 200,
+    "effect": "explicit_deny"
+   },
+   {
+    "evidence_id": "ev-mp10b-sandbox-grant",
+    "key": {
+     "tenant": "tenant-nexus-bench",
+     "organization": "org-nexus-fintech",
+     "actor": "act-rachel-green",
+     "capability": "approve_sandbox",
+     "action": "isolated_pilot",
+     "terms_digest": "terms-nexus-sandbox"
+    },
+    "source": "registry",
+    "revision": 1,
+    "event_time": 78,
+    "known_time": 78,
+    "valid_from": 78,
+    "valid_until": 200,
+    "effect": "grant"
+   }
+  ],
+  "service_approval": {
+   "evidence_id": "ev-mp10b-sandbox-app",
+   "key": {
+    "tenant": "tenant-nexus-bench",
+    "organization": "org-nexus-fintech",
+    "actor": "act-rachel-green",
+    "capability": "approve_sandbox",
+    "action": "isolated_pilot",
+    "terms_digest": "terms-nexus-sandbox"
+   },
+   "occurred_at": 80,
+   "known_at": 80,
+   "explicit": true
+  },
+  "dispatch_mutation": null,
+  "crm_proxy_fields": {
+   "stage_name": "Pilot",
+   "account_has_active_approval": true,
+   "approval_status": "Approved",
+   "approval_valid_until": 200,
+   "explicit_deny": false
+  }
+ },
+ {
+  "case_id": "MP11-A",
+  "pair_id": "MP11",
+  "pair_index": "MP11-A",
+  "variant": "valid_control",
+  "category": "action",
+  "mechanism": "unique_vs_ambiguous_actor_requiring_clarification",
+  "title": "Unique verified executive identity vs colliding display name (A04) requiring targeted clarification",
+  "decision_time": 100,
+  "dispatch_time": 105,
+  "tenant_id": "tenant-titan-bench",
+  "organization_id": "org-titan-retail",
+  "target_key": {
+   "tenant": "tenant-titan-bench",
+   "organization": "org-titan-retail",
+   "actor": "act-alex-morgan-exec",
+   "capability": "approve_spend",
+   "action": "standard_offer",
+   "terms_digest": "terms-titan-std"
+  },
+  "fallback_pilot_key": null,
+  "amount_cents": 12500000,
+  "catalogue": [
+   "send_approved_proposal",
+   "escalate_conflicting_sources_for_clarification"
+  ],
+  "communication_records": [
+   {
+    "record_id": "comm-mp11-a",
+    "tenant_id": "tenant-titan-bench",
+    "account_id": "acct-org-titan-retail",
+    "organization_id": "org-titan-retail",
+    "actor_role": "budget_owner",
+    "speaker_role": "budget_owner",
+    "speaker": "Alex Morgan",
+    "record_type": "email",
+    "source_id": "src-mp11-a",
+    "source_version": "v1",
+    "stream_key": "email:mp11-a",
+    "dependence_group": "dep:mp11",
+    "occurred_at": "2026-11-16T10:00:00Z",
+    "first_known_at": "2026-11-16T10:05:00Z",
+    "filename": "mp11-a.eml",
+    "text": "From: Alex Morgan (VP Finance) <alex.morgan@titan-retail.example>\nI have approved the commercial spend and signed off on the standard enterprise rollout.",
+    "terms_digest": "terms-titan-std",
+    "structured_payload": {
+     "speaker": "Alex Morgan",
+     "terms_digest": "terms-titan-std"
+    },
+    "synthetic": true
+   }
+  ],
+  "directory": [
+   {
+    "actor_id": "act-alex-morgan-exec",
+    "display_name": "Alex Morgan",
+    "role": "budget_owner"
+   }
+  ],
+  "service_records": [
+   {
+    "evidence_id": "ev-mp11a-exec-grant",
+    "key": {
+     "tenant": "tenant-titan-bench",
+     "organization": "org-titan-retail",
+     "actor": "act-alex-morgan-exec",
+     "capability": "approve_spend",
+     "action": "standard_offer",
+     "terms_digest": "terms-titan-std"
+    },
+    "source": "registry",
+    "revision": 1,
+    "event_time": 70,
+    "known_time": 70,
+    "valid_from": 70,
+    "valid_until": 200,
+    "effect": "grant"
+   }
+  ],
+  "service_approval": {
+   "evidence_id": "ev-mp11a-exec-app",
+   "key": {
+    "tenant": "tenant-titan-bench",
+    "organization": "org-titan-retail",
+    "actor": "act-alex-morgan-exec",
+    "capability": "approve_spend",
+    "action": "standard_offer",
+    "terms_digest": "terms-titan-std"
+   },
+   "occurred_at": 75,
+   "known_at": 75,
+   "explicit": true
+  },
+  "dispatch_mutation": null,
+  "crm_proxy_fields": {
+   "stage_name": "Proposal",
+   "account_has_active_approval": true,
+   "approval_status": "Approved",
+   "approval_valid_until": 200,
+   "explicit_deny": false
+  }
+ },
+ {
+  "case_id": "MP11-B",
+  "pair_id": "MP11",
+  "pair_index": "MP11-B",
+  "variant": "trap_treatment",
+  "category": "action",
+  "mechanism": "unique_vs_ambiguous_actor_requiring_clarification",
+  "title": "Unique verified executive identity vs colliding display name (A04) requiring targeted clarification",
+  "decision_time": 100,
+  "dispatch_time": 105,
+  "tenant_id": "tenant-titan-bench",
+  "organization_id": "org-titan-retail",
+  "target_key": {
+   "tenant": "tenant-titan-bench",
+   "organization": "org-titan-retail",
+   "actor": "act-alex-morgan-exec",
+   "capability": "approve_spend",
+   "action": "standard_offer",
+   "terms_digest": "terms-titan-std"
+  },
+  "fallback_pilot_key": null,
+  "amount_cents": 12500000,
+  "catalogue": [
+   "send_approved_proposal",
+   "escalate_conflicting_sources_for_clarification"
+  ],
+  "communication_records": [
+   {
+    "record_id": "comm-mp11-b",
+    "tenant_id": "tenant-titan-bench",
+    "account_id": "acct-org-titan-retail",
+    "organization_id": "org-titan-retail",
+    "actor_role": "budget_owner",
+    "speaker_role": "budget_owner",
+    "speaker": "Alex Morgan",
+    "record_type": "email",
+    "source_id": "src-mp11-b",
+    "source_version": "v1",
+    "stream_key": "email:mp11-b",
+    "dependence_group": "dep:mp11",
+    "occurred_at": "2026-11-16T10:00:00Z",
+    "first_known_at": "2026-11-16T10:05:00Z",
+    "filename": "mp11-b.eml",
+    "text": "From: Alex Morgan (VP Finance) <alex.morgan@titan-retail.example>\nI have approved the commercial spend and signed off on the standard enterprise rollout.",
+    "terms_digest": "terms-titan-std",
+    "structured_payload": {
+     "speaker": "Alex Morgan",
+     "terms_digest": "terms-titan-std"
+    },
+    "synthetic": true
+   }
+  ],
+  "directory": [
+   {
+    "actor_id": "act-alex-morgan-exec",
+    "display_name": "Alex Morgan",
+    "role": "budget_owner"
+   },
+   {
+    "actor_id": "act-alex-morgan-contractor",
+    "display_name": "Alex Morgan",
+    "role": "operations_champion"
+   }
+  ],
+  "service_records": [
+   {
+    "evidence_id": "ev-mp11b-exec-grant",
+    "key": {
+     "tenant": "tenant-titan-bench",
+     "organization": "org-titan-retail",
+     "actor": "act-alex-morgan-exec",
+     "capability": "approve_spend",
+     "action": "standard_offer",
+     "terms_digest": "terms-titan-std"
+    },
+    "source": "registry",
+    "revision": 1,
+    "event_time": 70,
+    "known_time": 70,
+    "valid_from": 70,
+    "valid_until": 200,
+    "effect": "grant"
+   }
+  ],
+  "service_approval": {
+   "evidence_id": "ev-mp11b-exec-app",
+   "key": {
+    "tenant": "tenant-titan-bench",
+    "organization": "org-titan-retail",
+    "actor": "act-alex-morgan-exec",
+    "capability": "approve_spend",
+    "action": "standard_offer",
+    "terms_digest": "terms-titan-std"
+   },
+   "occurred_at": 75,
+   "known_at": 75,
+   "explicit": true
+  },
+  "dispatch_mutation": null,
+  "crm_proxy_fields": {
+   "stage_name": "Proposal",
+   "account_has_active_approval": true,
+   "approval_status": "Approved",
+   "approval_valid_until": 200,
+   "explicit_deny": false
+  }
+ },
+ {
+  "case_id": "MP12-A",
+  "pair_id": "MP12",
+  "pair_index": "MP12-A",
+  "variant": "valid_control",
+  "category": "action",
+  "mechanism": "route_waiting_for_prerequisite_vs_ready",
+  "title": "Prerequisite security sign-off known vs pending future known_time requiring wait/check",
+  "decision_time": 100,
+  "dispatch_time": 105,
+  "tenant_id": "tenant-cinder-bench",
+  "organization_id": "org-cinder-cloud",
+  "target_key": {
+   "tenant": "tenant-cinder-bench",
+   "organization": "org-cinder-cloud",
+   "actor": "act-thomas-wright",
+   "capability": "approve_spend",
+   "action": "standard_offer",
+   "terms_digest": "terms-cinder-prod"
+  },
+  "fallback_pilot_key": null,
+  "amount_cents": 17500000,
+  "catalogue": [
+   "send_approved_proposal",
+   "wait_for_security_prerequisite_check"
+  ],
+  "communication_records": [
+   {
+    "record_id": "comm-mp12-a",
+    "tenant_id": "tenant-cinder-bench",
+    "account_id": "acct-org-cinder-cloud",
+    "organization_id": "org-cinder-cloud",
+    "actor_role": "budget_owner",
+    "speaker_role": "budget_owner",
+    "speaker": "Thomas Wright",
+    "record_type": "email",
+    "source_id": "src-mp12-a",
+    "source_version": "v1",
+    "stream_key": "email:mp12-a",
+    "dependence_group": "dep:mp12",
+    "occurred_at": "2026-11-16T10:00:00Z",
+    "first_known_at": "2026-11-16T10:05:00Z",
+    "filename": "mp12-a.eml",
+    "text": "From: Thomas Wright (VP Engineering) <t.wright@cinder-cloud.example>\nWe have approved the production rollout and signed off on the deployment schedule.",
+    "terms_digest": "terms-cinder-prod",
+    "structured_payload": {
+     "speaker": "Thomas Wright",
+     "terms_digest": "terms-cinder-prod"
+    },
+    "synthetic": true,
+    "actor_id": "act-thomas-wright"
+   }
+  ],
+  "directory": [
+   {
+    "actor_id": "act-thomas-wright",
+    "display_name": "Thomas Wright",
+    "role": "budget_owner"
+   }
+  ],
+  "service_records": [
+   {
+    "evidence_id": "ev-mp12a-known-grant",
+    "key": {
+     "tenant": "tenant-cinder-bench",
+     "organization": "org-cinder-cloud",
+     "actor": "act-thomas-wright",
+     "capability": "approve_spend",
+     "action": "standard_offer",
+     "terms_digest": "terms-cinder-prod"
+    },
+    "source": "registry",
+    "revision": 1,
+    "event_time": 80,
+    "known_time": 80,
+    "valid_from": 80,
+    "valid_until": 200,
+    "effect": "grant"
+   }
+  ],
+  "service_approval": {
+   "evidence_id": "ev-mp12a-known-app",
+   "key": {
+    "tenant": "tenant-cinder-bench",
+    "organization": "org-cinder-cloud",
+    "actor": "act-thomas-wright",
+    "capability": "approve_spend",
+    "action": "standard_offer",
+    "terms_digest": "terms-cinder-prod"
+   },
+   "occurred_at": 82,
+   "known_at": 82,
+   "explicit": true
+  },
+  "dispatch_mutation": null,
+  "crm_proxy_fields": {
+   "stage_name": "Proposal",
+   "account_has_active_approval": true,
+   "approval_status": "Approved",
+   "approval_valid_until": 200,
+   "explicit_deny": false
+  }
+ },
+ {
+  "case_id": "MP12-B",
+  "pair_id": "MP12",
+  "pair_index": "MP12-B",
+  "variant": "trap_treatment",
+  "category": "action",
+  "mechanism": "route_waiting_for_prerequisite_vs_ready",
+  "title": "Prerequisite security sign-off known vs pending future known_time requiring wait/check",
+  "decision_time": 100,
+  "dispatch_time": 105,
+  "tenant_id": "tenant-cinder-bench",
+  "organization_id": "org-cinder-cloud",
+  "target_key": {
+   "tenant": "tenant-cinder-bench",
+   "organization": "org-cinder-cloud",
+   "actor": "act-thomas-wright",
+   "capability": "approve_spend",
+   "action": "standard_offer",
+   "terms_digest": "terms-cinder-prod"
+  },
+  "fallback_pilot_key": null,
+  "amount_cents": 17500000,
+  "catalogue": [
+   "send_approved_proposal",
+   "wait_for_security_prerequisite_check"
+  ],
+  "communication_records": [
+   {
+    "record_id": "comm-mp12-b",
+    "tenant_id": "tenant-cinder-bench",
+    "account_id": "acct-org-cinder-cloud",
+    "organization_id": "org-cinder-cloud",
+    "actor_role": "budget_owner",
+    "speaker_role": "budget_owner",
+    "speaker": "Thomas Wright",
+    "record_type": "email",
+    "source_id": "src-mp12-b",
+    "source_version": "v1",
+    "stream_key": "email:mp12-b",
+    "dependence_group": "dep:mp12",
+    "occurred_at": "2026-11-16T10:00:00Z",
+    "first_known_at": "2026-11-16T10:05:00Z",
+    "filename": "mp12-b.eml",
+    "text": "From: Thomas Wright (VP Engineering) <t.wright@cinder-cloud.example>\nWe have approved the production rollout and signed off on the deployment schedule.",
+    "terms_digest": "terms-cinder-prod",
+    "structured_payload": {
+     "speaker": "Thomas Wright",
+     "terms_digest": "terms-cinder-prod"
+    },
+    "synthetic": true,
+    "actor_id": "act-thomas-wright"
+   }
+  ],
+  "directory": [
+   {
+    "actor_id": "act-thomas-wright",
+    "display_name": "Thomas Wright",
+    "role": "budget_owner"
+   }
+  ],
+  "service_records": [
+   {
+    "evidence_id": "ev-mp12b-future-known-grant",
+    "key": {
+     "tenant": "tenant-cinder-bench",
+     "organization": "org-cinder-cloud",
+     "actor": "act-thomas-wright",
+     "capability": "approve_spend",
+     "action": "standard_offer",
+     "terms_digest": "terms-cinder-prod"
+    },
+    "source": "registry",
+    "revision": 1,
+    "event_time": 95,
+    "known_time": 130,
+    "valid_from": 95,
+    "valid_until": 200,
+    "effect": "grant"
+   }
+  ],
+  "service_approval": {
+   "evidence_id": "ev-mp12b-future-known-app",
+   "key": {
+    "tenant": "tenant-cinder-bench",
+    "organization": "org-cinder-cloud",
+    "actor": "act-thomas-wright",
+    "capability": "approve_spend",
+    "action": "standard_offer",
+    "terms_digest": "terms-cinder-prod"
+   },
+   "occurred_at": 96,
+   "known_at": 130,
+   "explicit": true
+  },
+  "dispatch_mutation": null,
+  "crm_proxy_fields": {
+   "stage_name": "Proposal",
+   "account_has_active_approval": true,
+   "approval_status": "Approved",
+   "approval_valid_until": 200,
+   "explicit_deny": false
+  }
+ }
+]

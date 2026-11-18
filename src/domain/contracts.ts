@@ -120,6 +120,7 @@ export const REASON_CODES = [
   "scope_mismatch_capability", "scope_mismatch_action", "scope_mismatch_terms_digest",
   "scope_mismatch_multiple", "not_yet_known", "not_yet_effective", "expired", "revoked",
   "explicit_deny", "conflict", "no_grant", "approval_terms_changed",
+  "missing_approval", "approval_not_explicit", "approval_timeline_invalid", "ambiguous_actor_identity",
 ] as const;
 export type ReasonCode = (typeof REASON_CODES)[number];
 

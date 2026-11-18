@@ -5,7 +5,8 @@ Implementation: TypeScript rewrite on TanStack Start (new language — numerical
 | Capability | Status | Owning module | Evidence run | Executed assertion | Next unresolved condition |
 |---|---|---|---|---|---|
 | Contract schemas (C02) | PARTIAL | src/domain/contracts.ts | phase 01 vitest | B02/B03 | proof hashing (phase 02) |
-| Authority resolution (C03) | PENDING | src/domain/authority.ts | — | — | phase 02 |
+| Authority resolution (C03) | VERIFIED (domain) | src/domain/authority.ts | phase 02 vitest 57/57 | A01–A10 | durable backend (phase 03) |
+| Evidence intake | VERIFIED (domain) | src/domain/evidence.ts | phase 02 vitest | E01–E08 | durable backend (phase 03) |
 | Approval & execution (C04) | PENDING | src/domain/execution.ts | — | — | phase 03 |
 | Policy & generation (C05) | PENDING | src/domain/policy.ts | — | — | phase 06 |
 | Simulation & learning (C06) | PENDING | src/domain/research.ts | — | — | phase 07 |

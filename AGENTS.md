@@ -28,3 +28,10 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+- Domain logic lives in `src/domain/` as pure TypeScript; UI and server only call it. Why: tests and execution share one model.
+- Server-only code goes in `src/server/*.server.ts`; client-callable server functions go in `src/lib/*.functions.ts`. Why: `src/server/` is blocked from client bundles.
+- Public case inputs (`src/server/fixtures`) and evaluator gold (`src/evaluation`) stay in separate files and types. Why: decision code must never see expected labels.
+- Permission references are only minted by the server with the `GTM_SEAL_SECRET` HMAC seal. Why: client strings must never grant authority.
+- Every phase updates `docs/rebuild-status.md` with real executed checks. Why: status must reflect evidence, not intent.
