@@ -6,18 +6,20 @@
 import { supabaseAdmin } from "@/integrations/supabase/client.server";
 import { checkApproval, readinessReason, resolveAuthority } from "@/domain/authority";
 import { digestOf } from "@/domain/canonical";
-import { CONTRACT_VERSION, PublicCaseSchema, keyEquals, tick, type Approval, type AuthorityRecord, type PublicCase } from "@/domain/contracts";
+import { CONTRACT_VERSION, PublicCaseSchema, assertNoTruthFields, keyEquals, tick, type Approval, type AuthorityRecord, type PublicCase } from "@/domain/contracts";
 import { authorityRecordEvent, dedupeByDependence, extractCandidates, visibleTick, type DirectoryRow } from "@/domain/evidence";
 import { proposalDigest, revalidateForDispatch, type FrozenIntent, type ProposalSnapshot } from "@/domain/execution";
 import { issuePermission, verifyPermission } from "@/domain/permission";
 import { selectAction } from "@/domain/policy";
 import rawCases from "./fixtures/public-cases.json";
 
-export const REGISTERED_SOURCES = ["buyer_admin", "delegation_service", "registry"] as const;
+import { REGISTERED_SOURCES, branchOf, candidatesOf, decideD } from "@/domain/decide";
+import { fullRunReport } from "@/evaluation/full-run";
+export { REGISTERED_SOURCES };
 export const TRUSTED_SOURCE_DISCLOSURE = "Simulated fixture registry (sandbox). Not a verified real custodian.";
 export const DEMO_CASE_IDS = ["CF-01A", "CF-01B", "CF-02A", "CF-02B"] as const;
 
-const CASES = new Map<string, PublicCase>((rawCases as unknown[]).map((c) => { const p = PublicCaseSchema.parse(c); return [p.case_id, p]; }));
+const CASES = new Map<string, PublicCase>((rawCases as unknown[]).map((c) => { assertNoTruthFields(c); const p = PublicCaseSchema.parse(c); return [p.case_id, p]; }));
 
 function secret(): string {
   const s = process.env["GTM_SEAL_SECRET"];
@@ -69,19 +71,6 @@ async function readRegistry(sc: string, tenant: string) {
     records: (evs ?? []).map((e) => e.payload as unknown as AuthorityRecord),
     origins: new Map((evs ?? []).map((e) => [(e.payload as unknown as AuthorityRecord).evidence_id, e.origin])),
   };
-}
-
-function directoryOf(c: PublicCase): DirectoryRow[] {
-  return c.directory.map((d) => ({ tenant: c.tenant_id, organization: c.organization_id, actor_id: d.actor_id, display_name: d.display_name, role: d.role }));
-}
-function candidatesOf(c: PublicCase) {
-  const dir = directoryOf(c);
-  return dedupeByDependence(c.communication_records.flatMap((r) => extractCandidates({
-    record_id: String(r["record_id"]), source_id: String(r["source_id"]), source_version: String(r["source_version"]),
-    tenant_id: String(r["tenant_id"]), organization_id: String(r["organization_id"]), speaker: String(r["speaker"]),
-    actor_id: (r["actor_id"] as string | null | undefined) ?? null, speaker_role: r["speaker_role"] as string | undefined,
-    dependence_group: r["dependence_group"] as string | undefined, text: String(r["text"]),
-  }, dir)));
 }
 
 export function listDemoCases() {
@@ -300,35 +289,6 @@ export async function evaluateScopeScenario(controls: ScopeControls) {
   };
 }
 
-function branchOf(reason: string, action: string, alternative: boolean): string {
-  if (reason === "ready_to_launch") return "allowed";
-  if (["revoked", "explicit_deny", "expired"].includes(reason)) return "denied";
-  if (alternative || action.includes("pilot")) return "alternative";
-  if (["no_grant", "not_yet_known", "not_yet_effective", "candidate_only_no_authority", "ambiguous_actor_identity", "conflict", "untrusted_source"].includes(reason)) return "unknown";
-  return "clarified";
-}
-
-/** D decision + dispatch revalidation, entirely in memory on public inputs. */
-async function decideD(c: PublicCase) {
-  const records = c.service_records as AuthorityRecord[];
-  const at = (t: number) => resolveAuthority({ records, key: c.target_key, asOf: tick(t), registeredSources: REGISTERED_SOURCES });
-  const cur = await at(c.decision_time);
-  const approval = await checkApproval({ approval: c.service_approval as Approval | null, key: c.target_key, asOf: tick(c.decision_time), records, registeredSources: REGISTERED_SOURCES });
-  let reason = readinessReason(cur, approval) as string;
-  if (reason === "ready_to_launch" && candidatesOf(c).some((x) => x.identity.status === "ambiguous")) reason = "ambiguous_actor_identity";
-  let action = selectAction(c.catalogue, reason as never);
-  if (action.consequential) {
-    const later = await at(c.dispatch_time);
-    if (later.state !== "allowed") { reason = later.reason; action = selectAction(c.catalogue, reason as never); }
-    else if (c.dispatch_mutation) { reason = "approval_terms_changed"; action = selectAction(c.catalogue, reason as never); }
-  }
-  let alternative = false;
-  if (cur.proof.mismatch_axes.length) {
-    for (const r of records) if ((await resolveAuthority({ records, key: r.key, asOf: tick(c.decision_time), registeredSources: REGISTERED_SOURCES })).state === "allowed") alternative = true;
-  }
-  return { action: action.action, reason, branch: branchOf(reason, action.action, alternative) };
-}
-
 export async function fourCaseRun() {
   const rows: (ObservedRow & { reason: string })[] = [];
   for (const id of DEMO_CASE_IDS) {
@@ -369,4 +329,14 @@ export async function sessionTimeline(input: { sessionId: string; caseId: string
     ...(dp.data ?? []).map((d) => ({ kind: "dispatch", tick: Number(d.dispatch_time), utc: d.created_at, label: `Dispatch ${d.status} · ${d.reason}`, detail: `observed v${d.observed_version} · key ${d.idempotency_key}`, origin: "server transaction" })),
   ].sort((a, b) => (a.tick ?? -1) - (b.tick ?? -1) || a.utc.localeCompare(b.utc));
   return { session_id: input.sessionId, case_id: c.case_id, items, effects: await countEffects(sc) };
+}
+
+/** Phase 05: canonical 24-case run (D/C/B) scored against evaluator gold. */
+export async function fullRun() {
+  return fullRunReport([...CASES.values()], `${CONTRACT_VERSION}+tanstack-start-worker`);
+}
+export async function metamorphicRun() {
+  const { runMetamorphic } = await import("@/evaluation/metamorphic");
+  const r = await runMetamorphic([...CASES.values()]);
+  return { total: r.checks.length, passed: r.checks.length - r.failed.length, failed: r.failed, by_check: Object.entries(r.checks.reduce<Record<string, [number, number]>>((m, x) => { const v = m[x.check] ?? [0, 0]; v[1]++; if (x.ok) v[0]++; m[x.check] = v; return m; }, {})).map(([check, [ok, n]]) => ({ check, ok, n })) };
 }

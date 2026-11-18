@@ -76,3 +76,13 @@ export const sessionTimelineFn = createServerFn({ method: "POST" })
     const { sessionTimeline } = await import("@/server/gtm-service.server");
     return sessionTimeline(data);
   });
+
+export const fullRunFn = createServerFn({ method: "POST" }).handler(async () => {
+  const { fullRun } = await import("@/server/gtm-service.server");
+  return fullRun();
+});
+
+export const metamorphicRunFn = createServerFn({ method: "POST" }).handler(async () => {
+  const { metamorphicRun } = await import("@/server/gtm-service.server");
+  return metamorphicRun();
+});

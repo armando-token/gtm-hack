@@ -232,3 +232,15 @@ export interface RunReport {
 }
 
 export type ModuleStatus = "VERIFIED" | "PARTIAL" | "PENDING";
+
+/** Server intake guard: reject truth/expected payloads at any nesting depth. */
+const TRUTH_KEYS = /^(valid_actions|forbidden_actions|expected_.*|private_state_summary|actual_outcome|gold|truth|is_trap|severity|requires_abstention_or_hold)$/;
+export function assertNoTruthFields(value: unknown, path = "$"): void {
+  if (Array.isArray(value)) { value.forEach((v, i) => assertNoTruthFields(v, `${path}[${i}]`)); return; }
+  if (value && typeof value === "object") {
+    for (const [k, v] of Object.entries(value)) {
+      if (TRUTH_KEYS.test(k)) throw new Error(`truth_field_rejected at ${path}.${k}`);
+      assertNoTruthFields(v, `${path}.${k}`);
+    }
+  }
+}

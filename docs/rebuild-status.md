@@ -113,3 +113,39 @@ Engine evidence (domain, executed) is separate from backend checks: dispatch com
 Completion matrix: 05 full scorecard · 06 · 07 policy simulation engine · 08 — open.
 
 Next: phase 05.
+
+## Phase 05 · Canonical 24-case benchmark — 2026-11-18
+
+Files: src/domain/decide.ts (D path extracted, pure), src/domain/baselines.ts, src/domain/contracts.ts (assertNoTruthFields), src/evaluation/{full-run,metamorphic}.ts, src/server/gtm-service.server.ts (fullRun, metamorphicRun, intake guard), src/lib/gtm.functions.ts (fullRunFn, metamorphicRunFn), src/routes/benchmark.tsx, src/test/phase05-benchmark.test.ts.
+
+Commands: `bunx vitest run` → all pass (incl. 8 phase-05 tests). Playwright /tmp/browser/p56/check_bench.py: /benchmark run → D 24/24, FA 0/12, pairs 12/12; C 14/24, 10/12, 2/12; B 13/24, 11/12, 1/12 (all = targets, computed from rows); metamorphic 132/132; Prior research view shows r2-sealed-eb41454c3fb8; 0 console errors.
+
+| ID | Status | Evidence |
+|---|---|---|
+| Q01 | VERIFIED | live scores beside targets with Wilson 95% intervals recomputed from n |
+| Q02 | VERIFIED | CF-01A prepare_proposal_2000_users; CF-01B confirm_expansion_and_review_pilot_500 |
+| Q03 | VERIFIED | CF-02A dispatch committed; CF-02B ready at t100, blocked · revoked at t110, no effect |
+| Q04 | VERIFIED | 4 categories summing to 24, from case records |
+| Q05 | VERIFIED | rename/alias/unseen tenant, reorder, duplicate (invariant); axis, exclusive expiry, known_time, revoke-after-prepare, terms/money change (responsive); failures render check · case · cause |
+| Q06 | VERIFIED | source scan: no case ids / gold / valid_actions in decision modules |
+| Q07 | VERIFIED | export JSON: inputs digest, rows+traces, scores, unresolved mismatches, runtime version, metamorphic |
+
+Also: gold mutation changes scores only; unseen catalogue action rejected; nested truth payload rejected at intake. A arm UNTESTED, no score.
+
+## Phase 06 · Contingent routes and safe unknowns — 2026-11-18
+
+Files: src/domain/intervention.ts (cost table, frozen configs, budget ledger with founder/daily/engineering/pilot/asset dimensions, contingent policy, greedy baseline, selective router, spec composer, independent validator, generation fallback, safe states), src/evaluation/detector.ts, src/evaluation/full-run.ts (route, safe state and budget in D trace), src/test/phase06-routes.test.ts.
+
+| ID | Status | Evidence (vitest) |
+|---|---|---|
+| P01 | VERIFIED | denied commercial + sandbox → isolated_pilot, 0 commercial effects; MP03-B D no dispatch |
+| P02 | VERIFIED | pilot slot / engineering / daily founder rejections; only probe + fallback charged |
+| P03 | VERIFIED | clean standard → catalogue, single charge |
+| P04 | VERIFIED | forced failure → generation_attempt + fallback, each once |
+| P05 | VERIFIED | inconclusive → request_budget_authorization; four safe states distinguished |
+| P06 | VERIFIED | actor / source / terms change → clarification route |
+| P07 | VERIFIED | validator rejects unauthorized capability and binding commitment |
+
+Gaps: phase-06 policy runs in domain/tests only; no UI controls for budget/probe yet (Experiments simulation slots stay PENDING until phase 07). Detector thresholds are config inputs, no calibrated run yet. Server functions remain unauthenticated.
+
+Next: phase 07 (policy simulation engine), then 08.
