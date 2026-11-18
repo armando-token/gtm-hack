@@ -35,3 +35,5 @@ use the editor.
 - Public case inputs (`src/server/fixtures`) and evaluator gold (`src/evaluation`) stay in separate files and types. Why: decision code must never see expected labels.
 - Permission references are only minted by the server with the `GTM_SEAL_SECRET` HMAC seal. Why: client strings must never grant authority.
 - Every phase updates `docs/rebuild-status.md` with real executed checks. Why: status must reflect evidence, not intent.
+- Durable state lives in Lovable Cloud; every registry mutation and effect commit goes through `gtm_append_event` / `gtm_commit_dispatch`, which lock the same aggregate row. Why: a revoke and a dispatch must serialize.
+- Each sandbox session + case is its own aggregate scope. Why: positive controls start from a clean fixture state.

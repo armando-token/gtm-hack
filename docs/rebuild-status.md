@@ -55,4 +55,38 @@ Fixture check: 12 authority-layer cases match expected reasons from evaluator go
 
 Remaining gaps: session state is in worker memory (not durable, not concurrency-safe) → PENDING Lovable Cloud persistence in phase 03.
 
-Next phase: 03 · Cases and execution. Attach `03_FASE_CASOS_Y_EJECUCION.md`.
+Phase 02 handoff complete.
+
+## Phase 03 · Cases and durable execution — 2026-11-18
+
+Backend: Lovable Cloud Postgres. Migration `gtm_durable_execution`: tables gtm_aggregates (lock row per session+case scope), gtm_events (append-only, unique per source/stream/revision/payload hash), gtm_intents, gtm_dispatches (unique session+tenant+idempotency key), gtm_effects (unique per intent and per effect key), gtm_payment_events (unique receipt+kind). RPCs `gtm_append_event` and `gtm_commit_dispatch` take `SELECT … FOR UPDATE` on the same aggregate row, so a revoke and a commit serialize; commit is compare-and-set on the registry version. Tables are server-only (service role, RLS on, no browser grants).
+
+Files: src/domain/{actions,policy,execution}.ts, src/server/gtm-service.server.ts (DB-backed), src/lib/gtm.functions.ts (prepare, dispatch, insert revocation, batch replay), src/routes/demo.tsx (Prepare / Insert revoke / Dispatch / batch replay + trace export), src/test/phase03-{domain,backend}.test.ts.
+
+Commands: `bunx vitest run` → 76/76 pass, including phase03-backend.test.ts executed against the real database functions. Playwright /tmp/browser/p2/check_p3.py: CF-02A + interactive revoke → blocked · revoked · 0 effects; fresh session CF-02A → committed · 1 effect; batch replay table matches C01–C04.
+
+| ID | Status | Executed assertion |
+|---|---|---|
+| X01 | VERIFIED (backend) | CF-02A prepare → 0 effects; dispatch → committed, 1 effect |
+| X02 | VERIFIED (backend + UI) | interactive revoke at t105 → blocked/revoked, 0 effects; repeat insert is duplicate |
+| X03 | VERIFIED (backend) | terms → approval_terms_changed, amount → amount_changed, currency → currency_changed, entity → scope_mismatch_organization; 0 effects each |
+| X04 | VERIFIED (backend) | two parallel dispatches, one key → same effect id, 1 effect; changed payload same key → idempotency_conflict |
+| X05 | VERIFIED (backend) | 3 races revoke vs dispatch: committed only when serialized first, otherwise revoked/0; stale expected version → stale_version/0 |
+| X06 | VERIFIED (backend) | injected crash after commit; retry → replayed, same committed effect, 1 effect |
+| X07 | VERIFIED (backend) | injected failure before commit → DB rollback, 0 effects; retry commits once |
+| X08 | VERIFIED (domain) | wrong tenant/payer/amount/currency, unsettled, claim source → no first payment |
+| X09 | VERIFIED (domain) | duplicate receipt counted once; reversal → net_paid false |
+| X10 | VERIFIED (domain) | receipt at 250 excluded at horizon 200, counted at 300; payments never feed authority |
+| C01 | VERIFIED | CF-01A ready_to_launch, batch commits 1 effect |
+| C02 | VERIFIED | CF-01B scope_mismatch_terms_digest → confirm_expansion_and_review_pilot_500, 0 effects, still-permitted terms-access-500-pilot-only |
+| C03 | VERIFIED | CF-02A dispatch at 110 → 1 effect |
+| C04 | VERIFIED | CF-02B allowed at 100, revoked at 110, changed_after_event=true, 0 effects |
+| C05 | VERIFIED | policy takes only catalogue + readiness (no case id/title/label input) |
+| C06 | VERIFIED | batch trace exported as JSON; test asserts no gold fields in it |
+
+Partial / pending:
+- Lease loss and timeout recovery are verified on the pure outbox double only; the DB has no separate worker queue yet (effects commit inside the dispatch transaction).
+- Payment receipts are reconciled in the domain; the gtm_payment_events table exists but no UI/server flow writes to it yet.
+- Server functions are public sandbox endpoints (no sign-in), scoped by random session id.
+
+Next phase: 04 · Interactive demo. Attach `04_FASE_DEMO_INTERACTIVA.md`.

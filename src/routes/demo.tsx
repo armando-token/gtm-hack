@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { Panel, StatusTag } from "@/components/gtm/AppShell";
 import { CandidateTable, TrustedTable } from "@/components/gtm/EvidenceTable";
 import { useSandboxSession } from "@/hooks/use-sandbox-session";
-import { evaluateCaseFn, listDemoCasesFn, verifyPermissionFn } from "@/lib/gtm.functions";
+import { batchReplayFn, dispatchActionFn, evaluateCaseFn, insertRevocationFn, listDemoCasesFn, prepareActionFn, verifyPermissionFn } from "@/lib/gtm.functions";
 
 const casesQuery = queryOptions({ queryKey: ["demo-cases"], queryFn: () => listDemoCasesFn() });
 
@@ -35,12 +35,23 @@ function Demo() {
   const evaluate = useServerFn(evaluateCaseFn);
   const verify = useServerFn(verifyPermissionFn);
   const run = useMutation({ mutationFn: (v: { caseId: string; asOf: number }) => evaluate({ data: { sessionId: sessionId!, ...v } }) });
+  const prepareFn = useServerFn(prepareActionFn);
+  const dispatchFn = useServerFn(dispatchActionFn);
+  const revokeFn = useServerFn(insertRevocationFn);
+  const batchFn = useServerFn(batchReplayFn);
+  const prep = useMutation({ mutationFn: () => prepareFn({ data: { sessionId: sessionId!, caseId } }) });
+  const disp = useMutation({ mutationFn: (intentId: string) => dispatchFn({ data: { sessionId: sessionId!, caseId, intentId, idempotencyKey: `ui-${intentId}` } }) });
+  const revoke = useMutation({ mutationFn: () => revokeFn({ data: { sessionId: sessionId!, caseId, at: 105 } }) });
+  const batch = useMutation({ mutationFn: () => batchFn({ data: { sessionId: `${sessionId!.slice(0, 40)}-batch-${Date.now()}` } }) });
   const check = useMutation({ mutationFn: (ref: string) => verify({ data: { sessionId: sessionId!, caseId, asOf, ref } }) });
 
   useEffect(() => {
     setAsOf(selected.decision_time);
     run.reset();
     check.reset();
+    prep.reset();
+    disp.reset();
+    revoke.reset();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [caseId, sessionId]);
 
@@ -101,7 +112,27 @@ function Demo() {
             </div>
           ) : "—"}
         </Panel>
-        <Panel title="Timeline" status="PENDING">Prepare and dispatch transitions arrive in phase 03–04. Change “As of tick” and evaluate again to see point-in-time authority.</Panel>
+        <Panel title="Timeline">
+          <ol className="space-y-2">
+            <li>1 · Evaluate at t{selected.decision_time}: <span className="font-mono text-foreground">{r ? `${r.readiness} → ${r.selected_action.action}` : "not run"}</span></li>
+            <li className="flex flex-wrap items-center gap-2">2 · Prepare:
+              <button disabled={!r || prep.isPending} onClick={() => prep.mutate()} className="rounded border border-input px-2 py-1 text-xs hover:bg-accent disabled:opacity-40">Prepare</button>
+              {prep.data && <span className="font-mono text-xs text-foreground">{prep.data.prepared ? `prepared · intent ${prep.data.intent_id.slice(0, 8)} · registry v${prep.data.registry_version}` : `not prepared · ${prep.data.reason}`}</span>}
+            </li>
+            {caseId === "CF-02A" && (
+              <li className="flex flex-wrap items-center gap-2">↳ Insert revocation at t105:
+                <button disabled={!prep.data?.prepared || revoke.isPending || !!disp.data} onClick={() => revoke.mutate()} className="rounded border border-denied/50 px-2 py-1 text-xs text-denied hover:bg-accent disabled:opacity-40">Insert revoke</button>
+                {revoke.data && <span className="font-mono text-xs">{revoke.data.status} · registry v{revoke.data.version} · interactive mutation</span>}
+              </li>
+            )}
+            <li className="flex flex-wrap items-center gap-2">3 · Dispatch at t{selected.dispatch_time}:
+              <button disabled={!prep.data?.prepared || disp.isPending} onClick={() => prep.data?.prepared && disp.mutate(prep.data.intent_id)} className="rounded bg-primary px-2 py-1 text-xs font-medium text-primary-foreground disabled:opacity-40">Dispatch</button>
+              {disp.data && <span className={`font-mono text-xs ${disp.data.status === "committed" ? "text-allowed" : "text-denied"}`}>{disp.data.status} · {disp.data.reason} · simulated effects {disp.data.effects}</span>}
+            </li>
+          </ol>
+          {(prep.error || disp.error || revoke.error) && <p className="mt-2 text-xs text-denied">{((prep.error ?? disp.error ?? revoke.error) as Error).message}</p>}
+          {r && r.alternatives.length > 0 && <p className="mt-2 text-xs">Still permitted: <span className="font-mono text-allowed">{r.alternatives.map((a) => a.key.terms_digest).join(", ")}</span></p>}
+        </Panel>
       </div>
       {r && (
         <>
@@ -109,7 +140,26 @@ function Demo() {
           <Panel title="Candidate statements"><CandidateTable candidates={r.candidates} /></Panel>
         </>
       )}
-      <p className="text-xs text-muted-foreground"><StatusTag status="PARTIAL" /> Session state lives in server memory until durable storage is enabled.</p>
+      <Panel title="Canonical batch replay · four cases">
+        <div className="mb-2 flex gap-2">
+          <button disabled={!sessionId || batch.isPending} onClick={() => batch.mutate()} className="rounded border border-input px-3 py-1.5 text-xs hover:bg-accent disabled:opacity-40">{batch.isPending ? "Running…" : "Run batch replay"}</button>
+          {batch.data && (
+            <a className="rounded border border-input px-3 py-1.5 text-xs hover:bg-accent" download={`gtm-trace-${batch.data.session_id}.json`} href={`data:application/json;charset=utf-8,${encodeURIComponent(JSON.stringify(batch.data, null, 2))}`}>Export trace</a>
+          )}
+        </div>
+        {batch.data && (
+          <table className="w-full text-left text-xs">
+            <thead><tr><th className="py-1">Case</th><th>At decision</th><th>Action</th><th>Dispatch</th><th>Effects</th></tr></thead>
+            <tbody className="font-mono text-foreground">
+              {batch.data.trace.map((t) => (
+                <tr key={t.case_id} className="border-t border-border"><td className="py-1">{t.case_id}</td><td>{t.decision.state} · {t.decision.reason}</td><td>{t.selected_action}</td><td>{t.dispatch ? `${t.dispatch.status} · ${t.dispatch.reason}` : "not prepared"}</td><td>{t.effects}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+        <p className="mt-2 text-xs">Origin: current run · session {batch.data?.session_id.slice(0, 18) ?? "—"}</p>
+      </Panel>
+      <p className="text-xs text-muted-foreground"><StatusTag status="VERIFIED" /> State is stored durably; every dispatch revalidates on the server.</p>
     </div>
   );
 }
