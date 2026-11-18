@@ -20,6 +20,7 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <div className="space-y-8">
+      <Link to="/presentation" className="flex items-center justify-between gap-3 rounded border border-primary/60 bg-primary/10 px-4 py-3 text-sm font-medium text-foreground hover:bg-primary/20"><span>▶ Open the animated six-act presentation</span><span aria-hidden>→</span></Link>
       <div className="max-w-2xl space-y-3">
         <h1 className="text-2xl font-semibold tracking-tight">Did the buyer authorize 2,000 seats, or only a 500-seat pilot?</h1>
         <p className="text-muted-foreground">
