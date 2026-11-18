@@ -15,6 +15,7 @@ import { Route as DemoRouteImport } from './routes/demo'
 import { Route as EvidenciaRouteImport } from './routes/evidencia'
 import { Route as ExperimentsRouteImport } from './routes/experiments'
 import { Route as FieldRouteImport } from './routes/field'
+import { Route as OverviewRouteImport } from './routes/overview'
 import { Route as PresentationRouteImport } from './routes/presentation'
 import { Route as ResearchRouteImport } from './routes/research'
 
@@ -48,6 +49,11 @@ const FieldRoute = FieldRouteImport.update({
   path: '/field',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OverviewRoute = OverviewRouteImport.update({
+  id: '/overview',
+  path: '/overview',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PresentationRoute = PresentationRouteImport.update({
   id: '/presentation',
   path: '/presentation',
@@ -66,6 +72,7 @@ export interface FileRoutesByFullPath {
   '/evidencia': typeof EvidenciaRoute
   '/experiments': typeof ExperimentsRoute
   '/field': typeof FieldRoute
+  '/overview': typeof OverviewRoute
   '/presentation': typeof PresentationRoute
   '/research': typeof ResearchRoute
 }
@@ -76,6 +83,7 @@ export interface FileRoutesByTo {
   '/evidencia': typeof EvidenciaRoute
   '/experiments': typeof ExperimentsRoute
   '/field': typeof FieldRoute
+  '/overview': typeof OverviewRoute
   '/presentation': typeof PresentationRoute
   '/research': typeof ResearchRoute
 }
@@ -87,6 +95,7 @@ export interface FileRoutesById {
   '/evidencia': typeof EvidenciaRoute
   '/experiments': typeof ExperimentsRoute
   '/field': typeof FieldRoute
+  '/overview': typeof OverviewRoute
   '/presentation': typeof PresentationRoute
   '/research': typeof ResearchRoute
 }
@@ -99,6 +108,7 @@ export interface FileRouteTypes {
     | '/evidencia'
     | '/experiments'
     | '/field'
+    | '/overview'
     | '/presentation'
     | '/research'
   fileRoutesByTo: FileRoutesByTo
@@ -109,6 +119,7 @@ export interface FileRouteTypes {
     | '/evidencia'
     | '/experiments'
     | '/field'
+    | '/overview'
     | '/presentation'
     | '/research'
   id:
@@ -119,6 +130,7 @@ export interface FileRouteTypes {
     | '/evidencia'
     | '/experiments'
     | '/field'
+    | '/overview'
     | '/presentation'
     | '/research'
   fileRoutesById: FileRoutesById
@@ -130,6 +142,7 @@ export interface RootRouteChildren {
   EvidenciaRoute: typeof EvidenciaRoute
   ExperimentsRoute: typeof ExperimentsRoute
   FieldRoute: typeof FieldRoute
+  OverviewRoute: typeof OverviewRoute
   PresentationRoute: typeof PresentationRoute
   ResearchRoute: typeof ResearchRoute
 }
@@ -178,6 +191,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FieldRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/overview': {
+      id: '/overview'
+      path: '/overview'
+      fullPath: '/overview'
+      preLoaderRoute: typeof OverviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/presentation': {
       id: '/presentation'
       path: '/presentation'
@@ -202,6 +222,7 @@ const rootRouteChildren: RootRouteChildren = {
   EvidenciaRoute: EvidenciaRoute,
   ExperimentsRoute: ExperimentsRoute,
   FieldRoute: FieldRoute,
+  OverviewRoute: OverviewRoute,
   PresentationRoute: PresentationRoute,
   ResearchRoute: ResearchRoute,
 }

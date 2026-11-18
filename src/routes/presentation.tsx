@@ -19,7 +19,7 @@ function Presentation() {
   return (
     <div className="fixed inset-0 z-50 bg-background">
       <iframe title="GTM presentation" src="/presentation/index.html" className="h-full w-full border-0" allow="fullscreen" onLoad={(e) => e.currentTarget.focus()} />
-      <Link to="/" className="absolute bottom-1 right-1 rounded border border-border bg-background/80 px-2 py-1 text-[11px] text-muted-foreground hover:text-foreground">← Back to app</Link>
+      <Link to="/overview" className="absolute bottom-1 right-1 rounded border border-border bg-background/80 px-2 py-1 text-[11px] text-muted-foreground hover:text-foreground">← Back to app</Link>
     </div>
   );
 }
