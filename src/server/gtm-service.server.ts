@@ -134,6 +134,7 @@ export async function evaluateCase(input: { sessionId: string; caseId: string; a
     alternatives,
     permission_ref,
     candidates,
+    message: { text: String(c.communication_records[0]?.["text"] ?? ""), first_known_at: String(c.communication_records[0]?.["first_known_at"] ?? "") },
     trusted_records: reg.records.map((r) => ({
       evidence_id: r.evidence_id, source: r.source, revision: r.revision, effect: r.effect, key: r.key,
       visible_from: visibleTick(r), valid_until: r.valid_until as number, visible: visibleTick(r) <= asOf,
@@ -276,4 +277,96 @@ export async function batchReplay(input: { sessionId: string }) {
 
 export function backendInfo() {
   return { contract_version: CONTRACT_VERSION, runtime: "tanstack-start-server-function", persistence: "lovable-cloud-postgres" as const, checked_at: new Date().toISOString() };
+}
+
+/* ---------------- phase 04: Scene 1 scope scenario (pure engine, server-side) ---------------- */
+import { evaluateScope, type ScopeControls } from "@/domain/scenario";
+import { baselineC, proxyB, BASELINE_LIMITATIONS } from "@/domain/baselines";
+import { scoreRows, type ObservedRow } from "@/evaluation/four-case";
+
+export async function evaluateScopeScenario(controls: ScopeControls) {
+  const base = getCase("CF-01A");
+  const r = await evaluateScope(base, controls, REGISTERED_SOURCES);
+  const message = base.communication_records[0]!;
+  return {
+    scene: "scope" as const, base_case: base.case_id, message: { text: String(message["text"]), speaker: String(message["speaker"]), first_known_at: String(message["first_known_at"]) },
+    candidates: candidatesOf(base).map((c) => ({ text: c.slice, span: c.span, source_id: c.source_id, source_version: c.source_version, polarity: c.polarity, grants_authority: false as const })),
+    request: r.request, permission: r.permission, as_of: r.as_of,
+    authority: { state: r.authority.state, reason: r.authority.reason, proof: r.authority.proof, proof_digest: r.authority.proof_digest },
+    approval: r.approval, readiness: r.readiness, action: r.action,
+    request_version: r.request_version, permission_version: r.permission_version,
+    trusted_source_disclosure: TRUSTED_SOURCE_DISCLOSURE,
+    evaluated_at_utc: new Date().toISOString(),
+  };
+}
+
+function branchOf(reason: string, action: string, alternative: boolean): string {
+  if (reason === "ready_to_launch") return "allowed";
+  if (["revoked", "explicit_deny", "expired"].includes(reason)) return "denied";
+  if (alternative || action.includes("pilot")) return "alternative";
+  if (["no_grant", "not_yet_known", "not_yet_effective", "candidate_only_no_authority", "ambiguous_actor_identity", "conflict", "untrusted_source"].includes(reason)) return "unknown";
+  return "clarified";
+}
+
+/** D decision + dispatch revalidation, entirely in memory on public inputs. */
+async function decideD(c: PublicCase) {
+  const records = c.service_records as AuthorityRecord[];
+  const at = (t: number) => resolveAuthority({ records, key: c.target_key, asOf: tick(t), registeredSources: REGISTERED_SOURCES });
+  const cur = await at(c.decision_time);
+  const approval = await checkApproval({ approval: c.service_approval as Approval | null, key: c.target_key, asOf: tick(c.decision_time), records, registeredSources: REGISTERED_SOURCES });
+  let reason = readinessReason(cur, approval) as string;
+  if (reason === "ready_to_launch" && candidatesOf(c).some((x) => x.identity.status === "ambiguous")) reason = "ambiguous_actor_identity";
+  let action = selectAction(c.catalogue, reason as never);
+  if (action.consequential) {
+    const later = await at(c.dispatch_time);
+    if (later.state !== "allowed") { reason = later.reason; action = selectAction(c.catalogue, reason as never); }
+    else if (c.dispatch_mutation) { reason = "approval_terms_changed"; action = selectAction(c.catalogue, reason as never); }
+  }
+  let alternative = false;
+  if (cur.proof.mismatch_axes.length) {
+    for (const r of records) if ((await resolveAuthority({ records, key: r.key, asOf: tick(c.decision_time), registeredSources: REGISTERED_SOURCES })).state === "allowed") alternative = true;
+  }
+  return { action: action.action, reason, branch: branchOf(reason, action.action, alternative) };
+}
+
+export async function fourCaseRun() {
+  const rows: (ObservedRow & { reason: string })[] = [];
+  for (const id of DEMO_CASE_IDS) {
+    const c = getCase(id);
+    const d = await decideD(c);
+    rows.push({ case_id: id, arm: "D", action: d.action, branch: d.branch, reason: d.reason });
+    const cAct = baselineC(c, candidatesOf(c));
+    rows.push({ case_id: id, arm: "C", action: cAct, branch: branchOf(cAct === c.catalogue[0] ? "ready_to_launch" : "hold", cAct, false), reason: "surface_polarity" });
+    const bAct = proxyB(c);
+    rows.push({ case_id: id, arm: "B", action: bAct, branch: branchOf(bAct === c.catalogue[0] ? "ready_to_launch" : "hold", bAct, false), reason: "crm_proxy_fields" });
+  }
+  const scored = scoreRows(rows);
+  const executed_at = new Date().toISOString();
+  const run_id = `run-4c-${(await digestOf({ rows, executed_at })).slice(0, 10)}`;
+  return {
+    run_id, origin: "current_run" as const, contract_version: CONTRACT_VERSION, executed_at, denominator: DEMO_CASE_IDS.length,
+    case_ids: [...DEMO_CASE_IDS], baseline_limitations: [...BASELINE_LIMITATIONS],
+    rows: scored.rows.map((r, i) => ({ ...r, reason: rows[i]!.reason })), arms: scored.arms,
+  };
+}
+
+/** Current-session timeline for one case scope: registry events, prepared intents, dispatch attempts. */
+export async function sessionTimeline(input: { sessionId: string; caseId: string }) {
+  const c = getCase(input.caseId);
+  const sc = scope(input.sessionId, c.case_id);
+  const [ev, it, dp] = await Promise.all([
+    db().from("gtm_events").select("registry_version, origin, payload, known_time, occurred_time, created_at").eq("session_id", sc).eq("tenant", c.tenant_id).order("registry_version"),
+    db().from("gtm_intents").select("id, decision_time, registry_version, status, created_at").eq("session_id", sc).eq("tenant", c.tenant_id).order("created_at"),
+    db().from("gtm_dispatches").select("intent_id, dispatch_time, status, reason, observed_version, idempotency_key, created_at").eq("session_id", sc).eq("tenant", c.tenant_id).order("created_at"),
+  ]);
+  const err = ev.error ?? it.error ?? dp.error;
+  if (err) throw new Error(`timeline read failed: ${err.message}`);
+  const msg = c.communication_records[0]!;
+  const items = [
+    { kind: "message", tick: null as number | null, utc: String(msg["first_known_at"]), label: "Buyer message received (candidate only)", detail: "unchanged text", origin: "communication" },
+    ...(ev.data ?? []).map((e) => { const p = e.payload as unknown as AuthorityRecord; return { kind: p.effect, tick: Number(e.known_time), utc: e.created_at, label: `${p.effect} · rev ${p.revision} · registry v${e.registry_version}`, detail: p.key.terms_digest, origin: e.origin === "interactive" ? "trusted simulator (interactive)" : "trusted simulator fixture" }; }),
+    ...(it.data ?? []).map((i) => ({ kind: "prepare", tick: Number(i.decision_time), utc: i.created_at, label: `Proposal prepared · registry v${i.registry_version}`, detail: `intent ${i.id.slice(0, 8)}`, origin: "server" })),
+    ...(dp.data ?? []).map((d) => ({ kind: "dispatch", tick: Number(d.dispatch_time), utc: d.created_at, label: `Dispatch ${d.status} · ${d.reason}`, detail: `observed v${d.observed_version} · key ${d.idempotency_key}`, origin: "server transaction" })),
+  ].sort((a, b) => (a.tick ?? -1) - (b.tick ?? -1) || a.utc.localeCompare(b.utc));
+  return { session_id: input.sessionId, case_id: c.case_id, items, effects: await countEffects(sc) };
 }

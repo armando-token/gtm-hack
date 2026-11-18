@@ -51,3 +51,28 @@ export const batchReplayFn = createServerFn({ method: "POST" })
     const { batchReplay } = await import("@/server/gtm-service.server");
     return batchReplay(data);
   });
+
+const Seats = z.union([z.literal(500), z.literal(2000)]);
+export const evaluateScopeFn = createServerFn({ method: "POST" })
+  .inputValidator((d: unknown) => z.object({
+    requestedSeats: Seats, grantSeats: Seats,
+    grantOrganization: z.enum(["org-f500-telco", "org-f500-telco-emea-sub"]),
+    grantCapability: z.enum(["approve_spend", "approve_sandbox"]),
+    asOf: z.number().int().min(0).max(1000), grantValidUntil: z.number().int().min(0).max(1000),
+  }).strict().parse(d))
+  .handler(async ({ data }) => {
+    const { evaluateScopeScenario } = await import("@/server/gtm-service.server");
+    return evaluateScopeScenario(data);
+  });
+
+export const fourCaseRunFn = createServerFn({ method: "POST" }).handler(async () => {
+  const { fourCaseRun } = await import("@/server/gtm-service.server");
+  return fourCaseRun();
+});
+
+export const sessionTimelineFn = createServerFn({ method: "POST" })
+  .inputValidator((d: unknown) => z.object(Base).strict().parse(d))
+  .handler(async ({ data }) => {
+    const { sessionTimeline } = await import("@/server/gtm-service.server");
+    return sessionTimeline(data);
+  });

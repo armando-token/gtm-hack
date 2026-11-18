@@ -90,3 +90,26 @@ Partial / pending:
 - Server functions are public sandbox endpoints (no sign-in), scoped by random session id.
 
 Next phase: 04 · Interactive demo. Attach `04_FASE_DEMO_INTERACTIVA.md`.
+
+## Phase 04 · Interactive demo and audit trace — 2026-11-18
+
+Files: src/domain/{scenario,baselines}.ts, src/evaluation/four-case.ts, src/lib/request-guard.ts, src/lib/gtm.functions.ts (evaluateScopeFn, fourCaseRunFn, sessionTimelineFn), src/server/gtm-service.server.ts (evaluateScopeScenario, fourCaseRun, sessionTimeline, message on evaluateCase), src/components/gtm/{DemoParts,AppShell}.tsx, src/routes/{demo,experiments,field}.tsx, src/test/phase04-demo.test.ts.
+
+Commands: `bunx vitest run` → 83/83 pass (00:19Z). `tsgo --noEmit` → 0 errors. Build log "build OK". Playwright /tmp/browser/p4/check_demo.py at 1280x720 (+1440x900 screenshot), two full rounds each from a fresh session, 0 console/page errors.
+
+| ID | Status | Executed evidence | Remaining |
+|---|---|---|---|
+| U01 | VERIFIED | vitest + browser: grant 500 vs request 2000 → scope_mismatch_terms_digest / confirm_expansion_and_review_pilot_500; grant 2000 → ready_to_launch / prepare_proposal_2000_users | — |
+| U02 | VERIFIED | same message text; request_version unchanged, permission_version changed (vitest + UI highlight) | — |
+| U03 | VERIFIED | browser ×2: CF-02A prepare t100 → dispatch t110 committed, effects 1; fresh session prepare → revoke t105 (registry v1→v2) → dispatch blocked · revoked, effects 0 | — |
+| U04 | VERIFIED (unit) | request guard discards older token; Scene 1/2 write results only for latest token; dispatch disabled while stale/in flight | no injected-latency browser test |
+| U05 | VERIFIED | four-case run run-4c-…: D 4/4 valid, 0 false authorize; C 2/4, B 2/4, 2 false authorize each; D branches 2+0+1+1+0+0 = 4/4 | 24-case scorecard (phase 05) |
+| U06 | VERIFIED | audit sheet: source spans, six-axis table, virtual tick + UTC, original/current versions, reason codes | — |
+| U07 | VERIFIED | Reset mints a new session id (initial t100, no intent, empty timeline); prior sessions remain in append-only tables | — |
+| U08 | VERIFIED | /demo, /experiments, /field, /evidencia browsed; no errors | — |
+
+Engine evidence (domain, executed) is separate from backend checks: dispatch commit/blocking ran against Lovable Cloud RPC. Still unresolved: server functions are unauthenticated (session ids are random but not owned); policy simulation is PENDING (phase 07); field study 0/20 real registrations.
+
+Completion matrix: 05 full scorecard · 06 · 07 policy simulation engine · 08 — open.
+
+Next: phase 05.

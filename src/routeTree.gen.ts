@@ -13,6 +13,8 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as BenchmarkRouteImport } from './routes/benchmark'
 import { Route as DemoRouteImport } from './routes/demo'
 import { Route as EvidenciaRouteImport } from './routes/evidencia'
+import { Route as ExperimentsRouteImport } from './routes/experiments'
+import { Route as FieldRouteImport } from './routes/field'
 import { Route as ResearchRouteImport } from './routes/research'
 
 const IndexRoute = IndexRouteImport.update({
@@ -35,6 +37,16 @@ const EvidenciaRoute = EvidenciaRouteImport.update({
   path: '/evidencia',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ExperimentsRoute = ExperimentsRouteImport.update({
+  id: '/experiments',
+  path: '/experiments',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FieldRoute = FieldRouteImport.update({
+  id: '/field',
+  path: '/field',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ResearchRoute = ResearchRouteImport.update({
   id: '/research',
   path: '/research',
@@ -46,6 +58,8 @@ export interface FileRoutesByFullPath {
   '/benchmark': typeof BenchmarkRoute
   '/demo': typeof DemoRoute
   '/evidencia': typeof EvidenciaRoute
+  '/experiments': typeof ExperimentsRoute
+  '/field': typeof FieldRoute
   '/research': typeof ResearchRoute
 }
 export interface FileRoutesByTo {
@@ -53,6 +67,8 @@ export interface FileRoutesByTo {
   '/benchmark': typeof BenchmarkRoute
   '/demo': typeof DemoRoute
   '/evidencia': typeof EvidenciaRoute
+  '/experiments': typeof ExperimentsRoute
+  '/field': typeof FieldRoute
   '/research': typeof ResearchRoute
 }
 export interface FileRoutesById {
@@ -61,14 +77,38 @@ export interface FileRoutesById {
   '/benchmark': typeof BenchmarkRoute
   '/demo': typeof DemoRoute
   '/evidencia': typeof EvidenciaRoute
+  '/experiments': typeof ExperimentsRoute
+  '/field': typeof FieldRoute
   '/research': typeof ResearchRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/benchmark' | '/demo' | '/evidencia' | '/research'
+  fullPaths:
+    | '/'
+    | '/benchmark'
+    | '/demo'
+    | '/evidencia'
+    | '/experiments'
+    | '/field'
+    | '/research'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/benchmark' | '/demo' | '/evidencia' | '/research'
-  id: '__root__' | '/' | '/benchmark' | '/demo' | '/evidencia' | '/research'
+  to:
+    | '/'
+    | '/benchmark'
+    | '/demo'
+    | '/evidencia'
+    | '/experiments'
+    | '/field'
+    | '/research'
+  id:
+    | '__root__'
+    | '/'
+    | '/benchmark'
+    | '/demo'
+    | '/evidencia'
+    | '/experiments'
+    | '/field'
+    | '/research'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -76,6 +116,8 @@ export interface RootRouteChildren {
   BenchmarkRoute: typeof BenchmarkRoute
   DemoRoute: typeof DemoRoute
   EvidenciaRoute: typeof EvidenciaRoute
+  ExperimentsRoute: typeof ExperimentsRoute
+  FieldRoute: typeof FieldRoute
   ResearchRoute: typeof ResearchRoute
 }
 
@@ -109,6 +151,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EvidenciaRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/experiments': {
+      id: '/experiments'
+      path: '/experiments'
+      fullPath: '/experiments'
+      preLoaderRoute: typeof ExperimentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/field': {
+      id: '/field'
+      path: '/field'
+      fullPath: '/field'
+      preLoaderRoute: typeof FieldRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/research': {
       id: '/research'
       path: '/research'
@@ -124,6 +180,8 @@ const rootRouteChildren: RootRouteChildren = {
   BenchmarkRoute: BenchmarkRoute,
   DemoRoute: DemoRoute,
   EvidenciaRoute: EvidenciaRoute,
+  ExperimentsRoute: ExperimentsRoute,
+  FieldRoute: FieldRoute,
   ResearchRoute: ResearchRoute,
 }
 export const routeTree = rootRouteImport
