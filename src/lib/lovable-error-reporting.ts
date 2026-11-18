@@ -68,3 +68,4 @@ function describeThrown(error: unknown): string {
     return String(error);
   }
 }
+
